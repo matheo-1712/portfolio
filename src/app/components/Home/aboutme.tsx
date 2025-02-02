@@ -42,7 +42,7 @@ export default function AboutMe() {
     };
 
     return (
-        <div className="w-full mx-auto">
+        <div className="w-full mx-auto  pb-16">
             {/* Titres alignés en ligne et occupant tout l'espace */}
             <div className="flex">
                 {aboutMe.map((item, index) => (

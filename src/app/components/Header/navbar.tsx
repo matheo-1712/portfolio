@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Logo from "../../public/svg/logo.svg";
 import Link from "next/link";
 
 export default function Navbar() {
@@ -8,9 +7,10 @@ export default function Navbar() {
         <Link href="/">
           <Image
             className="dark:invert cursor-pointer"
-            src={Logo}
+            src="/svg/logo.svg"
             alt="Logo"
             height={30}
+            width={240}
             priority
           />
         </Link>
