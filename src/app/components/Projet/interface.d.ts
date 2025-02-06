@@ -9,6 +9,9 @@ export type Project = {
     repository: string;
     framework: string;
     module: string;
+    url : string;
+    date_debut: string;
+    date_fin: string;
   }
 
   

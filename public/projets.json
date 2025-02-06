@@ -2,37 +2,85 @@
   {
     "nom": "Citlali",
     "type": "Bot Discord",
-    "image": "https://raw.githubusercontent.com/matheo-1712/Citlali/v1.0.0-stable/z_img/bot/banniere.png",
+    "image": "/citlali.png",
     "description": "Un bot Discord spécialisé pour le jeu Genshin Impact",
     "language_prog": "TypeScript / JavaScript",
     "module": "Discord.js",
     "repository": "https://github.com/matheo-1712/Citlali",
     "statut": "1",
     "framework": "",
-    "url": "/projet/citlali"
+    "url": "/projet/citlali",
+    "date_debut": "05-01-2025",
+    "date_fin": "XX-XX-XXXX"
   },
   {
-    "nom": "Pokemon-RLM",
+    "nom": "Pokemon RLM",
     "type": "Jeu",
-    "image": "",
+    "image": "/pokemon-rlm.png",
     "description": "Un fangame Pokémon modeste, se déroulant sur l'Île de Loutre Mer...",
     "language_prog": "Ruby",
     "module": "PSDK",
     "repository": "https://github.com/L-Antre-des-Loutres/Pokemon-RLM",
     "statut": "1",
     "framework": "PSDK",
-    "url": "/projet/pokemon-rlm"
+    "url": "/projet/pokemon-rlm",
+    "date_debut": "21-10-2024",
+    "date_fin": "XX-XX-XXXX"
   },
   {
     "nom": "Portfolio",
     "type": "Site Web",
-    "image": "",
+    "image": "/portfolio.png",
     "description": "Mon portfolio professionnel présentant mes projets actuels, passés et futurs.",
     "language_prog": "TypeScript",
     "module": "",
     "repository": "https://github.com/matheo-1712/portfolio",
     "statut": "1",
     "framework": "React",
-    "url": "/projet/portfolio"
+    "url": "/projet/portfolio",
+    "date_debut": "26-01-2025",
+    "date_fin": "XX-XX-XXXX"
+  },
+  {
+    "nom": "API-Serveur V2",
+    "type": "API Rest",
+    "image": "/api-serveur-v2.png",
+    "description": "La nouvelle version de l'API serveur, qui a été refaite et optimisée en TypeScript.",
+    "language_prog": "TypeScript",
+    "module": "Express",
+    "repository": "https://github.com/matheo-1712/API-Serveur-TS",
+    "statut": "2",
+    "framework": "",
+    "url": "/projet/api-serveur-v2",
+    "date_debut": "XX-XX-2025",
+    "date_fin": "XX-XX-XXXX"
+  },
+  {
+    "nom": "OtterMinded",
+    "type": "Application Mobile",
+    "image": "/otterminded.png",
+    "description": "Une application mobile Une application mobile Une application mobile Une application mobile",
+    "language_prog": "Kotlin",
+    "module": "",
+    "repository": "https://github.com/L-Antre-des-Loutres/OtterMinded",
+    "statut": "0",
+    "framework": "Android Studio",
+    "url": "/projet/otterminded",
+    "date_debut": "21-03-2024",
+    "date_fin": "02-06-2024"
+  },
+  {
+    "nom": "API Serveur",
+    "type": "API REST",
+    "image": "",
+    "description": "Une API permettant la gestion de serveurs de jeu. Elle permet d'afficher l'ensemble des informations les concernant, de les installer, de les démarrer et de les arrêter via une requête.",
+    "language_prog": "JavaScript",
+    "module": "Express",
+    "repository": "https://github.com/matheo-1712/API-Serveur",
+    "statut": "0",
+    "framework": "",
+    "url": "/projet/api-serveur",
+    "date_debut": "24-06-2024",
+    "date_fin": "28-10-2024"
   }
 ]

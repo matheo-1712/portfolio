@@ -6,7 +6,7 @@ const path = require("path");
 const readline = require("readline");
 
 // Définition de l'interface Project
-interface Project {
+export type Project = {
   nom: string;
   type: string;
   image: string;
@@ -17,6 +17,8 @@ interface Project {
   framework: string;
   module: string;
   url: string;
+  date_debut: string;
+  date_fin: string;
 }
 
 // Chemin vers le fichier JSON
@@ -101,6 +103,8 @@ const addProject = async () => {
   const framework = await askQuestion("Framework utilisé (laisser vide si non utilisé) : ");
   const statut = await askStatus();
   const url = "/projet/" + nom.toLowerCase().replaceAll(" ", "-").replaceAll("é", "e").replaceAll("è", "e");
+  const date_debut = await askQuestion("Date de début : ");
+  const date_fin = await askQuestion("Date de fin (laisser vide si non dispo) : ") || "XX-XX-XXXX"; // Remplacer par XXXX-XX-XX si date_fin n'est pas renseignée
 
   // Ajouter le nouveau projet
   const newProject: Project = {
@@ -114,6 +118,8 @@ const addProject = async () => {
     statut,
     framework,
     url,
+    date_debut,
+    date_fin,
   };
   projects.push(newProject);
 
@@ -153,6 +159,8 @@ const addProject = async () => {
                     <br />
                     Lien du repository : ${repository}
                     <br />
+                    Date de début : ${date_debut}
+                    Date de fin : ${date_fin}
                 </p>
             </main>
         </div>
