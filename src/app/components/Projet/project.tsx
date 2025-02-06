@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { projectFetch } from "./projectFetch";
 import ProjetBanner from "./components/projetBanner";
-import { ProjectProps } from "./interface";
+import type { ProjectProps, Project } from "./interface";
 
 export function Project({ statut }: ProjectProps) {
 

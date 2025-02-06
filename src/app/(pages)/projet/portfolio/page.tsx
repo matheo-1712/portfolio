@@ -1,5 +1,3 @@
-import Image from "next/image"; 
- 
   export default function Projet() {
     return (
         <div>
@@ -8,7 +6,7 @@ import Image from "next/image";
                 <p className="text-center text-lg">
                     Description du projet : Mon portfolio professionnel présentant mes projets actuels, passés et futurs.
                     <br />
-                    Type d'application : Site Web
+                    Type d&apos;application : Site Web
                     <br />
                     Framework utilisé : React
                     <br />

@@ -1,3 +1,5 @@
+import { Project } from "./interface";
+
 export async function projectFetch(statut: string) {
         try {
             const response = await fetch("/projets.json");

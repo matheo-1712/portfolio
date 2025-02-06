@@ -1,6 +1,4 @@
-import Image from "next/image"; 
- 
-  export default function Projet() {
+ export default function Projet() {
     return (
         <div>
             <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
@@ -8,7 +6,7 @@ import Image from "next/image";
                 <p className="text-center text-lg">
                     Description du projet : Une application mobile
                     <br />
-                    Type d'application : Application Mobile
+                    Type d&apos;application : Application Mobile
                     <br />
                     Framework utilisé : Android Studio
                     <br />

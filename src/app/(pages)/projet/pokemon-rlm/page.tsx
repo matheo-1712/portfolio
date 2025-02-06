@@ -1,14 +1,12 @@
-import Image from "next/image"; 
- 
-  export default function Projet() {
+   export default function Projet() {
     return (
         <div>
             <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
                 <h1 className="text-4xl font-bold">pokemon-rlm</h1>
                 <p className="text-center text-lg">
-                    Description du projet : Un fangame Pokémon modeste, se déroulant sur l'Île de Loutre Mer...
+                    Description du projet : Un fangame Pokémon modeste, se déroulant sur l&apos;Île de Loutre Mer...
                     <br />
-                    Type d'application : Jeu
+                    Type d&apos;application : Jeu
                     <br />
                     Framework utilisé : PSDK
                     <br />

@@ -137,8 +137,16 @@ const addProject = async () => {
   }
   console.log("\n✅ Dossier créé avec succès !");
 
+  // Préparation du contenu du fichier page.tsx
+  let pageContent = "";
+
+  // Import de la fonction Image de Next si une image est fournie
+  if (image !== "") {
+    pageContent += `import Image from "next/image"; \n`;
+  }
+
   // Création du fichier page.tsx pour le projet
-  const pageContent = `import Image from "next/image"; \n 
+  pageContent += ` 
   export default function Projet() {
     return (
         <div>
@@ -147,7 +155,7 @@ const addProject = async () => {
                 <p className="text-center text-lg">
                     Description du projet : ${description}
                     <br />
-                    Type d'application : ${type}
+                    Type d&apos;application : ${type}
                     <br />
                     Framework utilisé : ${framework}
                     <br />

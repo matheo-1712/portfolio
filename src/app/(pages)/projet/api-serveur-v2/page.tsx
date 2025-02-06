@@ -1,14 +1,12 @@
-import Image from "next/image"; 
- 
   export default function Projet() {
     return (
         <div>
             <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
                 <h1 className="text-4xl font-bold">API-Serveur V2</h1>
                 <p className="text-center text-lg">
-                    Description du projet : La nouvelle version de l'API Serveur en TypeScript
+                    Description du projet : La nouvelle version de l&apos;API Serveur en TypeScript
                     <br />
-                    Type d'application : API Rest
+                    Type d&apos;application : API Rest
                     <br />
                     Framework utilisé : 
                     <br />

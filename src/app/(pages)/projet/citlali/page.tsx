@@ -6,7 +6,7 @@ export default function Projet() {
                 <p className="text-center text-lg">
                     Description du projet : Un bot Discord spécialisé pour le jeu Genshin Impact
                     <br />
-                    Type d'application : Bot Discord
+                    Type d&apos;application : Bot Discord
                     <br />
                     Framework utilisé :
                     <br />
