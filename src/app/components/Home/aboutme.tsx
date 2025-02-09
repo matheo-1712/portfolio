@@ -42,9 +42,9 @@ export default function AboutMe() {
     };
 
     return (
-        <div className="w-full mx-auto  pb-16">
+        <div className="w-full mx-auto pb-16 max-w-7xl">
             {/* Titres alignés en ligne et occupant tout l'espace */}
-            <div className="flex">
+            <div className="flex flex-wrap justify-center">
                 {aboutMe.map((item, index) => (
                     <h2
                         key={index}
@@ -52,7 +52,8 @@ export default function AboutMe() {
                         className={`flex-1 text-center cursor-pointer border p-4 transition
                         ${activeIndex === index ? "border-gray-500" : "border-gray-300 hover:bg-gray-900 z-10"} 
                         ${index === 0 ? "rounded-tl-lg" : ""} 
-                        ${index === aboutMe.length - 1 ? "rounded-tr-lg" : ""}
+                        ${index === aboutMe.length - 1 ? "rounded-none md:rounded-tr-lg sm:rounded-tr-lg lg:rounded-tr-lg" : ""}
+                        ${index === 3 ? "rounded-tr-lg md:rounded-none sm:rounded-none lg:rounded-none" : ""}
                         `}
                     >
                         {item.title}
