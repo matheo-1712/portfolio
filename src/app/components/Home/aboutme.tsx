@@ -1,10 +1,16 @@
 "use client";
 
 import { useState } from "react";
+import QuiSuisJe from "./components-aboutme/qui_suis_je";
+import HardSkills from "./components-aboutme/hard_skills";
+import SoftSkills from "./components-aboutme/soft_skills";
+import MyProject from "./components-aboutme/my_project";
+import MyExperience from "./components-aboutme/my_experience";
+import MyPassions from "./components-aboutme/my_passions";
 
 interface AboutMeItem {
     title: string;
-    description: string;
+    description: React.ReactNode;
 }
 
 export default function AboutMe() {
@@ -13,27 +19,27 @@ export default function AboutMe() {
     const aboutMe: AboutMeItem[] = [
         {
             title: "Qui suis-je ? 📍",
-            description: "Contenu du premier élément. Lorem ipsum dolor sit amet..."
+            description: <QuiSuisJe />
         },
         {
             title: "Hard skills 🔥",
-            description: "Contenu du deuxième élément. Lorem ipsum dolor sit amet..."
+            description: <HardSkills />
         },
         {
             title: "Soft skills 💪",
-            description: "Contenu du troisième élément. Lorem ipsum dolor sit amet..."
+            description: <SoftSkills />
         },
         {
             title: "Mes projets 💻",
-            description: "Contenu du cinquième élément. Lorem ipsum dolor sit amet..."
+            description: <MyProject />
         },
         {
             title: "Mes expériences 📈",
-            description: "Contenu du sixième élément. Lorem ipsum dolor sit amet..."
+            description: <MyExperience />
         },
         {
             title: "Mes passions ✨",
-            description: "Contenu du quatrième élément. Lorem ipsum dolor sit amet..."
+            description: <MyPassions />
         },
     ];
 
@@ -47,15 +53,15 @@ export default function AboutMe() {
             <div className="flex flex-wrap justify-center">
                 {aboutMe.map((item, index) => (
                     <h2
-                        key={index}
-                        onClick={() => toggleContent(index)}
-                        className={`flex-1 text-center cursor-pointer border p-4 transition
-                        ${activeIndex === index ? "border-gray-500" : "border-gray-300 hover:bg-gray-900 z-10"} 
-                        ${index === 0 ? "rounded-tl-lg" : ""} 
-                        ${index === aboutMe.length - 1 ? "rounded-none md:rounded-tr-lg sm:rounded-tr-lg lg:rounded-tr-lg" : ""}
-                        ${index === 3 ? "rounded-tr-lg md:rounded-none sm:rounded-none lg:rounded-none" : ""}
-                        `}
-                    >
+                    key={index}
+                    onClick={() => toggleContent(index)}
+                    className={`flex-1 text-center cursor-pointer border p-4 transition 
+                    ${activeIndex === index ? "border-gray-300 md:border-gray-600 bg-gray-950 md:bg-transparent" : "border-gray-300 hover:bg-gray-900"} 
+                    ${index === 0 ? "rounded-tl-lg" : ""} 
+                    ${index === aboutMe.length - 1 ? "rounded-none md:rounded-tr-lg sm:rounded-tr-lg lg:rounded-tr-lg" : ""} 
+                    ${index === 3 ? "rounded-tr-lg md:rounded-none sm:rounded-none lg:rounded-none" : ""}
+                    `}
+                     >
                         {item.title}
                     </h2>
                 ))}
@@ -65,7 +71,7 @@ export default function AboutMe() {
             {/* Affichage du contenu en dessous */}
             {activeIndex !== null && (
                 <div className="p-6 border rounded-b-lg shadow-md min-h-[300px] max-h-300px">
-                    <p>{aboutMe[activeIndex].description}</p>
+                    {aboutMe[activeIndex].description}
                 </div>
             )}
         </div>
