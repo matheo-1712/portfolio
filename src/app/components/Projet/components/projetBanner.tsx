@@ -33,7 +33,7 @@ export default function ProjetBanner({ projects }: ProjetVignetteProps) {
 
                   {/* Description affichée par défaut sur 2 lignes */}
                   <p
-                    className="text-lg mb-2 line-clamp-2 group-hover:line-clamp-none transition-all duration-300 ease-in-out"
+                    className="text-lg mb-2 line-clamp-none md:line-clamp-2 group-hover:line-clamp-none transition-all duration-300 ease-in-out"
                   >
                     {project.description}
                   </p>

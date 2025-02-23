@@ -56,7 +56,7 @@ export default function AboutMe() {
                     key={index}
                     onClick={() => toggleContent(index)}
                     className={`flex-1 text-center cursor-pointer border p-4 transition 
-                    ${activeIndex === index ? "border-gray-300 md:border-gray-600 bg-gray-950 md:bg-transparent" : "border-gray-300 hover:bg-gray-900"} 
+                    ${activeIndex === index ? "border-gray-300 md:border-gray-600 bg-gray-900 md:bg-transparent" : "border-gray-300 hover:bg-gray-900"} 
                     ${index === 0 ? "rounded-tl-lg" : ""} 
                     ${index === aboutMe.length - 1 ? "rounded-none md:rounded-tr-lg sm:rounded-tr-lg lg:rounded-tr-lg" : ""} 
                     ${index === 3 ? "rounded-tr-lg md:rounded-none sm:rounded-none lg:rounded-none" : ""}
@@ -70,7 +70,7 @@ export default function AboutMe() {
 
             {/* Affichage du contenu en dessous */}
             {activeIndex !== null && (
-                <div className="p-6 border rounded-b-lg shadow-md min-h-[300px] max-h-300px">
+                <div className="p-6 border rounded-b-lg shadow-md min-h-[300px] overflow-y-auto">
                     {aboutMe[activeIndex].description}
                 </div>
             )}
