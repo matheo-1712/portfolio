@@ -14,7 +14,7 @@ export default function ProjetBanner({ projects }: ProjetVignetteProps) {
               <div
                 key={index}
                 className="group shadow-lg rounded-2xl p-6 border border-gray-200 flex flex-col justify-between
-      min-h-[475px] sm:min-h-[475px] md:min-h-[475px] lg:min-h-[475px] sm:min-h-[475px] hover:bg-gray-900 
+      min-h-[475px] sm:min-h-[475px] md:min-h-[475px] lg:min-h-[475px] sm:min-h-[475px] hover:bg-gray-200 dark:hover:bg-gray-900 
       transition-all duration-300 ease-in-out"
               >
                 <div>

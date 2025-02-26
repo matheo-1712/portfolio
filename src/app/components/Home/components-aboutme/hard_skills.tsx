@@ -6,9 +6,9 @@ export default function HardSkills() {
             <div id="learning">
                 <h2>Mes connaissances techniques et théoriques :</h2>
                 <br />
-                <div className="flex flex-wrap gap-4 justify-center">
+                <div className="flex flex-wrap gap-4 justify-center pb-6">
                     {[
-                        { src: "/img/logo/code.png", alt: "POO", name: "Programation Orientée Objet" },
+                        { src: "/img/logo/code.png", alt: "POO", name: "Programation Orientée Objet", dark: true },
                         { src: "/img/logo/sql.png", alt: "SQL", name: "SQL" },
                         { src: "/svg/scrum.svg", alt: "SCRUM", name: "Méthodologie SCRUM" },
                         { src: "/img/logo/lamp.png", alt: "Logo LAMP", name: "Système LAMP" },
@@ -16,7 +16,7 @@ export default function HardSkills() {
                     ].map((tech) => (
                         <div key={tech.name} className="flex flex-col items-center w-24">
                             <div className="flex items-center justify-center w-24 h-20">
-                                <Image src={tech.src} alt={tech.alt} height={60} width={60} priority title={tech.name} />
+                                <Image src={tech.src} alt={tech.alt} height={60} width={60} priority title={tech.name} className={tech.dark ? "dark:invert" : ""} />
                             </div>
                             <span className="text-center">{tech.name}</span>
                         </div>
@@ -52,13 +52,13 @@ export default function HardSkills() {
                     {[
                         { src: "/img/logo/react.png", alt: "Logo React", name: "React" },
                         { src: "/svg/next.svg", alt: "Logo NextJS", name: "NextJS" },
-                        { src: "/img/logo/github.png", alt: "Logo Github", name: "Github" },
+                        { src: "/img/logo/github.png", alt: "Logo Github", name: "Github", dark: true },
                         { src: "/img/logo/laravel.png", alt: "Logo Laravel", name: "Laravel" },
                         { src: "/img/logo/tailwind.png", alt: "Logo TailwindCSS", name: "Tailwind CSS" },
                     ].map((tech) => (
                         <div key={tech.name} className="flex flex-col items-center w-24">
                             <div className="flex items-center justify-center w-24 h-20">
-                                <Image src={tech.src} alt={tech.alt} height={40} width={40} priority title={tech.name} />
+                                <Image src={tech.src} alt={tech.alt} height={40} width={40} priority title={tech.name}  className={tech.dark ? "dark:invert" : ""} />
                             </div>
                             <span className="text-center">{tech.name}</span>
                         </div>

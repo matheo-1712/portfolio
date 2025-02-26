@@ -34,9 +34,8 @@ export default function QuiSuisJe() {
                 <Image 
                     src="/matheo_sprite.png" 
                     alt="Sprite" 
-                    width={300} 
-                    height={300} 
-                    className="rounded-lg shadow-lg"
+                    width={150} 
+                    height={150} 
                 />
                 <span className="ml-10 mt-2 text-sm text-gray-600">Un pixel art réalisé par mes soins</span>
             </div>
