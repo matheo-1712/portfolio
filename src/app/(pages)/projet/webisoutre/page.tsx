@@ -1,12 +1,10 @@
-import Image from "next/image"; 
- 
-  export default function Projet() {
+export default function Projet() {
     return (
         <div>
             <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
                 <h1 className="text-4xl font-bold">Webisoutre</h1>
                 <p className="text-center text-lg">
-                    Description du projet : Site de l'Antre des Loutres, lieu ou nos utilisateurs peuvent admirer leurs statistiques et accomplissements.
+                    Description du projet : Site de l&apos;Antre des Loutres, lieu ou nos utilisateurs peuvent admirer leurs statistiques et accomplissements.
                     <br />
                     Type d&apos;application : Site
                     <br />
