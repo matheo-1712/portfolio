@@ -6,7 +6,6 @@ import HardSkills from "./components-aboutme/hard_skills";
 import SoftSkills from "./components-aboutme/soft_skills";
 import MyProject from "./components-aboutme/my_project";
 import MyExperience from "./components-aboutme/my_experience";
-import MyPassions from "./components-aboutme/my_passions";
 
 interface AboutMeItem {
     title: string;
@@ -30,16 +29,12 @@ export default function AboutMe() {
             description: <SoftSkills />
         },
         {
-            title: "Mes projets 📈",
+            title: "Mes projets 🚧",
             description: <MyProject />
         },
         {
             title: "Mes expériences 📈",
             description: <MyExperience />
-        },
-        {
-            title: "Mes passions ✨",
-            description: <MyPassions />
         },
     ];
 
@@ -56,7 +51,7 @@ export default function AboutMe() {
                     key={index}
                     onClick={() => toggleContent(index)}
                     className={`flex-1 text-center cursor-pointer border p-4 transition 
-                    ${activeIndex === index ? "border-gray-300 md:border-gray-600 bg-gray-900 md:bg-transparent" : "border-gray-300 hover:bg-gray-200 dark:hover:bg-gray-900"} 
+                    ${activeIndex === index ? "border-gray-300 md:border-gray-600 bg-gray-100 dark:bg-gray-900 md:bg-transparent" : "border-gray-300 hover:bg-gray-200 dark:hover:bg-gray-900"} 
                     ${index === 0 ? "rounded-tl-lg" : ""} 
                     ${index === aboutMe.length - 1 ? "rounded-none md:rounded-tr-lg sm:rounded-tr-lg lg:rounded-tr-lg" : ""} 
                     ${index === 3 ? "rounded-tr-lg md:rounded-none sm:rounded-none lg:rounded-none" : ""}

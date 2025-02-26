@@ -2,33 +2,50 @@ import Image from "next/image";
 
 export default function HardSkills() {
     return (
-        <div id="Hard Skills" className="w-full px-4">
-            <div id="learning">
-                <h2>Mes connaissances techniques et théoriques :</h2>
-                <br />
-                <div className="flex flex-wrap gap-4 justify-center pb-6">
+        <div id="Hard-Skills" className="w-full p-2 px-8">
+            {/* Section Titre */}
+            <div id="title" className="text-center mb-8">
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-white md:text-3xl mb-2">✨ Mes Hard Skills ✨</h2>
+                <p className="text-gray-600 dark:text-gray-300 text-sm">
+                    Voici les compétences techniques et théoriques qui me permettent de réaliser mes projets avec succès.
+                </p>
+            </div>
+
+            {/* Connaissances Techniques et Théoriques */}
+            <div id="learning" className="mb-8">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Mes connaissances techniques et théoriques :</h3>
+                <div className="flex flex-wrap gap-6 justify-center pb-6">
                     {[
-                        { src: "/img/logo/code.png", alt: "POO", name: "Programation Orientée Objet", dark: true },
+                        { src: "/img/logo/code.png", alt: "POO", name: "Programmation Orientée Objet", dark: true },
                         { src: "/img/logo/sql.png", alt: "SQL", name: "SQL" },
                         { src: "/svg/scrum.svg", alt: "SCRUM", name: "Méthodologie SCRUM" },
                         { src: "/img/logo/lamp.png", alt: "Logo LAMP", name: "Système LAMP" },
                         { src: "/img/logo/docker.png", alt: "DOCKER", name: "Docker" },
-                        { src: "/img/logo/linux.png", alt: "LINUX", name: "Système Linux"},
-                        { src: "/img/logo/virtualbox.png", alt: "VIRTUALBOX", name: "VirtualBox"},
+                        { src: "/img/logo/linux.png", alt: "LINUX", name: "Système Linux" },
+                        { src: "/img/logo/virtualbox.png", alt: "VIRTUALBOX", name: "VirtualBox" },
                     ].map((tech) => (
-                        <div key={tech.name} className="flex flex-col items-center w-24">
-                            <div className="flex items-center justify-center w-24 h-20">
-                                <Image src={tech.src} alt={tech.alt} height={60} width={60} priority title={tech.name} className={tech.dark ? "dark:invert" : ""} />
+                        <div key={tech.name} className="flex flex-col items-center w-28">
+                            <div className="flex items-center justify-center w-24 h-24 mb-2">
+                                <Image
+                                    src={tech.src}
+                                    alt={tech.alt}
+                                    height={60}
+                                    width={60}
+                                    priority
+                                    title={tech.name}
+                                    className={tech.dark ? "dark:invert" : ""}
+                                />
                             </div>
-                            <span className="text-center">{tech.name}</span>
+                            <span className="text-center text-gray-800 dark:text-white font-medium">{tech.name}</span>
                         </div>
                     ))}
                 </div>
             </div>
-            <div id="programming-languages">
-                <h2>Mes langages de programmation :</h2>
-                <br />
-                <div className="flex flex-wrap gap-4 justify-center">
+
+            {/* Langages de Programmation */}
+            <div id="programming-languages" className="mb-8">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Mes langages de programmation :</h3>
+                <div className="flex flex-wrap gap-6 justify-center pb-6">
                     {[
                         { src: "/svg/typescript.svg", alt: "Logo TypeScript", name: "TypeScript" },
                         { src: "/img/logo/javascript.png", alt: "Logo JavaScript", name: "JavaScript" },
@@ -37,20 +54,27 @@ export default function HardSkills() {
                         { src: "/img/logo/kotlin.png", alt: "Logo Kotlin", name: "Kotlin" },
                         { src: "/img/logo/java.png", alt: "Logo Java", name: "Java" },
                     ].map((tech) => (
-                        <div key={tech.name} className="flex flex-col items-center w-24">
-                            <div className="flex items-center justify-center w-24 h-20">
-                                <Image src={tech.src} alt={tech.alt} height={40} width={40} priority title={tech.name} />
+                        <div key={tech.name} className="flex flex-col items-center w-28">
+                            <div className="flex items-center justify-center w-24 h-24 mb-2">
+                                <Image
+                                    src={tech.src}
+                                    alt={tech.alt}
+                                    height={50}
+                                    width={50}
+                                    priority
+                                    title={tech.name}
+                                />
                             </div>
-                            <span className="text-center">{tech.name}</span>
+                            <span className="text-center text-gray-800 dark:text-white font-medium">{tech.name}</span>
                         </div>
                     ))}
                 </div>
             </div>
-            <br />
-            <div id="technologies">
-                <h2>Mes technologies & Frameworks :</h2>
-                <br />
-                <div className="flex flex-wrap gap-4 justify-center">
+
+            {/* Technologies & Frameworks */}
+            <div id="technologies" className="mb-8">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Mes technologies & Frameworks :</h3>
+                <div className="flex flex-wrap gap-6 justify-center">
                     {[
                         { src: "/img/logo/react.png", alt: "Logo React", name: "React" },
                         { src: "/svg/next.svg", alt: "Logo NextJS", name: "NextJS" },
@@ -58,11 +82,19 @@ export default function HardSkills() {
                         { src: "/img/logo/laravel.png", alt: "Logo Laravel", name: "Laravel" },
                         { src: "/img/logo/tailwind.png", alt: "Logo TailwindCSS", name: "Tailwind CSS" },
                     ].map((tech) => (
-                        <div key={tech.name} className="flex flex-col items-center w-24">
-                            <div className="flex items-center justify-center w-24 h-20">
-                                <Image src={tech.src} alt={tech.alt} height={40} width={40} priority title={tech.name}  className={tech.dark ? "dark:invert" : ""} />
+                        <div key={tech.name} className="flex flex-col items-center w-28">
+                            <div className="flex items-center justify-center w-24 h-24 mb-2">
+                                <Image
+                                    src={tech.src}
+                                    alt={tech.alt}
+                                    height={50}
+                                    width={50}
+                                    priority
+                                    title={tech.name}
+                                    className={tech.dark ? "dark:invert" : ""}
+                                />
                             </div>
-                            <span className="text-center">{tech.name}</span>
+                            <span className="text-center text-gray-800 dark:text-white font-medium">{tech.name}</span>
                         </div>
                     ))}
                 </div>
