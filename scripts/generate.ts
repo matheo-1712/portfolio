@@ -6,7 +6,7 @@ const path = require("path");
 const readline = require("readline");
 
 // Définition de l'interface Project
-export type Project = {
+type Project = {
   nom: string;
   type: string;
   image: string;

@@ -2,7 +2,27 @@ import Image from "next/image";
 
 export default function HardSkills() {
     return (
-        <div className="w-full px-4">
+        <div id="Hard Skills" className="w-full px-4">
+            <div id="learning">
+                <h2>Mes connaissances techniques et théoriques :</h2>
+                <br />
+                <div className="flex flex-wrap gap-4 justify-center">
+                    {[
+                        { src: "/img/logo/code.png", alt: "POO", name: "Programation Orientée Objet" },
+                        { src: "/img/logo/sql.png", alt: "SQL", name: "SQL" },
+                        { src: "/svg/scrum.svg", alt: "SCRUM", name: "Méthodologie SCRUM" },
+                        { src: "/img/logo/lamp.png", alt: "Logo LAMP", name: "Système LAMP" },
+                        { src: "/img/logo/docker.png", alt: "DOCKER", name: "Docker" },
+                    ].map((tech) => (
+                        <div key={tech.name} className="flex flex-col items-center w-24">
+                            <div className="flex items-center justify-center w-24 h-20">
+                                <Image src={tech.src} alt={tech.alt} height={60} width={60} priority title={tech.name} />
+                            </div>
+                            <span className="text-center">{tech.name}</span>
+                        </div>
+                    ))}
+                </div>
+            </div>
             <div id="programming-languages">
                 <h2>Mes langages de programmation :</h2>
                 <br />

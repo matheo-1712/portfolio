@@ -72,7 +72,7 @@
   {
     "nom": "API Serveur",
     "type": "API REST",
-    "image": "",
+    "image": "/api-serveur-v2.png",
     "description": "Une API permettant la gestion de serveurs de jeu. Elle permet d'afficher l'ensemble des informations les concernant, de les installer, de les démarrer et de les arrêter via une requête.",
     "language_prog": "JavaScript",
     "module": "Express",
@@ -82,5 +82,19 @@
     "url": "/projet/api-serveur",
     "date_debut": "24-06-2024",
     "date_fin": "28-10-2024"
+  },
+  {
+    "nom": "Webisoutre",
+    "type": "Site",
+    "image": "/webisoutre.png",
+    "description": "Site de l'Antre des Loutres, lieu ou nos utilisateurs peuvent admirer leurs statistiques et accomplissements.",
+    "language_prog": "PHP, Blade",
+    "module": "",
+    "repository": "https://github.com/L-Antre-des-Loutres/Oldisoutre",
+    "statut": "0",
+    "framework": "Laravel",
+    "url": "/projet/webisoutre",
+    "date_debut": "09-04-2024",
+    "date_fin": "03-06-2024"
   }
 ]

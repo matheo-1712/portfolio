@@ -9,8 +9,8 @@ export default function Home() {
       <AboutMe />
 
       <Project statut="1" />
-      <Project statut="2" />
       <Project statut="0" />
+      <Project statut="2" />
     </div>
   );
 }

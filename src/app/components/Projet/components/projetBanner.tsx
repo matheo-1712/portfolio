@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ProjetVignetteProps } from "../interface";
 
-const defaultImage = "/citlali.png";
+const defaultImage = "/citlAI.png";
 
 export default function ProjetBanner({ projects }: ProjetVignetteProps) {
   return (
@@ -14,7 +14,7 @@ export default function ProjetBanner({ projects }: ProjetVignetteProps) {
               <div
                 key={index}
                 className="group shadow-lg rounded-2xl p-6 border border-gray-200 flex flex-col justify-between
-      min-h-[410px] sm:min-h-[410px] md:min-h-[410px] lg:min-h-[410px] sm:min-h-[450px] hover:bg-gray-900 
+      min-h-[475px] sm:min-h-[475px] md:min-h-[475px] lg:min-h-[475px] sm:min-h-[475px] hover:bg-gray-900 
       transition-all duration-300 ease-in-out"
               >
                 <div>

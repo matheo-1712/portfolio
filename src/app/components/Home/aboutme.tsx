@@ -30,7 +30,7 @@ export default function AboutMe() {
             description: <SoftSkills />
         },
         {
-            title: "Mes projets 💻",
+            title: "Mes projets 📈",
             description: <MyProject />
         },
         {
@@ -70,7 +70,7 @@ export default function AboutMe() {
 
             {/* Affichage du contenu en dessous */}
             {activeIndex !== null && (
-                <div className="p-6 border rounded-b-lg shadow-md min-h-[300px] overflow-y-auto">
+                <div className="p-6 border rounded-b-lg shadow-md min-h-[400px] overflow-y-auto">
                     {aboutMe[activeIndex].description}
                 </div>
             )}
