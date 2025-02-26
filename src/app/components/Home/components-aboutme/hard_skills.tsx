@@ -13,6 +13,8 @@ export default function HardSkills() {
                         { src: "/svg/scrum.svg", alt: "SCRUM", name: "Méthodologie SCRUM" },
                         { src: "/img/logo/lamp.png", alt: "Logo LAMP", name: "Système LAMP" },
                         { src: "/img/logo/docker.png", alt: "DOCKER", name: "Docker" },
+                        { src: "/img/logo/linux.png", alt: "LINUX", name: "Système Linux"},
+                        { src: "/img/logo/virtualbox.png", alt: "VIRTUALBOX", name: "VirtualBox"},
                     ].map((tech) => (
                         <div key={tech.name} className="flex flex-col items-center w-24">
                             <div className="flex items-center justify-center w-24 h-20">
@@ -46,7 +48,7 @@ export default function HardSkills() {
             </div>
             <br />
             <div id="technologies">
-                <h2>Mes technologies :</h2>
+                <h2>Mes technologies & Frameworks :</h2>
                 <br />
                 <div className="flex flex-wrap gap-4 justify-center">
                     {[
