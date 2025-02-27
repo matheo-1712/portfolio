@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import ThemeToggle from "./themetoogle";
+import ThemeToggle from "../Button/themeButton";
 
 export default function Navbar() {
   return (

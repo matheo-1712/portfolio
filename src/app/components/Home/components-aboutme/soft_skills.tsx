@@ -10,26 +10,28 @@ export default function SoftSkills() {
             </div>
 
             {/* Liste des Soft Skills */}
-            <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
-                {[
-                    { icon: "🤝", text: "Mon esprit d’équipe" },
-                    { icon: "🔍", text: "Ma curiosité" },
-                    { icon: "⚖️", text: "Mon intégrité" },
-                    { icon: "🛠️", text: "Ma résolution de problèmes" },
-                    { icon: "💡", text: "Ma pensée critique" },
-                    { icon: "❤️", text: "Mon empathie" },
-                    { icon: "🌊", text: "Mon calme" },
-                    { icon: "☀️", text: "Ma bonne humeur" },
-                ].map((skill, index) => (
-                    <li
-                        key={index}
-                        className="p-4 flex items-center space-x-3 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-md transform transition duration-300 hover:scale-105 hover:bg-gray-200 dark:hover:bg-gray-700"
-                    >
-                        <span className="text-xl">{skill.icon}</span>
-                        <span className="font-medium text-gray-900 dark:text-white">{skill.text}</span>
-                    </li>
-                ))}
-            </ul>
+            <div className="w-full pt-6">
+                <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
+                    {[
+                        { icon: "🤝", text: "Mon esprit d’équipe" },
+                        { icon: "🔍", text: "Ma curiosité" },
+                        { icon: "⚖️", text: "Mon intégrité" },
+                        { icon: "🛠️", text: "Ma résolution de problèmes" },
+                        { icon: "💡", text: "Ma pensée critique" },
+                        { icon: "❤️", text: "Mon empathie" },
+                        { icon: "🌊", text: "Mon calme" },
+                        { icon: "☀️", text: "Ma bonne humeur" },
+                    ].map((skill, index) => (
+                        <li
+                            key={index}
+                            className="p-4 flex items-center space-x-3 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-md transform transition duration-300 hover:scale-105 hover:bg-gray-200 dark:hover:bg-gray-700"
+                        >
+                            <span className="text-xl">{skill.icon}</span>
+                            <span className="font-medium text-gray-900 dark:text-white">{skill.text}</span>
+                        </li>
+                    ))}
+                </ul>
+            </div>
         </div>
     );
 }
