@@ -22,7 +22,7 @@ export default function MyProject() {
                 </div>
             </div>
 
-            <div id="antre-des-loutres" className="mt-2 p-6 rounded-lg shadow-md">
+            <div id="antre-des-loutres" className="mt-2 mb-4 p-6 rounded-lg shadow-md">
                 <div className="flex items-center space-x-4">
                     <Link href="https://github.com/L-Antre-des-Loutres">
                         <Image

@@ -16,8 +16,10 @@ export default function Projet_apiServeur() {
         <div className="items-center justify-center">
             {projectInfos && <ProjetSummary {...projectInfos} />}
 
-            {/* Move content section below with more margin */}
             <div id="content" className="mt-12">
+                <p>Page en construction...</p>
+                <p>Page en construction...</p>
+                <p>Page en construction...</p>
                 <p>Page en construction...</p>
             </div>
         </div>
