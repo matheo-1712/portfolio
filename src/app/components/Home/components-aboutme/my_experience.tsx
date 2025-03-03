@@ -17,7 +17,6 @@ export default function MyExperience() {
     return (
         <div className="max-w-6xl mx-auto p-2 flex flex-col items-center">
             <div id="title" className="text-center p2 mb-8">
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-white md:text-3xl mb-2">📈 Mes expériences 📈</h2>
                 <p className="text-gray-600 dark:text-gray-300 text-sm">
                     Voici mes expériences professionnelles, qui sont pour l&apos;instant uniquement des stages d&apos;un mois.
                 </p>

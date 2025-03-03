@@ -5,7 +5,6 @@ export default function HardSkills() {
         <div id="Hard-Skills" className="w-full p-2 px-8">
             {/* Section Titre */}
             <div id="title" className="text-center mb-8">
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-white md:text-3xl mb-2">✨ Mes Hard Skills ✨</h2>
                 <p className="text-gray-600 dark:text-gray-300 text-sm">
                     Voici les compétences techniques et théoriques qui me permettent de réaliser mes projets avec succès.
                 </p>

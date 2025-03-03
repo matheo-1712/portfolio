@@ -2,8 +2,7 @@ export default function SoftSkills() {
     return (
         <div id="soft-skills" className="p-2 rounded-2xl dark:shadow-lg mx-auto w-full">
             {/* Section de titre */}
-            <div className="text-center mb-6">
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-white md:text-3xl mb-2">✨ Mes Soft Skills ✨</h2>
+            <div className="text-center mb-8">
                 <p className="text-gray-600 dark:text-gray-300 text-sm">
                     Voici les compétences humaines qui me permettent de m&apos;épanouir et d&apos;atteindre mes objectifs tout en collaborant efficacement avec les autres.
                 </p>

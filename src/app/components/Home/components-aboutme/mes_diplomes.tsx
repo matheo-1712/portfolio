@@ -20,9 +20,6 @@ export default function MesDiplomes() {
         <div id="mes-diplomes" className="w-full p-2 ">
             {/* Titre */}
             <div className="text-center mb-8 p-2">
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-white md:text-3xl mb-2">
-                    🎓 Mes diplômes 🎓
-                </h2>
                 <p className="text-gray-600 dark:text-gray-300 text-sm">
                     Voici les diplômes que j&apos;ai obtenu jusqu&apos;à présent.
                 </p>

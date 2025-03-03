@@ -5,7 +5,6 @@ export default function MyProject() {
     return (
         <div id="my-project" className="w-full p-2">
             <div id="title" className="text-center p2 mb-8">
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-white md:text-3xl mb-2">🚧 Mes projets 🚧</h2>
                 <p className="text-gray-600 dark:text-gray-300 text-sm text-center">
                     La plupart des projets que j&apos;ai réalisés sont disponibles juste en dessous,
                 </p>

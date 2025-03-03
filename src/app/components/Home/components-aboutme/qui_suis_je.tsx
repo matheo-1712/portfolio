@@ -4,7 +4,6 @@ export default function QuiSuisJe() {
     return (
         <div id="Qui suis je" className="w-full p-2">
             <div id="title" className="text-center p2 mb-8">
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-white md:text-3xl mb-2">📍 Qui suis-je ? 📍</h2>
             </div>
             <div className="w-full p-2 px-2 flex flex-col md:flex-row gap-4">
                 {/* Colonne de gauche */}
