@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { projectFetchById } from "@/app/components/Projet/projectFetch";
 import { Project } from "@/app/components/Projet/interface";
 import ProjetSummary from "@/app/components/Projet/components/projetSummary";
+import BDDFlow from "@/app/components/ReactFlow/BDDFlow";
 
 export default function Projet_apiServeur() {
     const [projectInfos, setProjectInfos] = useState<Project | undefined>(undefined);
@@ -17,10 +18,11 @@ export default function Projet_apiServeur() {
             {projectInfos && <ProjetSummary {...projectInfos} />}
 
             <div id="content" className="mt-12">
-                <p>Page en construction...</p>
-                <p>Page en construction...</p>
-                <p>Page en construction...</p>
-                <p>Page en construction...</p>
+                <BDDFlow />
+            </div>
+
+            <div id="content" className="mt-12">
+                test
             </div>
         </div>
     );

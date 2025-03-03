@@ -10,6 +10,7 @@
     "add-project": "ts-node scripts/generate.ts"
   },
   "dependencies": {
+    "@xyflow/react": "^12.4.4",
     "next": "15.1.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
