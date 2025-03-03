@@ -55,6 +55,7 @@ export default function MyProject() {
                     </p>
                 </div>
             </div>
+            <p> Mes autres projets sont disponibles juste en dessous ⬇️ ou via cette <Link className="text-blue-600 font-semibold hover:underline" href="/projet" scroll={true}>page</Link>.</p>
         </div>
     );
 }
