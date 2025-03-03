@@ -3,8 +3,6 @@ import Image from "next/image";
 export default function QuiSuisJe() {
     return (
         <div id="Qui suis je" className="w-full p-2">
-            <div id="title" className="text-center p2 mb-8">
-            </div>
             <div className="w-full p-2 px-2 flex flex-col md:flex-row gap-4">
                 {/* Colonne de gauche */}
                 <div className="md:w-full">
