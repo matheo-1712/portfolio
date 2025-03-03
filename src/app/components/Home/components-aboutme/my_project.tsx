@@ -25,14 +25,17 @@ export default function MyProject() {
 
             <div id="antre-des-loutres" className="mt-2 p-6 rounded-lg shadow-md">
                 <div className="flex items-center space-x-4">
-                    <Image
-                        src="/img/logo/antredesloutres.png"
-                        alt="Logo Antre des Loutres"
-                        width={60}
-                        height={60}
-                        className="rounded-full"
-                    />
-                    <h1 className="text-3xl font-extrabold">L&apos;Antre des Loutres</h1>
+                    <Link href="https://github.com/L-Antre-des-Loutres">
+                        <Image
+                            src="/img/logo/antredesloutres.png"
+                            alt="Logo Antre des Loutres"
+                            width={60}
+                            height={60}
+                            className="rounded-full hover:scale-105 transition-transform duration-300 ease-in-out"
+                        /></Link>
+                    <Link href="https://github.com/L-Antre-des-Loutres" className="font-semibold hover:underline">
+                        <h1 className="text-3xl font-extrabold">L&apos;Antre des Loutres</h1>
+                    </Link>
                 </div>
                 <div className="mt-4 space-y-4">
                     <p className="text-lg text-justify">

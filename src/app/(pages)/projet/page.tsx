@@ -1,15 +1,18 @@
+import { Project } from "@/app/components/Projet/project";
+
 export default function Projet() {
     return (
-        <div>
-            <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-                <h1 className="text-4xl font-bold">Projet</h1>
-                <p className="text-center text-lg">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                    tristique, nulla et aliquam lacinia, elit diam egestas augue, ac
-                    facilisis nisi nisl eu libero. Sed euismod, nisl at blandit
-                    consectetur, nunc nisi tincidunt nisl, in consequat nisi nisl eu          libero. Sed euismod, nisl at blandit consectetur, nunc nisi tincidunt nisl, in consequat nisi nisl eu libero. Sed euismod, nisl at blandit consectetur, nunc nisi tincidunt nisl, in consequat nisi nisl eu libero.
-                </p>
-            </main>
+        <div id="projet">
+            <h1 className="text-4xl font-bold">Liste de mes projets</h1>
+            <p className="text-xl mt-4">
+                Voici une liste de mes projets en cours, finit, et à venir.
+            </p>
+            
+            <br />
+
+            <Project statut="1" />
+            <Project statut="0" />
+            <Project statut="2" />
         </div>
     );
 }

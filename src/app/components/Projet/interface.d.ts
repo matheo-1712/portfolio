@@ -1,5 +1,6 @@
 // Définition de l'interface Project
 export type Project = {
+    id: number;
     nom: string;
     type: string;
     image: string;

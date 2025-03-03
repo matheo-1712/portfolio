@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "nom": "Citlali",
     "type": "Bot Discord",
     "image": "/citlali.png",
@@ -14,6 +15,7 @@
     "date_fin": "XX-XX-XXXX"
   },
   {
+    "id": 2,
     "nom": "Pokemon RLM",
     "type": "Jeu",
     "image": "/pokemon-rlm.png",
@@ -28,6 +30,7 @@
     "date_fin": "XX-XX-XXXX"
   },
   {
+    "id": 3,
     "nom": "Portfolio",
     "type": "Site Web",
     "image": "/portfolio.png",
@@ -36,12 +39,13 @@
     "module": "",
     "repository": "https://github.com/matheo-1712/portfolio",
     "statut": "1",
-    "framework": "React",
+    "framework": "Next.js",
     "url": "/projet/portfolio",
     "date_debut": "26-01-2025",
     "date_fin": "XX-XX-XXXX"
   },
   {
+    "id": 4,
     "nom": "API-Serveur V2",
     "type": "API Rest",
     "image": "/api-serveur-v2.png",
@@ -56,6 +60,7 @@
     "date_fin": "XX-XX-XXXX"
   },
   {
+    "id": 5,
     "nom": "OtterMinded",
     "type": "Application Mobile",
     "image": "/otterminded.png",
@@ -70,6 +75,7 @@
     "date_fin": "02-06-2024"
   },
   {
+    "id": 6,
     "nom": "API Serveur",
     "type": "API REST",
     "image": "/api-serveur-v2.png",
@@ -84,6 +90,7 @@
     "date_fin": "28-10-2024"
   },
   {
+    "id": 7,
     "nom": "Webisoutre",
     "type": "Site",
     "image": "/webisoutre.png",

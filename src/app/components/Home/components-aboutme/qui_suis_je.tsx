@@ -30,6 +30,7 @@ export default function QuiSuisJe() {
                         alt="Sprite"
                         width={150}
                         height={150}
+                        className="hover:scale-105 transition-transform duration-300 ease-in-outs"
                     />
                     <span className="ml-10 mt-2 text-sm text-gray-600">Un pixel art réalisé par mes soins</span>
                 </div>

@@ -14,3 +14,17 @@ export async function projectFetch(statut: string) {
         }
         
     }
+
+export async function projectFetchById(id: number) {
+    try {
+        const response = await fetch(`/projets.json`);
+        if (!response.ok) throw new Error("Erreur lors du chargement des projets.");
+        
+        const data: Project[] = await response.json();
+        const project = data.find((project) => project.id === id);
+
+        return project;
+    } catch (error) {
+        console.error(error);
+    }
+}

@@ -6,7 +6,7 @@ export default function Presentation() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-8">
                 {/* Section texte */}
                 <div className="flex-1 text-center sm:text-left">
-                    <h1 className="text-3xl font-bold">Bonjour et bienvenue sur mon portfolio !</h1>
+                    <h1 className="text-2xl md:text-3xl font-bold">Bonjour et bienvenue sur mon portfolio !</h1>
                     <p className="text-justify text-lg mt-4">
                         Je suis Pérodeau Mathéo, développeur encore en apprentissage. Ce site est une vitrine de mon travail, où vous pourrez découvrir mes projets, en apprendre davantage sur mes compétences et suivre mon évolution dans le domaine du développement.
 
@@ -19,7 +19,7 @@ export default function Presentation() {
                 {/* Section image */}
                 <div className="flex-1 flex justify-center items-center mt-6 sm:mt-0">
                     <Image
-                        className="w-full sm:w-auto max-w-xs"
+                        className="w-full sm:w-auto max-w-xs hover:scale-105 transition-transform duration-300 ease-in-out"
                         src="/matheo.png"
                         width={500}
                         height={500}

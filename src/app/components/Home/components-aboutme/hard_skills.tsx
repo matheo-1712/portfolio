@@ -33,7 +33,7 @@ export default function HardSkills() {
                                     width={60}
                                     priority
                                     title={tech.name}
-                                    className={tech.dark ? "dark:invert" : ""}
+                                    className={`hover:scale-105 transition-transform duration-300 ease-in-out ${tech.dark ? "dark:invert" : ""}`}
                                 />
                             </div>
                             <span className="text-center text-gray-800 dark:text-white font-medium">{tech.name}</span>
@@ -47,12 +47,12 @@ export default function HardSkills() {
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Mes langages de programmation :</h3>
                 <div className="flex flex-wrap gap-6 justify-center pb-6">
                     {[
-                        { src: "/svg/typescript.svg", alt: "Logo TypeScript", name: "TypeScript" },
-                        { src: "/img/logo/javascript.png", alt: "Logo JavaScript", name: "JavaScript" },
-                        { src: "/img/logo/php.png", alt: "Logo PHP", name: "PHP" },
-                        { src: "/img/logo/python.png", alt: "Logo Python", name: "Python" },
-                        { src: "/img/logo/kotlin.png", alt: "Logo Kotlin", name: "Kotlin" },
-                        { src: "/img/logo/java.png", alt: "Logo Java", name: "Java" },
+                        { src: "/svg/typescript.svg", alt: "Logo TypeScript", name: "TypeScript", dark: false },
+                        { src: "/img/logo/javascript.png", alt: "Logo JavaScript", name: "JavaScript", dark: false },
+                        { src: "/img/logo/php.png", alt: "Logo PHP", name: "PHP", dark: false },
+                        { src: "/img/logo/python.png", alt: "Logo Python", name: "Python", dark: false },
+                        { src: "/img/logo/kotlin.png", alt: "Logo Kotlin", name: "Kotlin", dark: false },
+                        { src: "/img/logo/java.png", alt: "Logo Java", name: "Java", dark: false },
                     ].map((tech) => (
                         <div key={tech.name} className="flex flex-col items-center w-28">
                             <div className="flex items-center justify-center w-24 h-24 mb-2">
@@ -63,6 +63,7 @@ export default function HardSkills() {
                                     width={50}
                                     priority
                                     title={tech.name}
+                                    className={`hover:scale-105 transition-transform duration-300 ease-in-out ${tech.dark ? "dark:invert" : ""}`}
                                 />
                             </div>
                             <span className="text-center text-gray-800 dark:text-white font-medium">{tech.name}</span>
@@ -91,7 +92,7 @@ export default function HardSkills() {
                                     width={50}
                                     priority
                                     title={tech.name}
-                                    className={tech.dark ? "dark:invert" : ""}
+                                    className={`hover:scale-105 transition-transform duration-300 ease-in-out ${tech.dark ? "dark:invert" : ""}`}
                                 />
                             </div>
                             <span className="text-center text-gray-800 dark:text-white font-medium">{tech.name}</span>

@@ -16,10 +16,12 @@ export default function MyExperience() {
 
     return (
         <div className="max-w-6xl mx-auto p-2 flex flex-col items-center">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white md:text-3xl mb-2">📈 Mes expériences 📈</h2>
-            <p className="text-gray-600 dark:text-gray-300 text-sm">
-                Voici mes expériences professionnelles, qui sont pour l&apos;instant uniquement des stages d&apos;un mois.
-            </p>
+            <div id="title" className="text-center p2 mb-8">
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-white md:text-3xl mb-2">📈 Mes expériences 📈</h2>
+                <p className="text-gray-600 dark:text-gray-300 text-sm">
+                    Voici mes expériences professionnelles, qui sont pour l&apos;instant uniquement des stages d&apos;un mois.
+                </p>
+            </div>
             <div className="relative mt-6 border-l-4 border-black dark:border-gray-100 pl-10 w-full rounded-2xl">
                 {experiences.map((exp, index) => (
                     <div key={index} className="mb-10 flex flex-col items-start">

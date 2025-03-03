@@ -6,6 +6,7 @@ import HardSkills from "./components-aboutme/hard_skills";
 import SoftSkills from "./components-aboutme/soft_skills";
 import MyProject from "./components-aboutme/my_project";
 import MyExperience from "./components-aboutme/my_experience";
+import MesDiplomes from "./components-aboutme/mes_diplomes";
 
 interface AboutMeItem {
     title: string;
@@ -27,6 +28,10 @@ export default function AboutMe() {
         {
             title: "Soft skills 💪",
             description: <SoftSkills />
+        },
+        {
+            title: "Mes diplômes 🎓",
+            description: <MesDiplomes />
         },
         {
             title: "Mes projets 🚧",

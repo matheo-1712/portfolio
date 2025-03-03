@@ -5,7 +5,7 @@ import { projectFetchById } from "@/app/components/Projet/projectFetch";
 import { Project } from "@/app/components/Projet/interface";
 import Link from "next/link";
 
-export default function Projet_PkmnRlm() {
+export default function Projet_Citlali() {
     const [projectInfos, setProjectInfos] = useState<Project | undefined>(undefined);
 
     useEffect(() => {
@@ -14,7 +14,7 @@ export default function Projet_PkmnRlm() {
 
     return (
         <div className="flex items-center justify-center">
-            <div id="api-serveur-v2" className="w-full mx-auto p-10 shadow-2xl rounded-2xl border border-gray-300">
+            <div id="citlali" className="w-full mx-auto p-10 shadow-2xl rounded-2xl border border-gray-300">
                 <h2 className="text-2xl font-bold mb-6 text-center">🚀 Détails du projet</h2>
                 {projectInfos ? (
                     <div className="grid grid-cols-2 gap-4">
