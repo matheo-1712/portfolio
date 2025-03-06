@@ -70,7 +70,7 @@ export default function Projet_apiServeur() {
                 </div>
 
 
-                <div id="db_schema">
+                <div id="db_schema" className="my-6">
                     <TitleProject title="Schéma base de données" />
 
                     <ZoomImage src="/db_schema/api_serveur.svg" />

@@ -23,9 +23,9 @@ export function Project({ statut }: ProjectProps) {
       }, []);
 
       const statusLabels: { [key: string]: string } = {
-        "0": "terminé",
+        "0": "terminés",
         "1": "en cours",
-        "2": "futur",
+        "2": "futurs",
       };
   
       return (
