@@ -4,7 +4,7 @@ interface KeywordsProps {
 
 export default function Keywords({ keywords }: KeywordsProps) {
     return (
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2 my-4">
             <p className="p-2">Mots-clés :</p>
             {keywords.map((keyword) => (
                 <span key={keyword} className="bg-gray-200 dark:bg-gray-800 text-gray-600 dark:text-gray-300 p-2 rounded-full text-sm">

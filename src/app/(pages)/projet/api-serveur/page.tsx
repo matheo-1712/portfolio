@@ -30,10 +30,14 @@ export default function Projet_apiServeur() {
                         <p><strong>API-Serveur</strong> est une application web de type API REST qui permet de gérer les serveurs de jeu de l&apos;Antre des Loutres.</p>
                         <br />
                         <p>Vous pouvez accéder à l&apos;API à l&apos;adresse suivante :
-                            <Link href="https://api.antredesloutres.fr/" className="text-blue-600 font-semibold hover:underline">https://api.antredesloutres.fr/</Link>
+                            <Link href="https://api.antredesloutres.fr/" className="text-blue-600 font-semibold hover:underline"> https://api.antredesloutres.fr/</Link>
                         </p>
                         <br />
                         <p>Cette API permet de gérer les serveurs de jeu en affichant toutes les informations relatives à chacun d&apos;eux, ainsi qu&apos;en offrant la possibilité de les installer, démarrer ou arrêter via des requêtes simples.</p>
+                        <br />
+                        <p>
+                            ❗Ce projet a pour suite une refonte complète en TypeScript, avec l&apos;ajout de nouvelles fonctionnalités et des optimisations. Il ne sera donc plus mis à jour.
+                        </p>
                     </div>
                 </div>
 
@@ -54,7 +58,7 @@ export default function Projet_apiServeur() {
                     </div>
                 </div>
 
-                <div id="Documentation technique">
+                <div id="Lexique">
                     <TitleProject title="Lexique" />
                     <div id="text" className="my-6">
                         <p>Voici le lexique de l&apos;API-Serveur :</p>
@@ -70,6 +74,17 @@ export default function Projet_apiServeur() {
                     <TitleProject title="Schéma base de données" />
 
                     <ZoomImage src="/db_schema/api_serveur.svg" />
+                </div>
+
+                <div id="Test">
+                    <TitleProject title="Tester l&apos;API" />
+
+                    <div id="text" className="my-6">
+                        <p>Voir la liste des serveurs : <Link href="https://api.antredesloutres.fr/serveurs" className="text-blue-600 font-semibold hover:underline">https://api.antredesloutres.fr/serveurs</Link></p>
+                        <br />
+                        <p>Voir les informations d&apos;un serveur particulier : <Link href="https://api.antredesloutres.fr/serveurs/infos/1" className="text-blue-600 font-semibold hover:underline">https://api.antredesloutres.fr/serveurs/infos/1</Link></p>
+                    </div>
+
                 </div>
             </div>
         </div >

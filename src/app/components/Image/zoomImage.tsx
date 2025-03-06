@@ -9,12 +9,6 @@ export default function ZoomImage({ src }: ZoomImageProps) {
     const [isOpen, setIsOpen] = useState(false);
     const [scale] = useState(1);
 
-    // TODO Gérer le zoom avec la molette de la souris
-    /*const handleZoom = (event: React.WheelEvent) => {
-        event.preventDefault();
-        setScale((prevScale) => Math.min(3, Math.max(1, prevScale + event.deltaY * -0.001)));
-    };*/
-
     // Bloquer le défilement de la page lorsque le modal est ouvert
     useEffect(() => {
         if (isOpen) {
@@ -23,24 +17,20 @@ export default function ZoomImage({ src }: ZoomImageProps) {
             document.body.style.overflow = "auto";
         }
 
-        // Nettoyage au démontage
         return () => {
             document.body.style.overflow = "auto";
         };
     }, [isOpen]);
 
-     // Fermer le modal si on appuie sur la touche Escape
-     useEffect(() => {
+    // Fermer le modal si on appuie sur la touche Escape
+    useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
             if (event.key === "Escape") {
-                setIsOpen(false); // Ferme le modal
+                setIsOpen(false);
             }
         };
 
-        // Ajoute l'écouteur d'événements
         document.addEventListener("keydown", handleKeyDown);
-
-        // Nettoyage de l'écouteur d'événements
         return () => {
             document.removeEventListener("keydown", handleKeyDown);
         };
@@ -53,13 +43,16 @@ export default function ZoomImage({ src }: ZoomImageProps) {
                 <Image src={src} alt="Projet" className="object-contain" width={2000} height={2000} />
             </div>
 
-            {/* Modal en plein écran */}
+            {/* Modal avec barre de défilement sur le côté */}
             {isOpen && (
                 <div
                     className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50"
                     onClick={() => setIsOpen(false)}
                 >
-                    <div className="relative max-w-[90%] max-h-[90%] overflow-hidden">
+                    <div
+                        className="relative max-w-screen max-h-screen overflow-auto p-4"
+                        style={{ scrollbarGutter: "stable" }} // Garde l'espace du scroll toujours stable
+                    >
                         <Image
                             src={src}
                             alt="Zoomed Projet"

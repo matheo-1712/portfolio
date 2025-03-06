@@ -30,26 +30,11 @@
     "date_fin": "XX-XX-XXXX"
   },
   {
-    "id": 4,
-    "nom": "API-Serveur V2",
-    "type": "API Rest",
-    "image": "/api-serveur-v2.png",
-    "description": "La nouvelle version de l'API serveur, qui a été refaite et optimisée en TypeScript.",
-    "language_prog": "TypeScript",
-    "module": "Express",
-    "repository": "https://github.com/matheo-1712/API-Serveur-TS",
-    "statut": "2",
-    "framework": "",
-    "url": "/projet/api-serveur-v2",
-    "date_debut": "XX-XX-2025",
-    "date_fin": "XX-XX-XXXX"
-  },
-  {
     "id": 5,
     "nom": "OtterMinded",
     "type": "Application Mobile",
     "image": "/otterminded.png",
-    "description": "Une application mobile Une application mobile Une application mobile Une application mobile",
+    "description": "« Otter Minded », est une application mobile social et anonyme qui à pour but de partager son avis sur différentes questions proposer par les utilisateurs.",
     "language_prog": "Kotlin",
     "module": "",
     "repository": "https://github.com/L-Antre-des-Loutres/OtterMinded",
