@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { projectFetch } from "./projectFetch";
-import ProjetBanner from "./components/projetBanner";
+import ProjetBanner from "./project_list/projetBanner";
 import type { ProjectProps, Project } from "./interface";
 
 export function Project({ statut }: ProjectProps) {

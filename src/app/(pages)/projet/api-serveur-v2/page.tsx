@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { projectFetchById } from "@/app/components/Projet/projectFetch";
 import { Project } from "@/app/components/Projet/interface";
-import ProjetSummary from "@/app/components/Projet/components/projetSummary";
+import ProjetSummary from "@/app/components/Projet/project_informations/projetSummary";
 
 export default function Projet_apiServeurV2() {
     const [projectInfos, setProjectInfos] = useState<Project | undefined>(undefined);

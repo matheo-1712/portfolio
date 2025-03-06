@@ -15,21 +15,6 @@
     "date_fin": "XX-XX-XXXX"
   },
   {
-    "id": 2,
-    "nom": "Pokemon RLM",
-    "type": "Jeu",
-    "image": "/pokemon-rlm.png",
-    "description": "Un fangame Pokémon modeste, se déroulant sur l'Île de Loutre Mer...",
-    "language_prog": "Ruby",
-    "module": "PSDK",
-    "repository": "https://github.com/L-Antre-des-Loutres/Pokemon-RLM",
-    "statut": "1",
-    "framework": "",
-    "url": "/projet/pokemon-rlm",
-    "date_debut": "21-10-2024",
-    "date_fin": "XX-XX-XXXX"
-  },
-  {
     "id": 3,
     "nom": "Portfolio",
     "type": "Site Web",
