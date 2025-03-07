@@ -10,7 +10,7 @@ export default function Presentation() {
                     <p className="text-justify text-lg mt-4">
                         Je suis Pérodeau Mathéo, développeur encore en apprentissage. Ce site est une vitrine de mon travail, où vous pourrez découvrir mes projets, en apprendre davantage sur mes compétences et suivre mon évolution dans le domaine du développement.
 
-                        Ce portfolio a été conçu et développé entièrement par mes soins, en utilisant Next.js.
+                        Ce portfolio a été conçu et développé entièrement par moi même, en utilisant Next.js.
 
                         Que vous soyez un recruteur, un passionné de développement ou simplement curieux, n’hésitez pas à explorer mes réalisations et à me contacter pour échanger ! Bonne visite !🚀
                     </p>

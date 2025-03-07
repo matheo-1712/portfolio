@@ -29,7 +29,7 @@ export default function QuiSuisJe() {
                         height={150}
                         className="hover:scale-105 transition-transform duration-300 ease-in-outs"
                     />
-                    <span className="ml-10 mt-2 text-sm text-gray-600">Un pixel art réalisé par mes soins</span>
+                    <span className="ml-10 mt-2 text-sm text-gray-600">Un pixel art réalisé par moi même</span>
                 </div>
             </div>
         </div>);

@@ -21,7 +21,7 @@ export default function Projet_apiServeur() {
             {projectInfos && <ProjetSummary {...projectInfos} />}
 
             <div id="content" className="mt-12">
-                <Keywords keywords={["API", "Serveur"]} />
+                <Keywords keywords={["API", "Serveur", "Application web", "Projet personnel"]} />
                 <div id="Project-description">
                     <TitleProject title="Descriptif du projet" />
 

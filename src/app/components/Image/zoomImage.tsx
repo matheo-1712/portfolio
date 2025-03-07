@@ -40,7 +40,7 @@ export default function ZoomImage({ src }: ZoomImageProps) {
         <div id="zoom-image">
             {/* Image affichée normalement */}
             <div className="w-full h-full cursor-pointer" onClick={() => setIsOpen(true)}>
-                <Image src={src} alt="Projet" className="object-contain" width={2000} height={2000} />
+                <Image src={src} alt="Projet" className="object-contain hover:scale-105 transition-transform duration-300 ease-in-outs" width={2000} height={2000} />
             </div>
 
             {/* Modal avec barre de défilement sur le côté */}
