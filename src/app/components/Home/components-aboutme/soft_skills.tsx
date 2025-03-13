@@ -14,8 +14,8 @@ export default function SoftSkills() {
                     {[
                         { icon: "🤝", text: "Mon esprit d’équipe" },
                         { icon: "🔍", text: "Ma curiosité" },
-                        { icon: "⚖️", text: "Mon intégrité" },
-                        { icon: "🛠️", text: "Ma résolution de problèmes" },
+                        { icon: "📃", text: "Mon autonomie" },
+                        { icon: "😎", text: "Ma persévérance" },
                         { icon: "💡", text: "Ma pensée critique" },
                         { icon: "❤️", text: "Mon empathie" },
                         { icon: "🌊", text: "Mon calme" },

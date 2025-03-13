@@ -18,12 +18,7 @@ export default function Projet_Webisoutre() {
     }, []);
 
     const images = [
-        { src: "/img/project/otterminded/accueil.png", caption: "Page d'accueil de l'application (mode clair)" },
-        { src: "/img/project/otterminded/navbar.png", caption: "Menu de navigation de l'application" },
-        { src: "/img/project/otterminded/profil.png", caption: "Page profil de l'application" },
-        { src: "/img/project/otterminded/adminpanel_commentaire.jpg", caption: "Page commentaire sur le panel Admin" },
-        { src: "/img/project/otterminded/adminpanel_question.jpg", caption: "Page question sur le panel admin" },
-        { src: "/img/project/otterminded/adminpanel_utilisateur.jpg", caption: "Page utilisateur sur le panel admin" },
+        { src: "/webisoutre.png", caption: "Logo de l'application" },
     ];
 
 
@@ -37,14 +32,14 @@ export default function Projet_Webisoutre() {
                     <TitleProject title="Descriptif du projet" />
 
                     <div id="text" className="my-6">
-
+                        Écriture en cours ....
                     </div>
                 </div>
 
                 <div id="Fonctionnalités">
                     <TitleProject title="Fonctionnalités" />
                     <div id="text" className="my-6">
-            
+                        Écriture en cours ....
                     </div>
                 </div>
 
@@ -68,7 +63,7 @@ export default function Projet_Webisoutre() {
                 <div id="db_schema" className="my-6">
                     <TitleProject title="Schéma base de données" />
 
-                    <ZoomImage src="/db_schema/otterminded.svg" />
+                    <ZoomImage src="/db_schema/webisoutre.svg" />
                 </div>
 
                 <div id="apercu" className="my-6">
@@ -80,12 +75,10 @@ export default function Projet_Webisoutre() {
                 <div id="Test">
                     <TitleProject title="Tester l'application" />
                     <div id="text" className="my-6">
-                        Ce site est accessible sur l&apos;url suivante : <Link href="https://webisoutre.antredesloutres.site" className="text-blue-600 font-semibold hover:underline">https://webisoutre.antredesloutres.site</Link>
+                        Ce site sera bientôt accessible sur l&apos;url suivante : <Link href="https://webisoutre.antredesloutres.site" className="text-blue-600 font-semibold hover:underline">https://webisoutre.antredesloutres.site</Link>, il peut présenter des bugs ou des erreurs, n&apos;ayant pas été mis à jour depuis un certain temps
                     </div>
                 </div>
             </div>
         </div >
     );
 }
-
-
