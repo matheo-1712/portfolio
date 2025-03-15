@@ -18,7 +18,14 @@ export default function Projet_Webisoutre() {
     }, []);
 
     const images = [
-        { src: "/webisoutre.png", caption: "Logo de l'application" },
+        { src: "/img/project/webisoutre/accueil.png", caption: "Page d'accueil de l'application" },
+        { src: "/img/project/webisoutre/serveurs.png", caption: "Page des serveurs disponibles" },
+        { src: "/img/project/webisoutre/statistiques.png", caption: "Page des statistiques de jeu" },
+        { src: "/img/project/webisoutre/connexion.png", caption: "Page de connexion" },
+        { src: "/img/project/webisoutre/profil.png", caption: "Page profil" },
+        { src: "/img/project/webisoutre/tickets.png", caption: "Page des tickets" },
+        { src: "/img/project/webisoutre/ticket_detail.png", caption: "Page détail du ticket" },
+        { src: "/img/project/webisoutre/navbar.png", caption: "Menu de navigation de l'application" },
     ];
 
 
@@ -30,16 +37,22 @@ export default function Projet_Webisoutre() {
                 <Keywords keywords={[]} />
                 <div id="Project-description">
                     <TitleProject title="Descriptif du projet" />
-
                     <div id="text" className="my-6">
-                        Écriture en cours ....
-                    </div>
+                    Webisoutre est une application Web développée en Laravel pour notre communauté, L&apos;Antre des Loutres. Il s&apos;agit à la fois d&apos;un projet de groupe et d&apos;un projet scolaire. Son objectif est de permettre aux utilisateurs de consulter les différents serveurs disponibles, d&apos;afficher leurs statistiques de jeu ainsi que celles des autres joueurs, et d&apos;obtenir des badges en fonction de leur temps de jeu, de leurs accomplissements, etc. Il est également possible de soumettre une demande de support via un système de tickets.</div>
                 </div>
 
                 <div id="Fonctionnalités">
                     <TitleProject title="Fonctionnalités" />
                     <div id="text" className="my-6">
-                        Écriture en cours ....
+                    <p>Voici les principales fonctionnalités de Webisoutre :</p>
+                        <br />
+                        <ul className="list-disc pl-6 space-y-2">
+                            <li>Affichage des serveurs disponibles</li>
+                            <li>Affichage des statistiques de jeu</li>
+                            <li>Affichage des badges</li>
+                            <li>Soumission de demandes de support</li>
+                            <li>Système de tickets</li>
+                        </ul>
                     </div>
                 </div>
 
@@ -62,20 +75,18 @@ export default function Projet_Webisoutre() {
 
                 <div id="db_schema" className="my-6">
                     <TitleProject title="Schéma base de données" />
-
                     <ZoomImage src="/db_schema/webisoutre.svg" />
                 </div>
 
                 <div id="apercu" className="my-6">
                     <TitleProject title="Aperçu de l&apos;application" />
-
                     <GalleryZoomImage images={images} />
                 </div>
 
                 <div id="Test">
                     <TitleProject title="Tester l'application" />
                     <div id="text" className="my-6">
-                        Ce site sera bientôt accessible sur l&apos;url suivante : <Link href="https://webisoutre.antredesloutres.site" className="text-blue-600 font-semibold hover:underline">https://webisoutre.antredesloutres.site</Link>, il peut présenter des bugs ou des erreurs, n&apos;ayant pas été mis à jour depuis un certain temps
+                        Cette application est disponible sur l&apos;url suivante : <Link href="https://webisoutre.antredesloutres.site" className="text-blue-600 font-semibold hover:underline">https://webisoutre.antredesloutres.site</Link>, il peut présenter des bugs ou des erreurs, n&apos;ayant pas été mis à jour depuis un certain temps
                     </div>
                 </div>
             </div>
