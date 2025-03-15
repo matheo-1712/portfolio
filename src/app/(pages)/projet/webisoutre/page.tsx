@@ -34,7 +34,7 @@ export default function Projet_Webisoutre() {
             {projectInfos && <ProjetSummary {...projectInfos} />}
 
             <div id="content" className="mt-12">
-                <Keywords keywords={[]} />
+                <Keywords keywords={["Laravel & PHP", "MVC", "SCRUM", "Projet de groupe", "Projet scolaire"]} />
                 <div id="Project-description">
                     <TitleProject title="Descriptif du projet" />
                     <div id="text" className="my-6">
