@@ -6,15 +6,12 @@ export default function MyProject() {
         <div id="my-project" className="w-full p-2">
             <div id="title" className="text-center p2 mb-8">
                 <p className="text-gray-600 dark:text-gray-300 text-sm text-center">
-                    La plupart des projets que j&apos;ai réalisés sont disponibles juste en dessous,
+                    La plupart des projets que j&apos;ai réalisés sont disponibles juste en dessous, mais ils sont aussi accessibles sur mon GitHub :
+                    <Link href="https://github.com/matheo-1712" className="text-blue-600 font-semibold hover:underline"> matheo-1712</Link>.
                 </p>
             </div>
             <div className="flex flex-col md:flex-row gap-6">
                 <div id="my-project-title">
-                    <p className="text-lg text-justify">
-                        Mais ils sont aussi accessibles sur mon GitHub :
-                        <Link href="https://github.com/matheo-1712" className="text-blue-600 font-semibold hover:underline"> matheo-1712</Link>.
-                    </p>
                     <p className="mt-2 text-justify">
                         L&apos;un de mes projets ne concerne pas uniquement le développement, mais aussi la création d&apos;une communauté d&apos;utilisateurs.
                         Celle-ci me permet de concevoir des services et de développer des projets adaptés aux besoins réels de nos membres :

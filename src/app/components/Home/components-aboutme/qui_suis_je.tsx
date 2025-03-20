@@ -16,7 +16,7 @@ export default function QuiSuisJe() {
                     </p>
                     <br />
                     <p className="text-justify">
-                        Pour moi rien est impossible à réaliser en informatique, je trouve que le métier de développeur ressemble beaucoup à celui d&apos;un artiste, on crée une oeuvre complexe mais que seulement certains élus peuvent comprendre.
+                        Pour moi rien n&apos;est impossible à réaliser en informatique, je trouve que le métier de développeur ressemble beaucoup à celui d&apos;un artiste, on crée une oeuvre complexe mais que seulement certains élus peuvent comprendre.
                     </p>
                 </div>
 
