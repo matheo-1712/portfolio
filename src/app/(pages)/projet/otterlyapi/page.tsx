@@ -27,7 +27,7 @@ export default function Projet_OtterlyApi() {
 
                     <div id="text" className="my-6">
 
-                        <p><strong>OtterlyAPI</strong> est une application web de type API REST qui permet de gérer les serveurs de jeu de l&apos;Antre des Loutres. Celle ci est l'évoluion de l&apos;API Serveur <Link href="/projet/api-serveur" className="text-blue-600 font-semibold hover:underline">API Serveur</Link>.</p>
+                        <p><strong>OtterlyAPI</strong> est une application web de type API REST qui permet de gérer les serveurs de jeu de l&apos;Antre des Loutres. Celle ci est l&apos;évoluion de l&apos;API Serveur <Link href="/projet/api-serveur" className="text-blue-600 font-semibold hover:underline">API Serveur</Link>.</p>
                         <br />
                         <p>Vous pouvez accéder à l&apos;API à l&apos;adresse suivante :
                             <Link href="https://api.antredesloutres.fr/" className="text-blue-600 font-semibold hover:underline"> https://api.antredesloutres.fr/</Link>
