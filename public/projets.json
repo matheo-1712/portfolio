@@ -15,6 +15,21 @@
     "date_fin": "XX-XX-XXXX"
   },
   {
+    "id": 2,
+    "nom": "Otterly API",
+    "type": "API REST",
+    "image": "/otterlyapi.png",
+    "description": "Une API permettant la gestion de serveurs de jeu. Elle permet d'afficher l'ensemble des informations les concernant, de les installer, de les démarrer et de les arrêter via une requête.",
+    "language_prog": "TypeScript",
+    "module": "Express",
+    "repository": "https://github.com/matheo-1712/OtterlyAPI",
+    "statut": "1",
+    "framework": "",
+    "url": "/projet/otterlyapi",
+    "date_debut": "20-04-2025",
+    "date_fin": "XX-XX-XXXX"
+  },
+  {
     "id": 3,
     "nom": "Portfolio",
     "type": "Site Web",
