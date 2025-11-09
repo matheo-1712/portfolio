@@ -42,3 +42,6 @@ next-env.d.ts
 
 # Projet Ignore
 public/projetIgnore.json
+
+# IDE Ignore
+/.idea

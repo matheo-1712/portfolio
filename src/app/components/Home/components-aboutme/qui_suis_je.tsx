@@ -18,6 +18,25 @@ export default function QuiSuisJe() {
                     <p className="text-justify">
                         Pour moi rien n&apos;est impossible à réaliser en informatique, je trouve que le métier de développeur ressemble beaucoup à celui d&apos;un artiste, on crée une oeuvre complexe mais que seulement certains élus peuvent comprendre.
                     </p>
+                    <br/>
+                    <p className="flex flex-col sm:flex-row gap-4 text-blue-600 font-semibold text-lg">
+                        <a
+                            href="/cv.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="transition-all duration-200 hover:text-blue-800 hover:underline hover:scale-105"
+                        >
+                            📄 Mon CV
+                        </a>
+                        <a
+                            href="https://github.com/matheo-1712"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="transition-all duration-200 hover:text-blue-800 hover:underline hover:scale-105"
+                        >
+                            💻 Mon GitHub
+                        </a>
+                    </p>
                 </div>
 
                 {/* Colonne de droite */}
