@@ -5,7 +5,6 @@ import { projectFetchById } from "@/app/components/Projet/projectFetch";
 import { Project } from "@/app/components/Projet/interface";
 import ProjetSummary from "@/app/components/Projet/project_informations/projetSummary";
 import Keywords from "@/app/components/Projet/project_informations/keywords";
-import ZoomImage from "@/app/components/Image/zoomImage";
 import TitleProject from "@/app/components/Projet/project_informations/title_project";
 import Link from "next/link";
 
