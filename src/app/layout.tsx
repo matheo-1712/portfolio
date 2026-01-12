@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header/header";
 import Scroll from "./components/Function/Scroll";
+import ThemeToggle from "./components/Button/themeButton";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,10 +26,44 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr">
-      <Scroll />
+    <html lang="fr" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var storageKey = 'theme';
+                  var classNameDark = 'dark';
+                  var classNameLight = 'light';
+                  
+                  function setClassOnDocumentBody(darkMode) {
+                    var d = document.documentElement;
+                    d.classList.remove(classNameDark, classNameLight);
+                    d.classList.add(darkMode ? classNameDark : classNameLight);
+                  }
+                  
+                  var localStorageTheme = null;
+                  try {
+                    localStorageTheme = localStorage.getItem(storageKey);
+                  } catch (err) {}
+                  
+                  var localStorageExists = localStorageTheme !== null;
+                  if (localStorageExists) {
+                    setClassOnDocumentBody(localStorageTheme === classNameDark);
+                  } else {
+                    var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                    setClassOnDocumentBody(isDarkMode);
+                  }
+                } catch (err) {}
+              })();
+            `,
+          }}
+        />
+      </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        className={`${geistSans.variable} ${geistMono.variable} antialiased transition-colors duration-300`}>
+        <Scroll />
         <header className="pt-4 pb-8">
           <Header />
         </header>
@@ -40,7 +75,8 @@ export default function RootLayout({
             </div>
           </div>
         </main>
+        <ThemeToggle />
       </body>
-    </html>
+    </html >
   );
 }
