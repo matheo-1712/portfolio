@@ -23,6 +23,12 @@ export default function Navbar() {
           >
             Projets
           </Link>
+          <Link
+            href="/parcours"
+            className="text-lg font-medium text-gray-700 dark:text-gray-200 hover:text-black dark:hover:text-white hover:underline decoration-2 underline-offset-4 transition-all"
+          >
+            Parcours
+          </Link>
         </nav>
       </div>
     </div>

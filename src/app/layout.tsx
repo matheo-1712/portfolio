@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Header from "./components/Header/header";
+import HeaderWrapper from "./components/Header/HeaderWrapper";
 import Scroll from "./components/Function/Scroll";
 import ThemeToggle from "./components/Button/themeButton";
 
@@ -64,12 +64,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased transition-colors duration-300`}>
         <Scroll />
-        <header className="pt-4 pb-8">
-          <Header />
-        </header>
+        <HeaderWrapper />
         <main>
           <div className="min-h-screen mx-auto flex flex-col items-center">
-            <div className="w-full max-w-7xl p-2">
+            <div className="w-full max-w-[1600px] p-2">
               {/* Contenu de la page*/}
               {children}
             </div>
