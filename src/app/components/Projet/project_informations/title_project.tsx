@@ -1,12 +1,16 @@
 interface TitleProjectProps {
-    title: string;
+    title?: string;
+    children?: React.ReactNode;
 }
 
-export default function Title_Project({ title }: TitleProjectProps) {
+export default function Title_Project({ title, children }: TitleProjectProps) {
+    const text = title || children;
     return (
-        <div className="flex flex-col items-center mb-6">
-            <h1 className="text-5xl font-extrabold text-gray-800 dark:text-gray-100 tracking-tight">{title}</h1>
-            <span className="border-b-4 border-blue-600 w-32 mt-2"></span>
+        <div className="flex items-center gap-3 mb-8 mt-12">
+            <div className="h-8 w-1 bg-gradient-to-b from-blue-600 to-violet-600 dark:from-blue-400 dark:to-violet-400 rounded-full"></div>
+            <h2 className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-400">
+                {text}
+            </h2>
         </div>
     );
 }

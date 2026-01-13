@@ -1,6 +1,28 @@
 import { Project } from "@/app/components/Projet/project";
+import { getAllProjects } from "@/app/components/Projet/projectContent";
 
-export default function Projet() {
+export default async function Projet() {
+    const projects = await getAllProjects();
+
+    // Sorting logic here (Server Side) to ensure passed to client is sorted
+    const sortedProjects = projects.sort((a, b) => {
+        if (a.pinned && !b.pinned) return -1;
+        if (!a.pinned && b.pinned) return 1;
+
+        const parseDate = (dateStr: string) => {
+            const parts = dateStr.split("-");
+            if (parts.length !== 3) return 0; // fallback
+            // Note: dateStr is DD-MM-YYYY
+            return new Date(parseInt(parts[2]), parseInt(parts[1]) - 1, parseInt(parts[0])).getTime();
+        };
+
+        // If date is "XX-XX-XXXX", treat as very old or handle?
+        if (a.date_debut.includes("XX")) return 1;
+        if (b.date_debut.includes("XX")) return -1;
+
+        return parseDate(b.date_debut) - parseDate(a.date_debut);
+    });
+
     return (
         <div id="projet" className="w-full mx-auto h-auto min-h-[600px] max-w-full px-4 sm:px-6 lg:px-8 py-4">
 
@@ -21,7 +43,7 @@ export default function Projet() {
                 </p>
             </div>
 
-            <Project />
+            <Project projects={sortedProjects} />
         </div>
     );
 }
