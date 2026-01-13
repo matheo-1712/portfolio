@@ -1,0 +1,53 @@
+---
+nom: "Citlali"
+type: "Bot Discord"
+statut: "1"
+framework: ""
+module: "Discord.js"
+language_prog: "TypeScript / JavaScript"
+date_debut: "05-01-2025"
+date_fin: "XX-XX-XXXX"
+description: "Un bot Discord spécialisé pour le jeu Genshin Impact"
+repository: "https://github.com/matheo-1712/Citlali"
+image: "/citlali.png"
+pinned: true
+tags: ["Discord", "Projet personnel", "Application", "Bot"]
+---
+
+import ZoomImage from "@/app/components/Image/zoomImage";
+import GalleryZoomImage from "@/app/components/Image/galleryZoomImage";
+import Link from "next/link";
+
+export const images = [
+    { src: "/img/project/citlali/infographies.png", caption: "Commande /build [nom du personnage]" },
+    { src: "/img/project/citlali/autocompletion.png", caption: "Système d'autocomplétion" },
+    { src: "/img/project/citlali/profil.png", caption: "Profil de l'utilisateur via la commande /get-uid" },
+];
+
+## Descriptif du projet
+
+Citlali est un bot Discord conçu pour les joueurs de **Genshin Impact**.
+
+Développé avec le module **discord.js** , il permet d'automatiser diverses fonctionnalités au sein de Discord.
+
+Son objectif est d’aider les utilisateurs à optimiser leurs personnages, à enregistrer et partager leur **UID**, et bientôt à accéder facilement aux informations sur les événements à venir. De nombreuses autres fonctionnalités sont également prévues. Ce projet, réalisé sur mon temps libre (*et par plaisir*), n'est pas une priorité de développement et n'a donc pas de date limite prévue.
+
+## Fonctionnalités
+
+Voici les principales fonctionnalités de Citlali :
+
+*   Enregistrement et partage de l'UID des utilisateurs
+*   Aide à l'optimisation des personnages via l'affichage d'infographies récupérées à partir d'un site de guide **Keqing Mains**
+*   Affichage des informations des personnages
+
+## Schéma base de données
+
+<ZoomImage src="/db_schema/citlali.svg" />
+
+## Aperçu de l'application
+
+<GalleryZoomImage images={images} />
+
+## Tester l'application
+
+Ce bot Discord est disponible en version stable et peut être installé et utilisé sur votre serveur Discord via ce lien : [ici](https://discord.com/oauth2/authorize?client_id=1300834433221267549&permissions=0&integration_type=0&scope=bot)

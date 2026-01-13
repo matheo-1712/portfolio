@@ -1,0 +1,45 @@
+---
+nom: "Portfolio"
+type: "Site Web"
+statut: "1"
+framework: "Next.js"
+module: ""
+language_prog: "TypeScript"
+date_debut: "26-01-2025"
+date_fin: "XX-XX-XXXX"
+description: "Mon portfolio professionnel présentant mes projets actuels, passés et futurs."
+repository: "https://github.com/matheo-1712/portfolio"
+image: "/portfolio.png"
+tags: ["Next.js", "React", "Site vitrine", "Responsive"]
+---
+
+import GalleryZoomImage from "@/app/components/Image/galleryZoomImage";
+
+export const images = [
+    { src: "/img/project/portfolio/accueil_clair.png", caption: "Page d'accueil de l'application (mode clair)" },
+    { src: "/img/project/portfolio/accueil_sombre.png", caption: "Page d'accueil de l'application (mode sombre)" },
+    { src: "/img/project/portfolio/projet_clair.png", caption: "Page de présentation de mes projets (mode clair)" },
+    { src: "/img/project/portfolio/projet_sombre.png", caption: "Page de présentation de mes projets (mode sombre)" },
+    { src: "/img/project/portfolio/projet_mobile.png", caption: "Page de présentation de mes projets (mode mobile clair)" },
+    { src: "/img/project/portfolio/projet_mobile2.png", caption: "Page de présentation de mes projets (mode mobile sombre)" },
+    { src: "/img/project/portfolio/zoom_image.png", caption: "Quand on clique sur une image, elle s'agrandit" },
+];
+
+## Descriptif du projet
+
+Voici la page de présentation de la structure de mon portfolio, dont l'objectif est de mettre en valeur mon travail et de partager mes compétences.
+
+Développé avec **Next.js** et utilisant la technologie **React**, il permet de créer des pages statiques, rapides et dynamiques.
+
+Ce portfolio a pour objectif d'être le plus simple possible tout en restant moderne et complet. Il est donc composé de pages statiques, sans aucune interaction utilisateur. Les pages les plus importantes sont donc la page d'accueil et celle de mes projets.
+
+## Fonctionnalités
+
+Voici les principales fonctionnalités de mon portfolio :
+
+*   Page d'accueil
+*   Page de présentation de mes projets
+
+## Aperçu de l'application
+
+<GalleryZoomImage images={images} />

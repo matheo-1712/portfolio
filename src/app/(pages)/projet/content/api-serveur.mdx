@@ -1,0 +1,57 @@
+---
+nom: "API Serveur"
+type: "API REST"
+statut: "0"
+framework: ""
+module: "Express"
+language_prog: "JavaScript"
+date_debut: "24-06-2024"
+date_fin: "28-10-2024"
+description: "Une API permettant la gestion de serveurs de jeu. Elle permet d'afficher l'ensemble des informations les concernant, de les installer, de les démarrer et de les arrêter via une requête."
+repository: "https://github.com/matheo-1712/API-Serveur"
+image: "/api-serveur-v2.png"
+tags: ["API", "Serveur", "Application web", "Projet personnel"]
+---
+
+import ZoomImage from "@/app/components/Image/zoomImage";
+import Link from "next/link";
+
+## Descriptif du projet
+
+**API-Serveur** est une application web de type API REST qui permet de gérer les serveurs de jeu de l'Antre des Loutres.
+
+Vous pouvez accéder à l'API à l'adresse suivante : [https://api.antredesloutres.fr/](https://api.antredesloutres.fr/)
+
+Cette API permet de gérer les serveurs de jeu en affichant toutes les informations relatives à chacun d'eux, ainsi qu'en offrant la possibilité de les installer, démarrer ou arrêter via des requêtes simples.
+
+❗Ce projet a pour suite une refonte complète en TypeScript, avec l'ajout de nouvelles fonctionnalités et des optimisations. Il ne sera donc plus mis à jour.
+
+## Fonctionnalités
+
+Voici les principales fonctionnalités de l'API-Serveur :
+
+*   Afficher les informations générales des serveurs (addresses, ports, version, utilisateurs connectés, etc.)
+*   Installation de nouveau serveur de jeu
+*   Gérer le démarrage et l'arrêt des serveurs
+*   Mettre à jour les informations des serveurs
+*   Supprimer un serveur de jeu
+*   Enregistrement des comptes des utilisateurs
+*   Protection des requêtes de création, modification, suppression de serveurs, lancement et arrêt de serveurs par un token
+
+## Lexique
+
+Voici le lexique de l'API-Serveur :
+
+**Les serveurs primaire et secondaire** font référence aux différents emplacements (slots) et aux ports associés pour héberger des serveurs de jeu. Le serveur principal, qui est toujours actif et permanent, est assigné au **slot primaire**, tandis que les serveurs utilisés pour des événements temporaires ou spécifiques sont placés sur le **slot secondaire**.
+
+**Les "investisseurs"** sont des utilisateurs de nos services qui ont financé les frais d'hébergement et de maintenance des serveurs de jeu. Ils possèdent donc des droits supplémentaires, tels que la possibilité de créer leur propre serveur de jeu, qui sera référencé dans la table **investisseurs**.
+
+## Schéma base de données
+
+<ZoomImage src="/db_schema/api_serveur.svg" />
+
+## Tester l'API
+
+Voir la liste des serveurs : [https://api.antredesloutres.fr/serveurs](https://api.antredesloutres.fr/serveurs)
+
+Voir les informations d'un serveur particulier : [https://api.antredesloutres.fr/serveurs/infos/1](https://api.antredesloutres.fr/serveurs/infos/1)

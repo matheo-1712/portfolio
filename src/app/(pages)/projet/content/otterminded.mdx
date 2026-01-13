@@ -1,0 +1,76 @@
+---
+nom: "OtterMinded"
+type: "Application Mobile"
+statut: "0"
+framework: "Android Studio"
+module: ""
+language_prog: "Kotlin"
+date_debut: "21-03-2024"
+date_fin: "02-06-2024"
+description: "« Otter Minded », est une application mobile social et anonyme qui à pour but de partager son avis sur différentes questions proposer par les utilisateurs."
+repository: "https://github.com/L-Antre-des-Loutres/OtterMinded"
+image: "/otterminded.png"
+tags: ["Android", "Mobile", "Kotlin", "Réseau social anonyme", "Projet scolaire", "Projet de groupe"]
+---
+
+import ZoomImage from "@/app/components/Image/zoomImage";
+import GalleryZoomImage from "@/app/components/Image/galleryZoomImage";
+import Link from "next/link";
+
+export const images = [
+    { src: "/img/project/otterminded/accueil.png", caption: "Page d'accueil de l'application (mode clair)" },
+    { src: "/img/project/otterminded/navbar.png", caption: "Menu de navigation de l'application" },
+    { src: "/img/project/otterminded/profil.png", caption: "Page profil de l'application" },
+    { src: "/img/project/otterminded/adminpanel_commentaire.jpg", caption: "Page commentaire sur le panel Admin" },
+    { src: "/img/project/otterminded/adminpanel_question.jpg", caption: "Page question sur le panel admin" },
+    { src: "/img/project/otterminded/adminpanel_utilisateur.jpg", caption: "Page utilisateur sur le panel admin" },
+];
+
+## Descriptif du projet
+
+**« Otter Minded »** *Jeu de mot sur le terme anglais Open-Minded (Ouvert d'esprit), en remplaçant "Open" (ouvert) par "Otter" (loutre)*, est une application mobile social et anonyme qui à pour but de partager son avis sur différentes questions proposer par les utilisateurs. Ce projet étant un projet scolaire et un projet de groupe, nous avons dû respecter certaines contraintes, notamment l'obligation que notre application fonctionne exclusivement en local.
+
+Chaque questions possède son nombre de « like » et son espace commentaire libre, permettant aux utilisateur de répondre aux question et donner leur avis sur un dis sujet.
+
+Les questions proposés, avant d’être dévoilé aux utilisateurs, passe par un stade de modération, ou elle sont vérifier afin d’éviter de proposer des questions inapproprié.
+
+Pour finir, l’espace commentaire peut être modéré afin de contrôler les commentaires et garder un espace de partage et bienveillance.
+
+## Fonctionnalités
+
+Voici les principales fonctionnalités de OtterMinded :
+
+*   Connexion des utilisateurs sans informations personnelles (juste login & mot de passe)
+*   Statistiques utilisateur : nombre de commentaires, nombre de questions, nombre de likes aux questions
+*   4 questions par jour
+*   Proposition de questions par les utilisateurs (max 1 toutes les 24h par utilisateur)
+*   Système de like pour les questions
+*   Notification à chaque nouvelle question
+*   Historique des questions et commentaires
+*   Statut des questions : en attente, vérifié
+*   Suppression des questions refusées avec notification à l’utilisateur
+*   Espace commentaire pour chaque question
+*   Modération des commentaires par les administrateurs et modérateurs
+
+## Organisation
+
+Dans le cadre de notre projet de groupe, nous avons choisi de nous organiser selon la méthodologie SCRUM afin de garantir une gestion efficace et une progression harmonieuse tout au long du développement. La méthode SCRUM nous a permis de structurer nos efforts, de rester alignés sur les objectifs du projet et de favoriser une collaboration active au sein de l’équipe. Voici les principaux éléments de notre organisation :
+
+*   Un tableau collaboratif Trello est mis à disposition de tous les membres de l’équipe pour organiser les tâches et suivre l’avancement du projet. Ce tableau est accessible à tout moment et peut être consulté à l’adresse suivante : [ici](https://trello.com/b/4kI6N7vs)
+*   Nous avons mis en place des réunions régulières avant chaque sprint. Ces réunions ont pour objectif de faire le point sur l'avancement des tâches en cours, de clarifier les priorités à venir et de réajuster les objectifs si nécessaire, afin de garantir que tout le monde soit aligné sur la direction à prendre.
+*   Des réunions de fin de sprint sont également organisées pour analyser les résultats du sprint précédent, discuter des éventuels défis rencontrés, et déterminer les améliorations à apporter. Lors de ces réunions, nous prévoyons également les objectifs pour le sprint suivant, en prenant en compte les retours et les ajustements nécessaires pour optimiser notre productivité.
+*   De plus, chaque membre de l’équipe a la possibilité de proposer des améliorations pour les fonctionnalités, ce qui contribue à renforcer l’efficacité collective et à améliorer la gestion de projet au fur et à mesure de son avancement.
+
+Cette organisation nous a permis de mieux structurer notre travail, de respecter les délais impartis et d'assurer une communication fluide et constante entre tous les membres de l’équipe, en facilitant le suivi des tâches et l'adaptation aux besoins du projet.
+
+## Schéma base de données
+
+<ZoomImage src="/db_schema/otterminded.svg" />
+
+## Aperçu de l'application
+
+<GalleryZoomImage images={images} />
+
+## Tester l'application
+
+Un apk de l'application est disponible pour les personnes souhaitant tester l'application via ce lien : [OtterMinded APK](https://github.com/L-Antre-des-Loutres/OtterMinded/releases/tag/v1.0.0)
