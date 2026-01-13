@@ -5,37 +5,46 @@ import MesDiplomes from "@/app/components/Home/components-aboutme/mes_diplomes";
 
 export default function Parcours() {
     return (
-        <div className="w-full max-w-[1600px] mx-auto p-4 md:p-8 space-y-12">
+        <div className="w-full mx-auto h-auto min-h-[600px] max-w-full px-4 sm:px-6 lg:px-8 py-4 space-y-12">
 
             {/* Header */}
-            <div className="text-center space-y-4 mb-12">
-                <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400">
-                    Mon Parcours 🚀
+            <div className="text-center space-y-4 mb-16">
+                <div className="inline-block p-3 rounded-2xl bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 mb-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                    </svg>
+                </div>
+                <h1 className="text-3xl md:text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 mb-4 tracking-tight">
+                    Mon Parcours
                 </h1>
-                <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed max-w-3xl mx-auto">
                     Découvrez mon évolution académique et professionnelle, des formations qui m&apos;ont forgé aux expériences qui m&apos;ont fait grandir.
                 </p>
             </div>
 
-            {/* Expériences */}
-            <section className="space-y-6">
-                <h2 className="text-3xl font-bold border-l-4 border-emerald-500 pl-4 text-emerald-700 dark:text-emerald-400">
-                    Expériences Professionnelles 📈
-                </h2>
-                <div className="bg-white/50 dark:bg-zinc-900/50 backdrop-blur-md rounded-3xl border border-gray-200 dark:border-zinc-800 p-6 shadow-sm">
-                    <MyExperience />
-                </div>
-            </section>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                {/* Expériences */}
+                <section className="col-span-1 h-full">
+                    <div className="h-full bg-white/60 dark:bg-zinc-900/60 backdrop-blur-xl rounded-[2rem] border border-gray-200 dark:border-zinc-800 shadow-sm p-8 flex flex-col">
+                        <h2 className="text-2xl md:text-3xl font-bold mb-8 text-gray-800 dark:text-gray-100 flex items-center gap-3">
+                            <span className="p-2 bg-emerald-100 dark:bg-emerald-900/30 rounded-xl text-emerald-600 dark:text-emerald-400">📈</span>
+                            Expériences
+                        </h2>
+                        <MyExperience />
+                    </div>
+                </section>
 
-            {/* Diplômes */}
-            <section className="space-y-6">
-                <h2 className="text-3xl font-bold border-l-4 border-blue-500 pl-4 text-blue-700 dark:text-blue-400">
-                    Diplômes & Formations 🎓
-                </h2>
-                <div className="bg-white/50 dark:bg-zinc-900/50 backdrop-blur-md rounded-3xl border border-gray-200 dark:border-zinc-800 p-6 shadow-sm">
-                    <MesDiplomes />
-                </div>
-            </section>
+                {/* Diplômes */}
+                <section className="col-span-1 h-full">
+                    <div className="h-full bg-white/60 dark:bg-zinc-900/60 backdrop-blur-xl rounded-[2rem] border border-gray-200 dark:border-zinc-800 shadow-sm p-8 flex flex-col">
+                        <h2 className="text-2xl md:text-3xl font-bold mb-8 text-gray-800 dark:text-gray-100 flex items-center gap-3">
+                            <span className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-xl text-blue-600 dark:text-blue-400">🎓</span>
+                            Diplômes & Formations
+                        </h2>
+                        <MesDiplomes />
+                    </div>
+                </section>
+            </div>
 
         </div>
     );

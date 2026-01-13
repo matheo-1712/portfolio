@@ -15,21 +15,32 @@ export default function MyExperience() {
     ];
 
     return (
-        <div className="max-w-6xl mx-auto p-2 flex flex-col items-center">
-            <div id="title" className="text-center p2 mb-8">
-                <p className="text-gray-600 dark:text-gray-300 text-sm">
-                    Voici mes expériences professionnelles, qui sont pour l&apos;instant uniquement des stages d&apos;un mois.
-                </p>
-            </div>
-            <div className="relative mt-6 border-l-4 border-black dark:border-gray-100 pl-10 w-full rounded-2xl">
-                {experiences.map((exp, index) => (
-                    <div key={index} className="mb-10 flex flex-col items-start">
-                        <div className="absolute -left-2 w-5 h-5 bg-black dark:bg-gray-100 rounded-full"></div>
-                        <p className="text-xl font-semibold">{exp.year} - {exp.title} ({exp.company})</p>
-                        <p className="text-lg text-gray-600 max-w-3xl whitespace-pre-line">{exp.description}</p>
+        <div className="relative border-l-2 border-gray-200 dark:border-zinc-700 ml-3 md:ml-6 space-y-12">
+            {experiences.map((exp, index) => (
+                <div key={index} className="relative pl-8 md:pl-12">
+                    {/* Timeline Dot */}
+                    <div className="absolute -left-[9px] top-0 w-5 h-5 rounded-full bg-emerald-500 border-4 border-white dark:border-zinc-900 shadow-md transform transition-transform hover:scale-125 duration-300"></div>
+
+                    {/* Content Card */}
+                    <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between mb-2">
+                        <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                            {exp.title}
+                        </h3>
+                        <span className="px-3 py-1 text-xs font-semibold text-emerald-700 bg-emerald-100 dark:bg-emerald-900/40 dark:text-emerald-300 rounded-full border border-emerald-200 dark:border-emerald-800">
+                            {exp.year}
+                        </span>
                     </div>
-                ))}
-            </div>
+
+                    <p className="text-md font-medium text-gray-700 dark:text-gray-300 mb-4 flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-gray-400"></span>
+                        {exp.company}
+                    </p>
+
+                    <div className="p-4 bg-zinc-50 dark:bg-zinc-800/50 rounded-2xl border border-gray-100 dark:border-zinc-700/50 text-gray-600 dark:text-gray-400 text-sm leading-relaxed whitespace-pre-line shadow-sm hover:shadow-md transition-shadow">
+                        {exp.description}
+                    </div>
+                </div>
+            ))}
         </div>
     );
 }

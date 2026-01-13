@@ -18,10 +18,11 @@ export default function ProjetBanner({ projects }: ProjetVignetteProps) {
                 {/* Image Section */}
                 <div className="relative w-full h-56 bg-zinc-50 dark:bg-zinc-800/50 flex items-center justify-center p-6 overflow-hidden">
                   {project.pinned && (
-                    <div className="absolute top-4 right-4 z-10 bg-yellow-400/20 backdrop-blur-md border border-yellow-400/50 p-2 rounded-full shadow-lg" title="Projet épinglé">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-yellow-600 dark:text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    <div className="absolute top-4 right-4 z-10 flex items-center gap-1.5 bg-yellow-400/20 backdrop-blur-md border border-yellow-400/50 py-1.5 px-3 rounded-full shadow-lg">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-yellow-600 dark:text-yellow-400 rotate-45" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
                       </svg>
+                      <span className="text-xs font-bold text-yellow-700 dark:text-yellow-400 uppercase tracking-wide">Épinglé</span>
                     </div>
                   )}
                   <div className="relative w-full h-full transition-transform duration-500 ease-out group-hover:scale-105">
@@ -45,20 +46,22 @@ export default function ProjetBanner({ projects }: ProjetVignetteProps) {
                   </p>
 
                   <div className="flex flex-wrap gap-2 mb-6">
-                    {project.language_prog && (
-                      <span className="px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 font-medium text-xs">
-                        {project.language_prog}
-                      </span>
-                    )}
-                    {project.framework && (
-                      <span className="px-3 py-1 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 font-medium text-xs">
-                        {project.framework}
-                      </span>
-                    )}
-                    {project.module && (
-                      <span className="px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 font-medium text-xs">
-                        {project.module}
-                      </span>
+                    {/* Unified Tags Display */}
+                    {project.tags && project.tags.length > 0 ? (
+                      project.tags.map((tag, i) => (
+                        <span key={i} className="px-3 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 font-medium text-xs border border-zinc-200 dark:border-zinc-700">
+                          {tag}
+                        </span>
+                      ))
+                    ) : (
+                      // Fallback to legacy display if tags not present (though they are guaranteed by Project component now)
+                      <>
+                        {project.language_prog && (
+                          <span className="px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 font-medium text-xs">
+                            {project.language_prog}
+                          </span>
+                        )}
+                      </>
                     )}
                   </div>
 
