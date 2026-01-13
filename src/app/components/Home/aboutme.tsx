@@ -34,7 +34,7 @@ export default function AboutMe() {
                 <div className="md:col-span-1 md:row-span-3 group relative bg-zinc-100 dark:bg-zinc-800 rounded-[2rem] border border-gray-200 dark:border-zinc-800 shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden flex items-center justify-center">
                     <Image
                         className="object-cover w-full h-full transform transition-transform duration-700 ease-out group-hover:scale-105"
-                        src="/matheo.png"
+                        src="/me.png"
                         width={500}
                         height={500}
                         alt="Pérodeau Mathéo"
