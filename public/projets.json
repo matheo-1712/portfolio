@@ -12,7 +12,8 @@
     "framework": "",
     "url": "/projet/citlali",
     "date_debut": "05-01-2025",
-    "date_fin": "XX-XX-XXXX"
+    "date_fin": "XX-XX-XXXX",
+    "pinned": true
   },
   {
     "id": 2,
