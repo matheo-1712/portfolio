@@ -18,7 +18,7 @@ export default function MesDiplomes() {
 
     return (
         <div className="relative border-l-2 border-gray-200 dark:border-zinc-700 ml-3 md:ml-6 space-y-12">
-            {diplomes.map((diplome, index) => (
+            {diplomes.map((diplome) => (
                 <div key={diplome.id} className="relative pl-8 md:pl-12">
                     {/* Timeline Dot */}
                     <div className="absolute -left-[9px] top-0 w-5 h-5 rounded-full bg-blue-500 border-4 border-white dark:border-zinc-900 shadow-md transform transition-transform hover:scale-125 duration-300"></div>

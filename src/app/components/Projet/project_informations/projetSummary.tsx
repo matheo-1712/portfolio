@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Project } from "../interface";
-import Image from "next/image";
+
 
 export default function ProjetSummary(projectInfos: Project) {
 

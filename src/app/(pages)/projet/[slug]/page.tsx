@@ -5,10 +5,13 @@ import ProjetSummary from "@/app/components/Projet/project_informations/projetSu
 import Keywords from "@/app/components/Projet/project_informations/keywords";
 
 // Define safe type for the imported MDX module
+import { Project } from "@/app/components/Projet/interface";
+
+// Define safe type for the imported MDX module
 interface MdxModule {
     default: React.ComponentType;
-    frontmatter: any;
-    images?: any[];
+    frontmatter: Project;
+    images?: { src: string; caption: string }[];
 }
 
 export async function generateStaticParams() {

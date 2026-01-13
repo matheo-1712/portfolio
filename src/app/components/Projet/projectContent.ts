@@ -21,7 +21,7 @@ export async function getAllProjects(): Promise<Project[]> {
         const match = /---\n([\s\S]+?)\n---/.exec(fileContent);
         if (match) {
             const frontmatterBlock = match[1];
-            const frontmatter: any = {};
+            const frontmatter: Record<string, string | boolean | string[]> = {};
 
             frontmatterBlock.split("\n").forEach(line => {
                 const [key, ...valueParts] = line.split(":");
