@@ -77,7 +77,29 @@ export async function getAllProjects(): Promise<Project[]> {
         return project;
     }));
 
-    // Sort by pinned then date? Or just custom.
-    // Let's preserve the "Pinned" logic if exists.
-    return projectsWithVersions;
+    // Sort by pinned then date_fin descending
+    return projectsWithVersions.sort((a, b) => {
+        // 1. Pinned priority
+        if (a.pinned && !b.pinned) return -1;
+        if (!a.pinned && b.pinned) return 1;
+
+        // 2. Date comparison
+        // Helper to parse French date format DD/MM/YYYY or DD-MM-YYYY
+        const parseDate = (dateStr: string) => {
+            if (!dateStr || dateStr === "En cours" || dateStr === "XX-XX-XXXX") return new Date().getTime(); // Treat "En cours" as now
+            const parts = dateStr.replace(/-/g, "/").split("/");
+            if (parts.length === 3) {
+                const day = parseInt(parts[0], 10);
+                const month = parseInt(parts[1], 10) - 1;
+                const year = parseInt(parts[2], 10);
+                return new Date(year, month, day).getTime();
+            }
+            return 0;
+        };
+
+        const dateA = parseDate(a.date_fin);
+        const dateB = parseDate(b.date_fin);
+
+        return dateB - dateA;
+    });
 }
