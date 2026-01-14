@@ -1,0 +1,83 @@
+---
+nom: "Otterbots"
+date_debut: "10-09-2024"
+date_fin: "XX-XX-XXXX"
+description: "Un framework de bot Discord complet et modulaire conçu pour simplifier le développement en intégrant nativement la gestion des événements, commandes, sécurité et création de salons."
+repository: "https://github.com/L-Antre-des-Loutres/Otterbots"
+image: "/otterbots.png"
+pinned: false
+tags: ["Discord Bot", "Framework", "TypeScript", "Antre des loutres", "Open Source"]
+type: "Framework Discord"
+framework: "Discord.js"
+module: "Node.js"
+language_prog: "TypeScript"
+---
+
+import TitleProject from "@/app/components/Projet/project_informations/title_project";
+import ZoomImage from "@/app/components/Image/zoomImage";
+
+<TitleProject title="Un Framework pour les dominer tous" />
+
+**Otterbots** est un framework développé par **L'Antre des Loutres** pour standardiser et accélérer le développement de nos bots Discord.
+Face à la répétition du code boilerplate pour chaque nouveau bot (gestion des événements, commandes, connexion à l'API...), nous avons décidé de créer une **surcouche robuste** au-dessus de Discord.js.
+
+C'est aujourd'hui le cœur technologique qui propulse l'ensemble de nos bots, garantissant maintenabilité, sécurité et performance.
+
+---
+
+## ✨ Fonctionnalités Clés
+
+Le framework encapsule des briques logiques complexes pour offrir une expérience développeur fluide :
+
+### 🛡️ Otterguard (Sécurité)
+Un module de défense actif pour protéger les serveurs :
+- **Anti-spam / Anti-flood** intelligent.
+- **Protection anti-scam** : détection de liens malveillants.
+- **Filtrage de contenu** via liste blanche de domaines.
+
+### 🦦 Otterlogs (Journalisation)
+Un système de logs puissant et granulaire :
+- **7 niveaux de logs** (du `debug` au `silentlog`).
+- **Webhooks Discord intégrés** pour renvoyer les erreurs critiques dans un salon staff.
+- Formatage coloré dans la console pour un débogage rapide.
+
+### 🌐 OtterlyAPI (Gestion API)
+Un wrapper pour centraliser les appels API :
+- Simplification des méthodes `GET` / `POST`.
+- Gestion des headers et de l'authentification automatique.
+- Mise en cache locale des configurations distantes.
+
+### 💾 Ottercache (Persistance)
+Un système de cache clé-valeur simple et efficace :
+- Persistance automatique en JSON local.
+- API intuitive type `Map` pour stocker des données temporaires ou durables sans base de données lourde.
+
+---
+
+## 🏗️ Architecture
+
+Otterbots impose une structure claire pour empêcher le "code spaghetti" :
+
+- **Event Handler** : Chargement automatique des fichiers d'événements.
+- **Command Handler** : Gestion des commandes slash avec validation des droits.
+- **Scheduler** : Système de tâches planifiées (Cron jobs) intégré.
+
+> "L'objectif était de ne plus jamais avoir à écrire `client.on('ready', ...)` à la main, mais de se concentrer sur la logique métier du bot."
+
+---
+
+## 🚀 Impact
+
+Grâce à Otterbots, le temps de déploiement d'un nouveau bot pour un événement ou un besoin spécifique a été divisé par **trois**.
+Le framework assure également une homogénéité du code à travers tous les projets de l'organisation **L'Antre des Loutres**.
+
+<br />
+<div className="flex justify-center">
+  <ZoomImage
+      src="/otterbots.png"
+      alt="Logo Otterbots"
+      width={600}
+      height={400}
+      className="rounded-2xl shadow-xl"
+  />
+</div>
