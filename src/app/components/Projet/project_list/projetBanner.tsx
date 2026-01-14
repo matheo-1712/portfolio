@@ -54,18 +54,43 @@ export default function ProjetBanner({ projects }: ProjetVignetteProps) {
                     {/* Unified Tags Display */}
                     {project.version && (
                       <span className={`px-3 py-1 rounded-full font-medium text-xs border flex items-center gap-1 ${project.isPrerelease
-                          ? "bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 border-orange-200 dark:border-orange-800"
-                          : "bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 border-emerald-200 dark:border-emerald-800"
+                        ? "bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 border-orange-200 dark:border-orange-800"
+                        : "bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 border-emerald-200 dark:border-emerald-800"
                         }`}>
                         {project.isPrerelease ? "🚧 Beta" : "🚀"} {project.version}
                       </span>
                     )}
                     {project.tags && project.tags.length > 0 ? (
-                      project.tags.map((tag, i) => (
-                        <span key={i} className="px-3 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 font-medium text-xs border border-zinc-200 dark:border-zinc-700">
-                          {tag}
-                        </span>
-                      ))
+                      project.tags.map((tag, i) => {
+                        const isProd = tag === "En Production";
+                        const isMaintenu = tag === "Non Maintenu";
+                        const isTest = tag === "En phase de test";
+
+                        let activeClasses = "bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:border-zinc-700";
+                        if (isProd) {
+                          activeClasses = "bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 border-blue-200 dark:border-blue-800";
+                        } else if (isMaintenu) {
+                          activeClasses = "bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 border-amber-200 dark:border-amber-800";
+                        } else if (isTest) {
+                          activeClasses = "bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 border-purple-200 dark:border-purple-800";
+                        }
+
+                        return (
+                          <span key={i} className={`px-3 py-1 rounded-full font-medium text-xs border flex items-center gap-1.5 ${activeClasses}`}>
+                            {isProd && <span className="relative flex h-2 w-2">
+                              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                              <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                            </span>}
+                            {isMaintenu && <span className="relative flex h-2 w-2">
+                              <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+                            </span>}
+                            {isTest && <span className="relative flex h-2 w-2">
+                              <span className="relative inline-flex rounded-full h-2 w-2 bg-purple-500"></span>
+                            </span>}
+                            {tag}
+                          </span>
+                        );
+                      })
                     ) : (
                       // Fallback to legacy display if tags not present (though they are guaranteed by Project component now)
                       <>

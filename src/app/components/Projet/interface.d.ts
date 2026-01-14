@@ -17,6 +17,7 @@ export type Project = {
   tags?: string[];
   version?: string | null;
   isPrerelease?: boolean;
+  flags?: string[];
 }
 
 

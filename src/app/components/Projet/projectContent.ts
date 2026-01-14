@@ -46,11 +46,30 @@ export async function getAllProjects(): Promise<Project[]> {
                 }
             });
 
+            // Handle 'flags' argument to inject tags
+            let tags = (frontmatter.tags as string[]) || [];
+            const flags = (frontmatter.flags as string[]) || [];
+
+            if (flags.includes("prod")) {
+                tags = tags.filter(t => t !== "En Production");
+                tags.unshift("En Production");
+            }
+
+            if (flags.includes("non_maintenu")) {
+                tags = tags.filter(t => t !== "Non Maintenu");
+                tags.unshift("Non Maintenu");
+            }
+
+            if (flags.includes("in_test")) {
+                tags = tags.filter(t => t !== "En phase de test");
+                tags.unshift("En phase de test");
+            }
+
             projects.push({
                 id: slug, // Use slug as ID
                 ...frontmatter,
                 url: `/projet/${slug}`, // Dynamic URL
-                tags: frontmatter.tags || []
+                tags: tags
             } as Project);
         }
     }

@@ -39,8 +39,8 @@ export default function ProjetSummary(projectInfos: Project) {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className={`px-4 py-1.5 rounded-full text-sm font-bold border hover:shadow-md transition-shadow cursor-pointer flex items-center gap-2 ${projectInfos.isPrerelease
-                                        ? "bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 border-orange-200 dark:border-orange-800"
-                                        : "bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 border-emerald-200 dark:border-emerald-800"
+                                    ? "bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 border-orange-200 dark:border-orange-800"
+                                    : "bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 border-emerald-200 dark:border-emerald-800"
                                     }`}
                                 title="Voir la release sur GitHub"
                             >
@@ -48,6 +48,35 @@ export default function ProjetSummary(projectInfos: Project) {
                                 <span>{projectInfos.isPrerelease ? "Beta " : ""}{projectInfos.version}</span>
                             </Link>
                         )}
+
+                        {projectInfos.flags?.includes("prod") && (
+                            <span className="px-4 py-1.5 rounded-full text-sm font-bold border flex items-center gap-2 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 border-blue-200 dark:border-blue-800 animate-pulse-slow">
+                                <span className="relative flex h-2.5 w-2.5">
+                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-blue-500"></span>
+                                </span>
+                                <span>En Production</span>
+                            </span>
+                        )}
+                        {projectInfos.flags?.includes("non_maintenu") && (
+                            <span className="px-4 py-1.5 rounded-full text-sm font-bold border flex items-center gap-2 bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 border-amber-200 dark:border-amber-800">
+                                <span className="relative flex h-2.5 w-2.5">
+                                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-500"></span>
+                                </span>
+                                <span>Non Maintenu</span>
+                            </span>
+                        )}
+                        {projectInfos.flags?.includes("in_test") && (
+                            <span
+                                className="px-4 py-1.5 rounded-full text-sm font-bold border flex items-center gap-2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 border-purple-200 dark:border-purple-800">
+                                <span className="relative flex h-2.5 w-2.5">
+                                    <span
+                                        className="relative inline-flex rounded-full h-2.5 w-2.5 bg-purple-500"></span>
+                                </span>
+                                <span>En Test</span>
+                            </span>
+                        )}
+
                         <span className={`px-4 py-1.5 rounded-full text-sm font-bold border ${getStatusStyle(Number(projectInfos.statut))}`}>
                             {getStatusLabel(Number(projectInfos.statut))}
                         </span>

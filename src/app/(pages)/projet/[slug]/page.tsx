@@ -59,7 +59,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         return (
             <div className="items-center justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
                 {/* 1. Project Summary Card */}
-                {frontmatter && <ProjetSummary {...frontmatter} version={version} isPrerelease={isPrerelease} />}
+                {frontmatter && <ProjetSummary {...frontmatter} version={version} isPrerelease={isPrerelease} flags={frontmatter.flags} />}
 
                 <div id="content" className="mt-12 animate-fade-in-up">
 

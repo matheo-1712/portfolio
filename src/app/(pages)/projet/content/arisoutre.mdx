@@ -1,0 +1,62 @@
+---
+nom: "Arisoutre"
+date_debut: "10-09-2024"
+date_fin: "XX-XX-XXXX"
+description: "Le bot Discord principal de l'Antre des Loutres, responsable de la modération, de la sécurité (OtterGuard) et de l'animation de la communauté."
+repository: "https://github.com/L-Antre-des-Loutres/Arisoutre"
+image: "/arisoutre.png"
+statut: "1"
+pinned: false
+type: "Bot Discord"
+framework: "Otterbots"
+module: "Node.js"
+language_prog: "TypeScript"
+flags: ["prod"]
+tags: ["Discord Bot", "Modération", "TypeScript", "Antre des loutres", "OtterGuard"]
+---
+
+import TitleProject from "@/app/components/Projet/project_informations/title_project";
+
+<TitleProject title="Le Gardien du Temple" />
+
+**Arisoutre** est le pilier central de l'infrastructure Discord de **L'Antre des Loutres**.
+Plus qu'un simple bot de modération, il agit comme un véritable système d'exploitation pour la communauté, gérant la sécurité, les événements et l'accueil des membres.
+
+Il est construit sur notre framework maison, **Otterbots**, ce qui garantit une intégration parfaite avec nos autres outils (comme l'API Otterly).
+
+---
+
+## 🛡️ OtterGuard : La Sécurité Avant Tout
+
+Le module de protection intégré, **OtterGuard**, offre une défense proactive pour le serveur :
+
+- **Anti-Phishing & Anti-Scam** : Analyse les liens en temps réel pour bloquer les tentatives de fraude.
+- **Liste Blanche** : Seuls les domaines approuvés peuvent être partagés par les nouveaux membres.
+- **Anti-Spam Intelligent** : Détecte et neutralise le flood avant qu'il ne nuise à la conversation.
+- **Logs de Sécurité** : Trace chaque action suspecte pour permettre à l'équipe de modération d'intervenir.
+
+---
+
+## ⚡ Fonctionnalités Avancées
+
+Arisoutre automatise de nombreuses tâches pour soulager l'équipe :
+
+### 📢 Événements Automatiques
+- **Accueil personnalisé** pour chaque nouvel arrivant.
+- **Suivi d'activité** (messages, temps vocal) pour les statistiques de la communauté.
+- **Gestion des départs** pour garder une base de membres propre.
+
+### 🔌 Intégration API (OtterlyAPI)
+Le bot communique avec notre API centrale pour :
+- Synchroniser les données membres.
+- Récupérer les configurations dynamiques sans redémarrage.
+- Gérer les listes de diffusion.
+
+---
+
+## 🏗️ Architecture Technique
+
+Développé à **99.8% en TypeScript**, le projet met l'accent sur la robustesse et la maintenabilité.
+Il utilise une architecture modulaire où chaque fonctionnalité (Guard, Logs, Events) est isolée, facilitant les mises à jour et l'ajout de nouvelles features sans risquer de casser l'existant.
+
+> "Arisoutre ne dort jamais, pour que les Loutres puissent dormir sur leurs deux oreilles."
