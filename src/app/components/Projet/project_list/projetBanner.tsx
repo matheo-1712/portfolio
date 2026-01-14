@@ -1,16 +1,28 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { ProjetVignetteProps } from "../interface";
+import React from "react";
 
 const defaultImage = "/citlAI.png";
 
 export default function ProjetBanner({ projects }: ProjetVignetteProps) {
+  const router = useRouter();
+
+  const handleTagClick = (e: React.MouseEvent, tag: string) => {
+    e.preventDefault();
+    e.stopPropagation();
+    router.push(`/projet?tag=${encodeURIComponent(tag)}`);
+  };
+
   return (
     <div className="">
       {projects && projects.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {projects.map((project, index) => (
-            <Link key={index} href={`${project.url}`} className="h-full">
+            <Link key={index} href={`${project.url}`} className="h-full block">
               <div
                 className="h-full group relative bg-white/60 dark:bg-zinc-900/60 backdrop-blur-xl rounded-[2rem] border border-gray-200 dark:border-zinc-800 shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col overflow-hidden hover:scale-[1.02]"
               >
@@ -76,7 +88,11 @@ export default function ProjetBanner({ projects }: ProjetVignetteProps) {
                         }
 
                         return (
-                          <span key={i} className={`px-3 py-1 rounded-full font-medium text-xs border flex items-center gap-1.5 ${activeClasses}`}>
+                          <span
+                            key={i}
+                            onClick={(e) => handleTagClick(e, tag)}
+                            className={`px-3 py-1 rounded-full font-medium text-xs border flex items-center gap-1.5 cursor-pointer transition-transform hover:scale-105 hover:shadow-sm ${activeClasses}`}
+                          >
                             {isProd && <span className="relative flex h-2 w-2">
                               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
                               <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
