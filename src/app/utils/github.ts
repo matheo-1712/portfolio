@@ -1,6 +1,7 @@
 export interface ReleaseInfo {
     version: string;
     date: string; // ISO string
+    isPrerelease: boolean;
 }
 
 export async function getLatestRelease(repoUrl: string): Promise<ReleaseInfo | null> {
@@ -24,12 +25,10 @@ export async function getLatestRelease(repoUrl: string): Promise<ReleaseInfo | n
             headers["Authorization"] = `Bearer ${process.env.GITHUB_TOKEN}`;
         }
 
-        // Fetch /releases/latest to get only the latest stable release
-        // Defaults to 'force-cache' in Next.js App Router for fetch(), which means it's cached indefinitely (until rebuild or revalidate)
-        // This satisfies "uniquement lors du build de l'appli" if there is no revalidate time.
-        const response = await fetch(`https://api.github.com/repos/${owner}/${cleanRepo}/releases/latest`, {
+        // Fetch /releases?per_page=1 to get the very latest release including pre-releases
+        const response = await fetch(`https://api.github.com/repos/${owner}/${cleanRepo}/releases?per_page=1`, {
             headers,
-            // cache: 'force-cache' is default in Next.js for fetch
+            next: { revalidate: 3600 } // Cache for 1 hour
         });
 
         if (!response.ok) {
@@ -39,9 +38,16 @@ export async function getLatestRelease(repoUrl: string): Promise<ReleaseInfo | n
 
         const data = await response.json();
 
+        if (!Array.isArray(data) || data.length === 0) {
+            return null;
+        }
+
+        const latestRelease = data[0];
+
         return {
-            version: data.tag_name,
-            date: data.published_at // "2024-01-14T..."
+            version: latestRelease.tag_name,
+            date: latestRelease.published_at,
+            isPrerelease: latestRelease.prerelease
         };
 
     } catch (error) {

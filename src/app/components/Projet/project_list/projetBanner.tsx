@@ -53,8 +53,11 @@ export default function ProjetBanner({ projects }: ProjetVignetteProps) {
                   <div className="flex flex-wrap gap-2 mb-6">
                     {/* Unified Tags Display */}
                     {project.version && (
-                      <span className="px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 font-medium text-xs border border-emerald-200 dark:border-emerald-800 flex items-center gap-1">
-                        🚀 {project.version}
+                      <span className={`px-3 py-1 rounded-full font-medium text-xs border flex items-center gap-1 ${project.isPrerelease
+                          ? "bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 border-orange-200 dark:border-orange-800"
+                          : "bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 border-emerald-200 dark:border-emerald-800"
+                        }`}>
+                        {project.isPrerelease ? "🚧 Beta" : "🚀"} {project.version}
                       </span>
                     )}
                     {project.tags && project.tags.length > 0 ? (

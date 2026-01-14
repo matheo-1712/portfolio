@@ -16,6 +16,7 @@ export type Project = {
   pinned?: boolean;
   tags?: string[];
   version?: string | null;
+  isPrerelease?: boolean;
 }
 
 

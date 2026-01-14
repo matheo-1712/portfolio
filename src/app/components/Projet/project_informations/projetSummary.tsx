@@ -38,11 +38,14 @@ export default function ProjetSummary(projectInfos: Project) {
                                 href={`${projectInfos.repository}/releases/tag/${projectInfos.version}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="px-4 py-1.5 rounded-full text-sm font-bold bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800 hover:shadow-md transition-shadow cursor-pointer flex items-center gap-2"
+                                className={`px-4 py-1.5 rounded-full text-sm font-bold border hover:shadow-md transition-shadow cursor-pointer flex items-center gap-2 ${projectInfos.isPrerelease
+                                        ? "bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 border-orange-200 dark:border-orange-800"
+                                        : "bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 border-emerald-200 dark:border-emerald-800"
+                                    }`}
                                 title="Voir la release sur GitHub"
                             >
-                                <span>🚀</span>
-                                <span>{projectInfos.version}</span>
+                                <span>{projectInfos.isPrerelease ? "🚧" : "🚀"}</span>
+                                <span>{projectInfos.isPrerelease ? "Beta " : ""}{projectInfos.version}</span>
                             </Link>
                         )}
                         <span className={`px-4 py-1.5 rounded-full text-sm font-bold border ${getStatusStyle(Number(projectInfos.statut))}`}>

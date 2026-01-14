@@ -70,7 +70,8 @@ export async function getAllProjects(): Promise<Project[]> {
                 return {
                     ...project,
                     version: releaseInfo.version,
-                    date_fin: formattedDate // Overwrite date_fin with release date
+                    date_fin: formattedDate, // Overwrite date_fin with release date
+                    isPrerelease: releaseInfo.isPrerelease
                 };
             }
         }

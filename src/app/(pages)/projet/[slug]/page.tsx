@@ -39,10 +39,14 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
         // Fetch latest version from GitHub if repository is present
         let version: string | null = null;
+        let isPrerelease: boolean = false;
+
         if (frontmatter.repository) {
             const releaseInfo = await getLatestRelease(frontmatter.repository);
             if (releaseInfo) {
                 version = releaseInfo.version;
+                isPrerelease = releaseInfo.isPrerelease;
+
                 // Update date_fin if we have a release date
                 const releaseDate = new Date(releaseInfo.date);
                 const day = String(releaseDate.getDate()).padStart(2, '0');
@@ -55,7 +59,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         return (
             <div className="items-center justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
                 {/* 1. Project Summary Card */}
-                {frontmatter && <ProjetSummary {...frontmatter} version={version} />}
+                {frontmatter && <ProjetSummary {...frontmatter} version={version} isPrerelease={isPrerelease} />}
 
                 <div id="content" className="mt-12 animate-fade-in-up">
 
