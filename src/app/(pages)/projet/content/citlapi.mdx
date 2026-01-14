@@ -1,0 +1,56 @@
+---
+slug: citlapi
+nom: CitlAPI
+statut: "1"
+description: "API RESTful conçue pour le bot Citlali, offrant une gestion simplifiée des données et un protocole d'authentification sécurisé."
+repository: "https://github.com/matheo-1712/CitlAPI"
+image: "/citlAPI.png"
+pinned: false
+flags: []
+tags: ["API", "Backend", "TypeScript", "Personnel"]
+type: "API REST"
+framework: "Express"
+module: "Backend"
+language_prog: "TypeScript"
+date_debut: "En cours"
+date_fin: "En cours"
+---
+
+import TitleProject from "@/app/components/Projet/project_informations/title_project";
+import ListProject from "@/app/components/Projet/project_informations/list_project";
+
+<TitleProject
+    title="Présentation"
+    subtitle="Une API simple et modulaire"
+/>
+
+**CitlAPI** est une API RESTful développée pour servir de backend au bot Discord **Citlali**. Elle a été conçue avec un objectif de simplicité d'utilisation et de maintenabilité, en s'inspirant de l'architecture de **Otterly API**. Bien qu'elle soit optimisée pour Citlali, elle reste flexible et peut être utilisée pour d'autres besoins.
+
+<ListProject
+    title="Fonctionnalités Clés"
+    items={[
+        "🗃️ **Gestion de Données** : Création, lecture, mise à jour et suppression (CRUD) de tables et d'enregistrements.",
+        "🔐 **Authentification** : Protocole de token sécurisé pour protéger les endpoints sensibles.",
+        "💻 **Commandes Terminal** : Capacité à exécuter des commandes système via des endpoints spécifiques (pour la maintenance ou le déploiement).",
+        "🚀 **Basée sur OtterlyAPI** : Reprend les concepts éprouvés d'une architecture modulaire et extensible."
+    ]}
+/>
+
+<TitleProject
+    title="Stack Technique"
+    subtitle="TypeScript & Node.js"
+/>
+
+Le projet repose sur un écosystème **TypeScript** robuste pour garantir le typage et la fiabilité du code.
+
+*   **Langage** : TypeScript
+*   **Runtime** : Node.js
+*   **Architecture** : RESTful
+*   **Sécurité** : Gestion des variables d'environnement (.env) et tokens d'authentification.
+
+<div className="my-8 p-4 bg-blue-50 dark:bg-blue-900/10 rounded-xl border border-blue-100 dark:border-blue-800">
+    <h3 className="text-lg font-bold text-blue-700 dark:text-blue-400 mb-2">Liens Connexes</h3>
+    <p>
+        Ce projet fonctionne en tandem avec le bot <strong><a href="/projet/citlali" className="link">Citlali</a></strong>.
+    </p>
+</div>
