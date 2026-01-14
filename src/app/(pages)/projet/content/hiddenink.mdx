@@ -1,0 +1,53 @@
+---
+slug: hiddenink
+nom: HiddenInk
+statut: "0"
+description: "Application C++ de stéganographie permettant de cacher du texte dans une image, à la manière d’une écriture à l’encre invisible."
+repository: "https://github.com/LP-Applications-Web-Angers-2025-2026/HiddenInk"
+image: "/hiddenink.webp"
+pinned: false
+flags: ["non_maintenu"]
+tags: ["C++", "Stéganographie", "Cryptographie", "Projet étudiant", "CLI", "Sécurité"]
+type: "Application Console"
+framework: ""
+module: "Stéganographie"
+language_prog: "C++, CMake"
+date_debut: "09-2025"
+date_fin: "01-2026"
+---
+
+import TitleProject from "@/app/components/Projet/project_informations/title_project";
+import ListProject from "@/app/components/Projet/project_informations/list_project";
+
+<TitleProject
+    title="Présentation"
+    subtitle="La stéganographie moderne"
+/>
+
+**HiddenInk** est une application développée en **C++** (C++20) qui permet de dissimuler des informations (texte ou image) à l'intérieur d'une image porteuse (BMP ou PNG), rendant leur présence indétectable à l'œil nu. Le projet explore les concepts de **stéganographie** et de **cryptographie**, offrant une solution complète pour cacher, extraire et chiffrer des données.
+
+Réalisé dans le cadre de la Licence Professionnelle avec **Alban Pouchon, Vincent Gamblin et Lucas Strullu**.
+
+<ListProject
+    title="Fonctionnalités Clés"
+    items={[
+        "🕵️ **Dissimulation (Hide)** : Cacher du texte ou une image dans une image porteuse (BMP/PNG).",
+        "📂 **Extraction (Extract)** : Récupérer les données cachées d'une image stéganographiée.",
+        "🔒 **Chiffrement** : Option de chiffrement des données avec génération automatique de clé.",
+        "🎛️ **Contrôle Précis** : Choix du plan de bit (1-8) pour la dissimulation (LSB par défaut).",
+        "📊 **Analyse** : Génération d'histogrammes pour analyser l'impact visuel sur les images.",
+        "🖥️ **Mode Interactif** : Menu CLI convivial guidant l'utilisateur étape par étape."
+    ]}
+/>
+
+<TitleProject
+    title="Technologies"
+    subtitle="Performance et Modernité"
+/>
+
+Le projet est construit sur une stack **C++** moderne :
+
+*   **Langage** : C++20 (Concepts, Ranges).
+*   **Build System** : CMake (>= 3.10).
+*   **Compatibilité** : Cross-platform (Linux, Windows).
+*   **Interface** : CLI (Command Line Interface) avec mode interactif et arguments.
