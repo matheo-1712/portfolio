@@ -1,4 +1,5 @@
 import { Project } from "@/app/components/Projet/project";
+import { Suspense } from "react";
 import { getAllProjects } from "@/app/components/Projet/projectContent";
 
 export default async function Projet() {
@@ -24,7 +25,13 @@ export default async function Projet() {
                 </p>
             </div>
 
-            <Project projects={projects} />
+            <Suspense fallback={
+                <div className="flex justify-center py-20">
+                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+                </div>
+            }>
+                <Project projects={projects} />
+            </Suspense>
         </div>
     );
 }
