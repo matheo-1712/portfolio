@@ -25,6 +25,11 @@ export default function ProjetBanner({ projects }: ProjetVignetteProps) {
                       <span className="text-xs font-bold text-yellow-700 dark:text-yellow-400 uppercase tracking-wide">Épinglé</span>
                     </div>
                   )}
+                  {Number(project.statut) === 0 && (
+                    <div className={`absolute top-4 left-4 z-10 flex items-center gap-1.5 bg-emerald-500/20 backdrop-blur-md border border-emerald-500/50 py-1.5 px-3 rounded-full shadow-lg`}>
+                      <span className="text-xs font-bold text-emerald-700 dark:text-emerald-400 uppercase tracking-wide">✓ Terminé</span>
+                    </div>
+                  )}
                   <div className="relative w-full h-full transition-transform duration-500 ease-out group-hover:scale-105">
                     <Image
                       src={project.image || defaultImage}
@@ -47,6 +52,11 @@ export default function ProjetBanner({ projects }: ProjetVignetteProps) {
 
                   <div className="flex flex-wrap gap-2 mb-6">
                     {/* Unified Tags Display */}
+                    {project.version && (
+                      <span className="px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 font-medium text-xs border border-emerald-200 dark:border-emerald-800 flex items-center gap-1">
+                        🚀 {project.version}
+                      </span>
+                    )}
                     {project.tags && project.tags.length > 0 ? (
                       project.tags.map((tag, i) => (
                         <span key={i} className="px-3 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 font-medium text-xs border border-zinc-200 dark:border-zinc-700">

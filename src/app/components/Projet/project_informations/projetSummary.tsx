@@ -59,6 +59,21 @@ export default function ProjetSummary(projectInfos: Project) {
                                     </Link>
                                 </div>
                             </div>
+
+                            {projectInfos.version && (
+                                <Link
+                                    href={`${projectInfos.repository}/releases/tag/${projectInfos.version}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-3 p-3 rounded-2xl bg-emerald-50 dark:bg-emerald-900/10 border border-emerald-100 dark:border-emerald-900/30 hover:shadow-md transition-shadow cursor-pointer"
+                                >
+                                    <span className="text-lg">🚀</span>
+                                    <div className="flex flex-col">
+                                        <span className="text-sm font-semibold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Version actuelle</span>
+                                        <span className="font-bold text-gray-900 dark:text-gray-100 underline decoration-dotted underline-offset-4">{projectInfos.version}</span>
+                                    </div>
+                                </Link>
+                            )}
                         </div>
 
                         <div className="col-span-1 md:col-span-2 mt-4 p-6 bg-blue-50/50 dark:bg-blue-900/10 rounded-2xl border border-blue-100 dark:border-blue-900/30 text-gray-700 dark:text-gray-300 leading-relaxed">

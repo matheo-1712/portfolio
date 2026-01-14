@@ -15,6 +15,7 @@ export type Project = {
   date_fin: string;
   pinned?: boolean;
   tags?: string[];
+  version?: string | null;
 }
 
 

@@ -6,6 +6,7 @@ import Keywords from "@/app/components/Projet/project_informations/keywords";
 
 // Define safe type for the imported MDX module
 import { Project } from "@/app/components/Projet/interface";
+import { getLatestRelease } from "@/app/utils/github";
 
 // Define safe type for the imported MDX module
 interface MdxModule {
@@ -36,10 +37,25 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         const mdxModule = (await import(`../content/${slug}.mdx`)) as MdxModule;
         const { default: Content, frontmatter } = mdxModule;
 
+        // Fetch latest version from GitHub if repository is present
+        let version: string | null = null;
+        if (frontmatter.repository) {
+            const releaseInfo = await getLatestRelease(frontmatter.repository);
+            if (releaseInfo) {
+                version = releaseInfo.version;
+                // Update date_fin if we have a release date
+                const releaseDate = new Date(releaseInfo.date);
+                const day = String(releaseDate.getDate()).padStart(2, '0');
+                const month = String(releaseDate.getMonth() + 1).padStart(2, '0');
+                const year = releaseDate.getFullYear();
+                frontmatter.date_fin = `${day}/${month}/${year}`;
+            }
+        }
+
         return (
             <div className="items-center justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
                 {/* 1. Project Summary Card */}
-                {frontmatter && <ProjetSummary {...frontmatter} />}
+                {frontmatter && <ProjetSummary {...frontmatter} version={version} />}
 
                 <div id="content" className="mt-12 animate-fade-in-up">
 
