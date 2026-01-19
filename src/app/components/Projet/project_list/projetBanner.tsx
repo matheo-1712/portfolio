@@ -44,7 +44,7 @@ export default function ProjetBanner({ projects }: ProjetVignetteProps) {
                   )}
                   <div className="relative w-full h-full transition-transform duration-500 ease-out group-hover:scale-105">
                     <Image
-                      src={project.image || defaultImage}
+                      src={project.logo || defaultImage}
                       alt={project.nom}
                       fill
                       className="object-contain"

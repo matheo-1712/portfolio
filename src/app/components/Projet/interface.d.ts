@@ -3,7 +3,7 @@ export type Project = {
   id: number | string;
   nom: string;
   type: string;
-  image: string;
+  logo: string;
   description: string;
   language_prog: string;
   statut: string;

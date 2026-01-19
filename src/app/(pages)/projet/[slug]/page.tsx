@@ -3,6 +3,7 @@ import fs from "fs";
 import path from "path";
 import ProjetSummary from "@/app/components/Projet/project_informations/projetSummary";
 import Keywords from "@/app/components/Projet/project_informations/keywords";
+import ProjectRecommendations from "@/app/components/Projet/ProjectRecommendations";
 
 // Define safe type for the imported MDX module
 import { Project } from "@/app/components/Projet/interface";
@@ -71,6 +72,14 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                     <div className="prose dark:prose-invert max-w-none">
                         <Content />
                     </div>
+
+                    {/* 4. Recommendations */}
+                    {frontmatter && (
+                        <ProjectRecommendations
+                            currentSlug={slug}
+                            currentType={frontmatter.type}
+                        />
+                    )}
 
                 </div>
             </div>

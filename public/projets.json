@@ -1,108 +1,267 @@
 [
   {
     "id": 1,
-    "nom": "Citlali",
-    "type": "Bot Discord",
-    "image": "/citlali.png",
-    "description": "Un bot Discord spécialisé pour le jeu Genshin Impact",
-    "language_prog": "TypeScript / JavaScript",
-    "module": "Discord.js",
-    "repository": "https://github.com/matheo-1712/Citlali",
-    "statut": "1",
+    "nom": "API Serveur",
+    "type": "API REST",
+    "logo": "/api-serveur-v2.png",
+    "description": "Une API permettant la gestion de serveurs de jeu. Elle permet d'afficher l'ensemble des informations les concernant, de les installer, de les démarrer et de les arrêter via une requête.",
+    "language_prog": "JavaScript",
+    "statut": "0",
+    "repository": "https://github.com/matheo-1712/API-Serveur",
     "framework": "",
-    "url": "/projet/citlali",
-    "date_debut": "05-01-2025",
-    "date_fin": "XX-XX-XXXX",
-    "pinned": true
+    "module": "Express",
+    "url": "/projet/api-serveur",
+    "date_debut": "24/06/2024",
+    "date_fin": "28/10/2024",
+    "pinned": false,
+    "tags": [
+      "API",
+      "Backend",
+      "Personnel"
+    ],
+    "version": null,
+    "isPrerelease": false,
+    "flags": [
+      "non_maintenu"
+    ]
   },
   {
     "id": 2,
-    "nom": "Otterly API",
-    "type": "API REST",
-    "image": "/otterlyapi.png",
-    "description": "Une API permettant la gestion de serveurs de jeu. Elle permet d'afficher l'ensemble des informations les concernant, de les installer, de les démarrer et de les arrêter via une requête.",
+    "nom": "Arisoutre",
+    "type": "Bot Discord",
+    "logo": "/arisoutre.png",
+    "description": "Le bot Discord principal de l'Antre des Loutres, responsable de la modération, de la sécurité (OtterGuard) et de l'animation de la communauté.",
     "language_prog": "TypeScript",
-    "module": "Express",
-    "repository": "https://github.com/matheo-1712/OtterlyAPI",
     "statut": "1",
-    "framework": "",
-    "url": "/projet/otterlyapi",
-    "date_debut": "20-04-2025",
-    "date_fin": "XX-XX-XXXX"
+    "repository": "https://github.com/L-Antre-des-Loutres/Arisoutre",
+    "framework": "Otterbots",
+    "module": "Node.js",
+    "url": "/projet/arisoutre",
+    "date_debut": "10/09/2024",
+    "date_fin": "06/01/2026",
+    "pinned": false,
+    "tags": [
+      "Bot Discord",
+      "TypeScript",
+      "L'Antre des Loutres"
+    ],
+    "version": "v3.1.1",
+    "isPrerelease": false,
+    "flags": [
+      "prod"
+    ]
   },
   {
     "id": 3,
-    "nom": "Portfolio",
-    "type": "Site Web",
-    "image": "/portfolio.png",
-    "description": "Mon portfolio professionnel présentant mes projets actuels, passés et futurs.",
-    "language_prog": "TypeScript",
-    "module": "",
-    "repository": "https://github.com/matheo-1712/portfolio",
+    "nom": "Astroloutre",
+    "type": "Site web",
+    "logo": "/antredesloutres.png",
+    "description": "Astroloutre est une application web de type site static permet l'affichage des informations des serveurs des statistiques des joueurs sur nos serveurs de Jeu.",
+    "language_prog": "Typescript",
     "statut": "1",
-    "framework": "Next.js",
-    "url": "/projet/portfolio",
-    "date_debut": "26-01-2025",
-    "date_fin": "XX-XX-XXXX"
+    "repository": "https://github.com/L-Antre-des-Loutres/Astroloutre",
+    "framework": "Astro",
+    "module": "",
+    "url": "/projet/astroloutre",
+    "date_debut": "10/01/2024",
+    "date_fin": "06/01/2026",
+    "pinned": true,
+    "tags": [
+      "Web",
+      "Astro",
+      "L'Antre des Loutres",
+      "Personnel",
+      "Groupe"
+    ],
+    "version": "v1.3.4",
+    "isPrerelease": false,
+    "flags": [
+      "prod"
+    ]
+  },
+  {
+    "id": 4,
+    "nom": "Citlali",
+    "type": "Bot Discord",
+    "logo": "/citlali.png",
+    "description": "Un bot Discord spécialisé pour le jeu Genshin Impact",
+    "language_prog": "TypeScript / JavaScript",
+    "statut": "1",
+    "repository": "https://github.com/matheo-1712/Citlali",
+    "framework": "Otterbots",
+    "module": "Discord.js",
+    "url": "/projet/citlali",
+    "date_debut": "05/01/2025",
+    "date_fin": "16/11/2025",
+    "pinned": false,
+    "tags": [
+      "Bot Discord",
+      "Personnel"
+    ],
+    "version": "v3.0.2",
+    "isPrerelease": false,
+    "flags": [
+      "prod"
+    ]
   },
   {
     "id": 5,
-    "nom": "OtterMinded",
-    "type": "Application Mobile",
-    "image": "/otterminded.png",
-    "description": "« Otter Minded », est une application mobile social et anonyme qui à pour but de partager son avis sur différentes questions proposer par les utilisateurs.",
-    "language_prog": "Kotlin",
-    "module": "",
-    "repository": "https://github.com/L-Antre-des-Loutres/OtterMinded",
-    "statut": "0",
-    "framework": "Android Studio",
-    "url": "/projet/otterminded",
-    "date_debut": "21-03-2024",
-    "date_fin": "02-06-2024"
+    "nom": "CitlAPI",
+    "type": "API REST",
+    "logo": "/citlAPI.png",
+    "description": "API RESTful conçue pour le bot Citlali, offrant une gestion simplifiée des données et un protocole d'authentification sécurisé.",
+    "language_prog": "TypeScript",
+    "statut": "1",
+    "repository": "https://github.com/matheo-1712/CitlAPI",
+    "framework": "Express",
+    "module": "Backend",
+    "url": "/projet/citlapi",
+    "date_debut": "05/05/2025",
+    "date_fin": "19/01/2026",
+    "pinned": false,
+    "tags": [
+      "API",
+      "Backend",
+      "TypeScript",
+      "Personnel"
+    ],
+    "version": "v1.0.0",
+    "isPrerelease": false,
+    "flags": [
+      "prod"
+    ]
   },
   {
     "id": 6,
-    "nom": "API Serveur",
-    "type": "API REST",
-    "image": "/api-serveur-v2.png",
-    "description": "Une API permettant la gestion de serveurs de jeu. Elle permet d'afficher l'ensemble des informations les concernant, de les installer, de les démarrer et de les arrêter via une requête.",
-    "language_prog": "JavaScript",
-    "module": "Express",
-    "repository": "https://github.com/matheo-1712/API-Serveur",
+    "nom": "HiddenInk",
+    "type": "Application Console",
+    "logo": "/hiddenink.webp",
+    "description": "Application C++ de stéganographie permettant de cacher du texte dans une image, à la manière d’une écriture à l’encre invisible.",
+    "language_prog": "C++, CMake",
     "statut": "0",
+    "repository": "https://github.com/LP-Applications-Web-Angers-2025-2026/HiddenInk",
     "framework": "",
-    "url": "/projet/api-serveur",
-    "date_debut": "24-06-2024",
-    "date_fin": "28-10-2024"
+    "module": "Stéganographie",
+    "url": "/projet/hiddenink",
+    "date_debut": "01/10/2025",
+    "date_fin": "19/01/2026",
+    "pinned": false,
+    "tags": [
+      "C++",
+      "Scolaire",
+      "Groupe"
+    ],
+    "version": "v1.0.0",
+    "isPrerelease": false,
+    "flags": [
+      "non_maintenu"
+    ]
   },
   {
     "id": 7,
-    "nom": "Webisoutre",
-    "type": "Site",
-    "image": "/webisoutre.png",
-    "description": "Site de l'Antre des Loutres, lieu ou nos utilisateurs peuvent admirer leurs statistiques et accomplissements.",
-    "language_prog": "PHP, Blade",
-    "module": "",
-    "repository": "https://github.com/L-Antre-des-Loutres/Oldisoutre",
-    "statut": "0",
-    "framework": "Laravel",
-    "url": "/projet/webisoutre",
-    "date_debut": "09-04-2024",
-    "date_fin": "03-06-2024"
+    "nom": "Otterbots",
+    "type": "Framework Discord",
+    "logo": "/otterbots.png",
+    "description": "Un framework de bot Discord complet et modulaire conçu pour simplifier le développement en intégrant nativement la gestion des événements, commandes, sécurité et création de salons.",
+    "language_prog": "TypeScript",
+    "statut": "1",
+    "repository": "https://github.com/L-Antre-des-Loutres/Otterbots",
+    "framework": "Discord.js",
+    "module": "Node.js",
+    "url": "/projet/otterbots",
+    "date_debut": "10/09/2025",
+    "date_fin": "15/01/2026",
+    "pinned": true,
+    "tags": [
+      "Bot Discord",
+      "Framework",
+      "TypeScript",
+      "L'Antre des Loutres"
+    ],
+    "version": "v1.0.0",
+    "isPrerelease": false,
+    "flags": [
+      "prod"
+    ]
   },
   {
     "id": 8,
-    "nom": "Astroloutre",
-    "type": "Site",
-    "image": "/astroloutre.png",
-    "description": "Site de l'Antre des Loutres, lieu ou nos utilisateurs peuvent admirer leurs statistiques et accomplissements.",
-    "language_prog": "Typescript",
-    "module": "",
-    "repository": "https://github.com/L-Antre-des-Loutres/Reactisoutre",
+    "nom": "Otterly API",
+    "type": "API REST",
+    "logo": "/otterlyapi.png",
+    "description": "Une API permettant la gestion de serveurs de jeu. Elle permet d'afficher l'ensemble des informations les concernant, de les installer, de les démarrer et de les arrêter via une requête.",
+    "language_prog": "TypeScript",
     "statut": "1",
-    "framework": "Astro",
-    "url": "/projet/astroloutre",
-    "date_debut": "05-07-2025",
-    "date_fin": "XX-XX-XXXX"
+    "repository": "https://github.com/L-Antre-des-Loutres/OtterlyApi",
+    "framework": "",
+    "module": "Express",
+    "url": "/projet/otterlyapi",
+    "date_debut": "20/04/2025",
+    "date_fin": "14/01/2026",
+    "pinned": false,
+    "tags": [
+      "API",
+      "Backend",
+      "Personnel"
+    ],
+    "version": "v1.2.0",
+    "isPrerelease": false,
+    "flags": [
+      "prod"
+    ]
+  },
+  {
+    "id": 9,
+    "nom": "OtterMinded",
+    "type": "Application Mobile",
+    "logo": "/otterminded.png",
+    "description": "« Otter Minded », est une application mobile social et anonyme qui à pour but de partager son avis sur différentes questions proposer par les utilisateurs.",
+    "language_prog": "Kotlin",
+    "statut": "0",
+    "repository": "https://github.com/L-Antre-des-Loutres/OtterMinded",
+    "framework": "Android Natif",
+    "module": "",
+    "url": "/projet/otterminded",
+    "date_debut": "21/03/2024",
+    "date_fin": "06/03/2025",
+    "pinned": false,
+    "tags": [
+      "Android",
+      "Kotlin",
+      "Scolaire",
+      "Groupe"
+    ],
+    "version": "v1.0.0",
+    "isPrerelease": false,
+    "flags": [
+      "non_maintenu"
+    ]
+  },
+  {
+    "id": 10,
+    "nom": "Webisoutre",
+    "type": "Site",
+    "logo": "/webisoutre.png",
+    "description": "Site de l'Antre des Loutres, lieu ou nos utilisateurs peuvent admirer leurs statistiques et accomplissements.",
+    "language_prog": "PHP, Blade",
+    "statut": "0",
+    "repository": "https://github.com/L-Antre-des-Loutres/Oldisoutre",
+    "framework": "Laravel",
+    "module": "",
+    "url": "/projet/webisoutre",
+    "date_debut": "09/04/2024",
+    "date_fin": "03/06/2024",
+    "pinned": false,
+    "tags": [
+      "Web",
+      "Laravel",
+      "Scolaire",
+      "Groupe"
+    ],
+    "version": null,
+    "isPrerelease": false,
+    "flags": [
+      "non_maintenu"
+    ]
   }
 ]

@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "ts-node scripts/update-mdx-dates.ts",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
