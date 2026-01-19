@@ -20,7 +20,7 @@ export default function GalleryZoomImage({ images }: GalleryZoomImageProps) {
                     >
                         {/* Wrapper pour l'image */}
                         <div className="relative">
-                            <ZoomImage src={image.src} />
+                            <ZoomImage src={image.src} alt={image.caption} />
                         </div>
 
                         {/* Overlay Caption avec Glassmorphism */}

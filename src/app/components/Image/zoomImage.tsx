@@ -3,13 +3,13 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
-interface ZoomImageProps {
-    src: string;
-}
 
-export default function ZoomImage({ src }: ZoomImageProps) {
+
+export default function ZoomImage({ src, alt = "Projet", className = "w-full h-auto" }: { src: string; alt?: string; className?: string }) {
     const [isOpen, setIsOpen] = useState(false);
     const [isClosing, setIsClosing] = useState(false);
+
+    const [isZoomed, setIsZoomed] = useState(false);
 
     // Bloquer le défilement de la page lorsque le modal est ouvert
     useEffect(() => {
@@ -43,6 +43,7 @@ export default function ZoomImage({ src }: ZoomImageProps) {
         setTimeout(() => {
             setIsOpen(false);
             setIsClosing(false);
+            setIsZoomed(false);
         }, 300); // Durée de l'animation
     };
 
@@ -50,12 +51,12 @@ export default function ZoomImage({ src }: ZoomImageProps) {
         <>
             {/* Image affichée normalement */}
             <div
-                className="w-full h-full cursor-pointer overflow-hidden rounded-lg group"
+                className={`${className} cursor-pointer rounded-lg group overflow-hidden relative`}
                 onClick={() => setIsOpen(true)}
             >
                 <Image
                     src={src}
-                    alt="Projet"
+                    alt={alt}
                     className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500 ease-in-out"
                     width={2000}
                     height={2000}
@@ -65,13 +66,12 @@ export default function ZoomImage({ src }: ZoomImageProps) {
             {/* Modal */}
             {isOpen && (
                 <div
-                    className={`fixed inset-0 z-50 flex items-center justify-center backdrop-blur-md transition-all duration-300 ${isClosing ? "bg-black/0 opacity-0" : "bg-black/90 opacity-100"
-                        }`}
+                    className={`fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md transition-all duration-300 ${isClosing ? "opacity-0" : "opacity-100"} ${isZoomed ? "overflow-auto items-start p-0" : "overflow-hidden p-4"}`}
                     onClick={handleClose}
                 >
                     {/* Bouton Fermer */}
                     <button
-                        className="absolute top-4 right-4 text-white/70 hover:text-white transition-colors p-2 z-50 text-4xl"
+                        className="fixed top-4 right-4 text-white/70 hover:text-white transition-colors p-2 z-[60] text-4xl"
                         onClick={(e) => {
                             e.stopPropagation();
                             handleClose();
@@ -81,17 +81,21 @@ export default function ZoomImage({ src }: ZoomImageProps) {
                     </button>
 
                     <div
-                        className={`relative w-auto h-auto max-w-[98vw] max-h-[98vh] transition-transform duration-300 ${isClosing ? "scale-95 opacity-0" : "scale-100 opacity-100"
-                            }`}
-                        onClick={(e) => e.stopPropagation()}
+                        className={`relative transition-all duration-300 ${isZoomed ? "w-full min-h-full flex justify-center bg-black" : "w-auto h-auto max-w-full max-h-full flex items-center justify-center"}`}
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            setIsZoomed(!isZoomed);
+                        }}
                     >
                         <Image
                             src={src}
-                            alt="Zoomed Projet"
+                            alt={`Zoomed ${alt}`}
                             width={3840} // Augmenté pour haute qualité
                             height={2160}
-                            className="object-contain max-h-[98vh] w-auto h-auto rounded-sm shadow-2xl"
-                            style={{ minWidth: "50vw" }} // Assure une taille minimale décente
+                            className={`transition-all duration-300 rounded-sm shadow-2xl ${isZoomed
+                                    ? "object-contain w-auto h-auto min-w-full cursor-zoom-out"
+                                    : "object-contain max-w-full max-h-[90vh] w-auto h-auto cursor-zoom-in"
+                                }`}
                             priority
                         />
                     </div>
