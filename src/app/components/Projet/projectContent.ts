@@ -4,7 +4,7 @@ import { Project } from "./interface";
 
 const contentDir = path.join(process.cwd(), "src/app/(pages)/projet/content");
 
-import { getLatestRelease } from "@/app/utils/github";
+
 
 export async function getAllProjects(): Promise<Project[]> {
     if (!fs.existsSync(contentDir)) return [];
@@ -74,31 +74,8 @@ export async function getAllProjects(): Promise<Project[]> {
         }
     }
 
-    // Fetch versions in parallel
-    const projectsWithVersions = await Promise.all(projects.map(async (project) => {
-        if (project.repository) {
-            const releaseInfo = await getLatestRelease(project.repository);
-            if (releaseInfo) {
-                // If we have a release date, format it as DD-MM-YYYY to match existing format
-                const releaseDate = new Date(releaseInfo.date);
-                const day = String(releaseDate.getDate()).padStart(2, '0');
-                const month = String(releaseDate.getMonth() + 1).padStart(2, '0');
-                const year = releaseDate.getFullYear();
-                const formattedDate = `${day}/${month}/${year}`;
-
-                return {
-                    ...project,
-                    version: releaseInfo.version,
-                    date_fin: formattedDate, // Overwrite date_fin with release date
-                    isPrerelease: releaseInfo.isPrerelease
-                };
-            }
-        }
-        return project;
-    }));
-
     // Sort by pinned then date_fin descending
-    return projectsWithVersions.sort((a, b) => {
+    return projects.sort((a, b) => {
         // 1. Pinned priority
         if (a.pinned && !b.pinned) return -1;
         if (!a.pinned && b.pinned) return 1;

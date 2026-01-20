@@ -12,6 +12,7 @@ interface Project {
     logo: string;
     description: string;
     date_debut: string; // Format: DD-MM-YYYY
+    date_fin: string; // Format: DD-MM-YYYY
     url: string;
     tags?: string[];
 }
@@ -43,7 +44,7 @@ export default function ProjectRecommendations({ currentSlug, currentType }: Pro
     // 2. Most Recent
     const recentProjects = otherProjects
         .filter(p => p.id !== relatedProject?.id)
-        .sort((a, b) => parseDate(b.date_debut).getTime() - parseDate(a.date_debut).getTime());
+        .sort((a, b) => parseDate(b.date_fin).getTime() - parseDate(a.date_fin).getTime());
     const recentProject = recentProjects[0];
 
     // 3. Random (Client-side only to avoid hydration mismatch)

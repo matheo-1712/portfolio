@@ -20,7 +20,7 @@ export default function ProjetBanner({ projects }: ProjetVignetteProps) {
   return (
     <div className="">
       {projects && projects.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 min-[520px]:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
             <Link key={index} href={`${project.url}`} className="h-full block">
               <div
@@ -54,9 +54,14 @@ export default function ProjetBanner({ projects }: ProjetVignetteProps) {
 
                 {/* Content Section */}
                 <div className="p-8 flex flex-col flex-grow">
-                  <h2 className="text-2xl font-bold mb-3 text-gray-900 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                    {project.nom}
-                  </h2>
+                  <div className="flex justify-between items-start mb-3 gap-2">
+                    <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                      {project.nom}
+                    </h2>
+                    <span className="text-xs text-gray-500 dark:text-neutral-400 border border-gray-200 dark:border-white/10 px-2 py-1 rounded bg-gray-100 dark:bg-white/5 font-medium whitespace-nowrap">
+                      {project.type}
+                    </span>
+                  </div>
 
                   <p className="text-gray-600 dark:text-gray-400 mb-6 line-clamp-3 leading-relaxed">
                     {project.description}

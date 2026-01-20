@@ -32,6 +32,10 @@ async function getLatestRelease(repoUrl: string): Promise<ReleaseInfo | null> {
         const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/releases?per_page=1`, { headers });
 
         if (!response.ok) {
+            console.warn(`[GetLatestRelease] Failed to fetch releases for ${repoUrl}: ${response.status} ${response.statusText}`);
+            if (response.status === 403) {
+                console.warn("Rate limit likely exceeded or token invalid.");
+            }
             return null;
         }
 
@@ -175,6 +179,25 @@ async function updateMdxFiles() {
                 }
 
                 console.log(`Updated ${file} with version ${releaseInfo.version}`);
+            } else {
+                // FALLBACK: No release found, check latest commit
+                console.log(`No release found for ${file}, checking latest commit...`);
+                const commitInfo = await getLatestCommit(repoUrl);
+
+                if (commitInfo) {
+                    const commitDate = new Date(commitInfo.date);
+                    const day = String(commitDate.getDate()).padStart(2, '0');
+                    const month = String(commitDate.getMonth() + 1).padStart(2, '0');
+                    const year = commitDate.getFullYear();
+                    const formattedDate = `${day}/${month}/${year}`;
+
+                    if (newContent.match(/^date_fin:/m)) {
+                        newContent = newContent.replace(/^date_fin:.*$/m, `date_fin: "${formattedDate}"`);
+                    } else {
+                        newContent = newContent.replace(/(^date_debut:.*$)/m, `$1\ndate_fin: "${formattedDate}"`);
+                    }
+                    console.log(`Updated ${file} date_fin to ${formattedDate} (from commit fallback)`);
+                }
             }
         }
 
