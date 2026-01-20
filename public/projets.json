@@ -92,13 +92,13 @@
     "module": "Discord.js",
     "url": "/projet/citlali",
     "date_debut": "05/01/2025",
-    "date_fin": "16/11/2025",
+    "date_fin": "20/01/2026",
     "pinned": false,
     "tags": [
       "Bot Discord",
       "Personnel"
     ],
-    "version": "v3.0.2",
+    "version": "v3.0.3",
     "isPrerelease": false,
     "flags": [
       "prod"
