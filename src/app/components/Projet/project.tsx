@@ -23,7 +23,10 @@ export function Project({ projects }: ProjectProps) {
     // Extract tags on init and sort them with priority
     useEffect(() => {
         const tagSet = new Set<string>();
-        projects.forEach(p => p.tags?.forEach(t => tagSet.add(t)));
+        projects.forEach(p => {
+            if (p.tags) p.tags.forEach(t => tagSet.add(t));
+            if (p.type) tagSet.add(p.type);
+        });
 
         const priorityTags = ["En Production", "En phase de test", "Non Maintenu"];
 
@@ -50,7 +53,9 @@ export function Project({ projects }: ProjectProps) {
         if (!selectedTag) {
             setFilteredProjects(projects);
         } else {
-            setFilteredProjects(projects.filter(p => p.tags?.includes(selectedTag)));
+            setFilteredProjects(projects.filter(p =>
+                p.tags?.includes(selectedTag) || p.type === selectedTag
+            ));
         }
     }, [selectedTag, projects]);
 
