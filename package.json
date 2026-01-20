@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "npm run prebuild && next dev",
-    "prebuild": "ts-node scripts/update-mdx-dates.ts",
+    "prebuild": "ts-node --compiler-options '{\"module\":\"commonjs\"}' scripts/update-mdx-dates.ts",
     "build": "npm run prebuild && next build",
     "start": "next start",
     "lint": "next lint"
