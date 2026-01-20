@@ -26,6 +26,7 @@ export function Project({ projects }: ProjectProps) {
         projects.forEach(p => {
             if (p.tags) p.tags.forEach(t => tagSet.add(t));
             if (p.type) tagSet.add(p.type);
+            if (p.language_prog) tagSet.add(p.language_prog);
         });
 
         const priorityTags = ["En Production", "En phase de test", "Non Maintenu"];
@@ -54,7 +55,7 @@ export function Project({ projects }: ProjectProps) {
             setFilteredProjects(projects);
         } else {
             setFilteredProjects(projects.filter(p =>
-                p.tags?.includes(selectedTag) || p.type === selectedTag
+                p.tags?.includes(selectedTag) || p.type === selectedTag || p.language_prog === selectedTag
             ));
         }
     }, [selectedTag, projects]);

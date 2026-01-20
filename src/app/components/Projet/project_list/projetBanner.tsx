@@ -77,7 +77,18 @@ export default function ProjetBanner({ projects }: ProjetVignetteProps) {
                         {project.isPrerelease ? "🚧 Beta" : "🚀"} {project.version}
                       </span>
                     )}
-                    {project.tags && project.tags.length > 0 ? (
+
+                    {/* Language Badge */}
+                    {project.language_prog && (
+                      <span
+                        onClick={(e) => handleTagClick(e, project.language_prog)}
+                        className="px-3 py-1 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 font-bold text-xs border border-indigo-200 dark:border-indigo-800 cursor-pointer hover:scale-105 transition-transform shadow-sm"
+                      >
+                        {project.language_prog}
+                      </span>
+                    )}
+
+                    {project.tags && project.tags.length > 0 && (
                       project.tags
                         .filter(tag => tag !== project.type) // Remove redundant tag
                         .map((tag, i) => {
@@ -114,15 +125,6 @@ export default function ProjetBanner({ projects }: ProjetVignetteProps) {
                             </span>
                           );
                         })
-                    ) : (
-                      // Fallback to legacy display if tags not present (though they are guaranteed by Project component now)
-                      <>
-                        {project.language_prog && (
-                          <span className="px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 font-medium text-xs">
-                            {project.language_prog}
-                          </span>
-                        )}
-                      </>
                     )}
                   </div>
 

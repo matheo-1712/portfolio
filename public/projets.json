@@ -15,9 +15,8 @@
     "date_fin": "28/10/2024",
     "pinned": false,
     "tags": [
-      "API",
       "Backend",
-      "Personnel"
+      "L'Antre des Loutres"
     ],
     "version": null,
     "isPrerelease": false,
@@ -42,7 +41,6 @@
     "pinned": false,
     "tags": [
       "Bot Discord",
-      "TypeScript",
       "L'Antre des Loutres"
     ],
     "version": "v3.1.1",
@@ -57,7 +55,7 @@
     "type": "Site web",
     "logo": "/antredesloutres.png",
     "description": "Astroloutre est une application web de type site static permet l'affichage des informations des serveurs des statistiques des joueurs sur nos serveurs de Jeu.",
-    "language_prog": "Typescript",
+    "language_prog": "TypeScript",
     "statut": "1",
     "repository": "https://github.com/L-Antre-des-Loutres/Astroloutre",
     "framework": "Astro",
@@ -67,10 +65,8 @@
     "date_fin": "06/01/2026",
     "pinned": true,
     "tags": [
-      "Web",
       "Astro",
       "L'Antre des Loutres",
-      "Personnel",
       "Groupe"
     ],
     "version": "v1.3.4",
@@ -85,7 +81,7 @@
     "type": "Bot Discord",
     "logo": "/citlali.png",
     "description": "Un bot Discord spécialisé pour le jeu Genshin Impact",
-    "language_prog": "TypeScript / JavaScript",
+    "language_prog": "TypeScript",
     "statut": "1",
     "repository": "https://github.com/matheo-1712/Citlali",
     "framework": "Otterbots",
@@ -120,9 +116,7 @@
     "date_fin": "19/01/2026",
     "pinned": false,
     "tags": [
-      "API",
       "Backend",
-      "TypeScript",
       "Personnel"
     ],
     "version": "v1.0.0",
@@ -137,7 +131,7 @@
     "type": "Application Console",
     "logo": "/hiddenink.webp",
     "description": "Application C++ de stéganographie permettant de cacher du texte dans une image, à la manière d’une écriture à l’encre invisible.",
-    "language_prog": "C++, CMake",
+    "language_prog": "C++",
     "statut": "0",
     "repository": "https://github.com/LP-Applications-Web-Angers-2025-2026/HiddenInk",
     "framework": "",
@@ -160,7 +154,7 @@
   {
     "id": 7,
     "nom": "Otterbots",
-    "type": "Framework Discord",
+    "type": "Framework",
     "logo": "/otterbots.png",
     "description": "Un framework de bot Discord complet et modulaire conçu pour simplifier le développement en intégrant nativement la gestion des événements, commandes, sécurité et création de salons.",
     "language_prog": "TypeScript",
@@ -174,8 +168,6 @@
     "pinned": true,
     "tags": [
       "Bot Discord",
-      "Framework",
-      "TypeScript",
       "L'Antre des Loutres"
     ],
     "version": "v1.0.0",
@@ -200,9 +192,8 @@
     "date_fin": "14/01/2026",
     "pinned": false,
     "tags": [
-      "API",
       "Backend",
-      "Personnel"
+      "L'Antre des Loutres"
     ],
     "version": "v1.2.0",
     "isPrerelease": false,
@@ -240,10 +231,10 @@
   {
     "id": 10,
     "nom": "Webisoutre",
-    "type": "Site",
+    "type": "Site web",
     "logo": "/webisoutre.png",
     "description": "Site de l'Antre des Loutres, lieu ou nos utilisateurs peuvent admirer leurs statistiques et accomplissements.",
-    "language_prog": "PHP, Blade",
+    "language_prog": "PHP",
     "statut": "0",
     "repository": "https://github.com/L-Antre-des-Loutres/Oldisoutre",
     "framework": "Laravel",
@@ -253,7 +244,6 @@
     "date_fin": "03/06/2024",
     "pinned": false,
     "tags": [
-      "Web",
       "Laravel",
       "Scolaire",
       "Groupe"
