@@ -16,8 +16,7 @@ export default function AboutMe() {
                         Bonjour, je suis Pérodeau Mathéo 👋
                     </h1>
                     <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed max-w-4xl mb-6">
-                        Développeur passionné, créateur de solutions numériques et explorateur de technologies.
-                        Basé en France 🇫🇷.
+                        Développeur en Licence Professionnelle : Applications Web, mon objectif est de faire un Master en informatique !
                     </p>
 
                     {/* Integrated Soft Skills */}
@@ -27,6 +26,7 @@ export default function AboutMe() {
                         <span className="px-3 py-1 rounded-full bg-rose-100 dark:bg-rose-900/30 text-rose-700 dark:text-rose-300 font-medium text-sm">Autonomie</span>
                         <span className="px-3 py-1 rounded-full bg-cyan-100 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300 font-medium text-sm">Curiosité</span>
                         <span className="px-3 py-1 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 font-medium text-sm">Adaptabilité</span>
+                        <span className="px-3 py-1 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 font-medium text-sm">Bonne humeur !</span>
                     </div>
                 </div>
 

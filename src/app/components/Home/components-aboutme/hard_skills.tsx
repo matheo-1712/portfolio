@@ -15,20 +15,13 @@ export default function HardSkills() {
 
         // Frameworks & Libraries
         { src: "/img/logo/react.png", alt: "React", name: "React" },
-        { src: "/svg/next.svg", alt: "NextJS", name: "NextJS" },
         { src: "/img/logo/laravel.png", alt: "Laravel", name: "Laravel" },
         { src: "/img/logo/tailwind.png", alt: "Tailwind", name: "Tailwind" },
 
         // Outils & Systèmes
         { src: "/img/logo/docker.png", alt: "DOCKER", name: "Docker" },
         { src: "/img/logo/linux.png", alt: "LINUX", name: "Linux" },
-        { src: "/img/logo/virtualbox.png", alt: "VM", name: "VM" },
-        { src: "/img/logo/lamp.png", alt: "LAMP", name: "LAMP" },
         { src: "/img/logo/github.png", alt: "Github", name: "Github", dark: true },
-
-        // Méthodologies & Concepts
-        { src: "/svg/scrum.svg", alt: "SCRUM", name: "Agile" },
-        { src: "/img/logo/code.png", alt: "POO", name: "POO", dark: true },
     ];
 
     // Duplicating the array to create the seamless loop effect

@@ -47,7 +47,7 @@ export default function Navbar() {
 
       {/* CV Button */}
       <Link
-        href="/cv.pdf"
+        href="/cv_perodeau_matheo.pdf"
         target="_blank"
         rel="noopener noreferrer"
         className="flex items-center justify-center p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors group"
