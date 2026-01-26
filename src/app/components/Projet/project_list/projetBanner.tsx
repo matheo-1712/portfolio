@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { ProjetVignetteProps } from "../interface";
 import React from "react";
+import { languageColors } from "../languageConfig";
 
 const defaultImage = "/citlAI.png";
 
@@ -82,7 +83,10 @@ export default function ProjetBanner({ projects }: ProjetVignetteProps) {
                     {project.language_prog && (
                       <span
                         onClick={(e) => handleTagClick(e, project.language_prog)}
-                        className="px-3 py-1 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 font-bold text-xs border border-indigo-200 dark:border-indigo-800 cursor-pointer hover:scale-105 transition-transform shadow-sm"
+                        className={`px-3 py-1 rounded-full font-bold text-xs border cursor-pointer hover:scale-105 transition-transform shadow-sm ${(languageColors[project.language_prog] || languageColors["default"]).bg
+                          } ${(languageColors[project.language_prog] || languageColors["default"]).text
+                          } ${(languageColors[project.language_prog] || languageColors["default"]).border
+                          }`}
                       >
                         {project.language_prog}
                       </span>
