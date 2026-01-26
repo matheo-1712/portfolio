@@ -62,14 +62,14 @@
     "module": "",
     "url": "/projet/astroloutre",
     "date_debut": "10/01/2024",
-    "date_fin": "06/01/2026",
+    "date_fin": "25/01/2026",
     "pinned": true,
     "tags": [
       "Astro",
       "L'Antre des Loutres",
       "Groupe"
     ],
-    "version": "v1.3.4",
+    "version": "v1.3.5",
     "isPrerelease": false,
     "flags": [
       "prod"
