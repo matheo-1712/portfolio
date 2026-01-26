@@ -39,29 +39,44 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         const { default: Content, frontmatter } = mdxModule;
 
         return (
-            <div className="items-center justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 py-12">
                 {/* 1. Project Summary Card */}
                 {frontmatter && <ProjetSummary {...frontmatter} version={frontmatter.version} isPrerelease={frontmatter.isPrerelease} flags={frontmatter.flags} />}
 
-                <div id="content" className="mt-12 animate-fade-in-up">
+                <div className="mt-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
+                    {/* Main Content Column - Centered and Wider */}
+                    <div className="lg:col-span-12 space-y-8 animate-fade-in-up">
 
-                    {/* 2. Keywords Pills */}
-                    {frontmatter?.tags && <Keywords keywords={frontmatter.tags} />}
+                        {/* Article Content */}
+                        <div className="glass-panel rounded-[2.5rem] p-8 md:p-12">
+                            {/* Keywords */}
+                            {frontmatter?.tags && (
+                                <div className="mb-10 pb-8 border-b border-gray-100 dark:border-zinc-800">
+                                    <Keywords keywords={frontmatter.tags} />
+                                </div>
+                            )}
 
-                    {/* 3. Main MDX Content (Description, Features, etc.) */}
-                    {/* The MDX file now only contains Markdown content and specific visual components like ZoomImage */}
-                    <div className="prose dark:prose-invert max-w-none">
-                        <Content />
+                            {/* Markdown Content */}
+                            <div className="prose prose-lg dark:prose-invert max-w-none">
+                                <Content />
+                            </div>
+                        </div>
+
+                        {/* Navigation / Recommendations */}
+                        {frontmatter && (
+                            <ProjectRecommendations
+                                currentSlug={slug}
+                                currentType={frontmatter.type}
+                            />
+                        )}
                     </div>
 
-                    {/* 4. Recommendations */}
-                    {frontmatter && (
-                        <ProjectRecommendations
-                            currentSlug={slug}
-                            currentType={frontmatter.type}
-                        />
-                    )}
-
+                    {/* Sidebar Column (Optional for future table of contents or extra info, sticking with simple layout for now but prepared grid) 
+                         For now, making the content full width or ensuring centered focus. 
+                         Actually, let's keep it simple and centered as per original but better styled.
+                         Reverting to single column for better readability of large code blocks, 
+                         but keeping the glass panel.
+                     */}
                 </div>
             </div>
         );

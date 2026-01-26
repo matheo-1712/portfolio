@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 
 
@@ -10,6 +11,12 @@ export default function ZoomImage({ src, alt = "Projet", className = "w-full h-a
     const [isClosing, setIsClosing] = useState(false);
 
     const [isZoomed, setIsZoomed] = useState(false);
+
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     // Bloquer le défilement de la page lorsque le modal est ouvert
     useEffect(() => {
@@ -61,17 +68,31 @@ export default function ZoomImage({ src, alt = "Projet", className = "w-full h-a
                     width={2000}
                     height={2000}
                 />
+
+                {/* Overlay Hover */}
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center pointer-events-none">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-10 w-10 text-white opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 ease-out drop-shadow-lg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                    >
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" />
+                    </svg>
+                </div>
             </div>
 
-            {/* Modal */}
-            {isOpen && (
+            {/* Modal via Portal */}
+            {isOpen && mounted && createPortal(
                 <div
-                    className={`fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md transition-all duration-300 ${isClosing ? "opacity-0" : "opacity-100"} ${isZoomed ? "overflow-auto items-start p-0" : "overflow-hidden p-4"}`}
+                    className={`fixed inset-0 z-[9999] flex items-center justify-center bg-black/95 backdrop-blur-md transition-all duration-300 ${isClosing ? "opacity-0" : "opacity-100"} ${isZoomed ? "overflow-auto items-start p-0" : "overflow-hidden p-4"}`}
                     onClick={handleClose}
                 >
                     {/* Bouton Fermer */}
                     <button
-                        className="fixed top-4 right-4 text-white/70 hover:text-white transition-colors p-2 z-[60] text-4xl"
+                        className="fixed top-4 right-4 text-white/70 hover:text-white transition-colors p-2 z-[10000] text-4xl"
                         onClick={(e) => {
                             e.stopPropagation();
                             handleClose();
@@ -92,14 +113,16 @@ export default function ZoomImage({ src, alt = "Projet", className = "w-full h-a
                             alt={`Zoomed ${alt}`}
                             width={3840} // Augmenté pour haute qualité
                             height={2160}
-                            className={`transition-all duration-300 rounded-sm shadow-2xl ${isZoomed
-                                    ? "object-contain w-auto h-auto min-w-full cursor-zoom-out"
-                                    : "object-contain max-w-full max-h-[90vh] w-auto h-auto cursor-zoom-in"
+                            className={`transition-all duration-300 rounded-sm shadow-2xl !m-0 !border-0 ${isZoomed
+                                ? "object-contain w-auto h-auto min-w-full cursor-zoom-out"
+                                : "object-contain max-w-full max-h-[90vh] w-auto h-auto cursor-zoom-in"
                                 }`}
                             priority
+                            unoptimized={true} // Avoid potential conflicts with optimized images in modals sometimes
                         />
                     </div>
-                </div>
+                </div>,
+                document.body
             )}
         </>
     );

@@ -20,45 +20,42 @@ date_fin: "15/01/2026"
 import TitleProject from "@/app/components/Projet/project_informations/title_project";
 import OtterbotsDemo from "@/app/components/Discord/otterbots/OtterbotsDemo";
 
-<TitleProject title="Un Framework pour les dominer tous" />
+<TitleProject title="Introduction" />
 
 **Otterbots** est un framework développé par **L'Antre des Loutres** pour standardiser et accélérer le développement de nos bots Discord.
-Face à la répétition du code boilerplate pour chaque nouveau bot (gestion des événements, commandes, connexion à l'API...), nous avons décidé de créer une **surcouche robuste** au-dessus de Discord.js.
+Face à la répétition du code pour chaque nouveau bot (gestion des événements, commandes, connexion à l'API...), nous avons décidé de créer une **surcouche** au-dessus de Discord.js.
 
-C'est aujourd'hui le cœur technologique qui propulse l'ensemble de nos bots, garantissant maintenabilité, sécurité et performance.
+C'est aujourd'hui ce framework qui propulse l'ensemble de nos bots, garantissant maintenabilité, sécurité et performance.
 
----
-
-## ✨ Fonctionnalités Clés
+<TitleProject title="Fonctionnalités clés" />
 
 Le framework encapsule des briques logiques complexes pour offrir une expérience développeur fluide :
 
-### 🛡️ Otterguard (Sécurité)
-Un module de défense actif pour protéger les serveurs :
+## [Otterguard](https://github.com/L-Antre-des-Loutres/Otterbots/blob/develop/src/otterbots/docs/OTTERGUARD.md) (Modération)
+Un module de modération qui a comme fonctionnalités :
 - **Anti-spam / Anti-flood** intelligent.
 - **Protection anti-scam** : détection de liens malveillants.
 - **Filtrage de contenu** via liste blanche de domaines.
 
-### 🦦 Otterlogs (Journalisation)
+## [Otterlogs](https://github.com/L-Antre-des-Loutres/Otterbots/blob/develop/src/otterbots/docs/OTTERLOGS.md) (Journalisation)
 Un système de logs puissant et granulaire :
 - **7 niveaux de logs** (du `debug` au `silentlog`).
 - **Webhooks Discord intégrés** pour renvoyer les erreurs critiques dans un salon staff.
 - Formatage coloré dans la console pour un débogage rapide.
+- Utilisation d'un module de logs spécialisé : [pino](https://github.com/pinojs/pino).
 
-### 🌐 OtterlyAPI (Gestion API)
+## [OtterlyAPI](https://github.com/L-Antre-des-Loutres/Otterbots/blob/develop/src/otterbots/docs/OTTERLYAPI.md) (Gestion API)
 Un wrapper pour centraliser les appels API :
 - Simplification des méthodes `GET` / `POST`.
 - Gestion des headers et de l'authentification automatique.
 - Mise en cache locale des configurations distantes.
 
-### 💾 Ottercache (Persistance)
+## [Ottercache](https://github.com/L-Antre-des-Loutres/Otterbots/blob/develop/src/otterbots/docs/OTTERCACHE.md) (Persistance)
 Un système de cache clé-valeur simple et efficace :
 - Persistance automatique en JSON local.
 - API intuitive type `Map` pour stocker des données temporaires ou durables sans base de données lourde.
 
----
-
-## 🏗️ Architecture
+## [Architecture](https://github.com/L-Antre-des-Loutres/Otterbots/blob/develop/src/otterbots/docs/OTTERBOTS_CLASS.md)
 
 Otterbots impose une structure claire pour empêcher le "code spaghetti" :
 
@@ -68,16 +65,15 @@ Otterbots impose une structure claire pour empêcher le "code spaghetti" :
 
 > "L'objectif était de ne plus jamais avoir à écrire `client.on('ready', ...)` à la main, mais de se concentrer sur la logique métier du bot."
 
----
 
 
-## 💬 En Action
+## En Action
 
 Voici un exemple d'interaction avec un bot propulsé par Otterbots :
 
 <OtterbotsDemo />
 
-## 🚀 Impact
+## Impact
 
-Grâce à Otterbots, le temps de déploiement d'un nouveau bot pour un événement ou un besoin spécifique a été divisé par **trois**.
+Grâce à Otterbots, le déploiement et la maintenance de nos bots Discord sont grandement facilités.
 Le framework assure également une homogénéité du code à travers tous les projets de l'organisation **L'Antre des Loutres**.
