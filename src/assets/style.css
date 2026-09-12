@@ -252,48 +252,95 @@ h1, h2, h3 { line-height: 1.25; font-weight: 600; margin: 0; letter-spacing: -0.
 
 /* --- Mise en page de l'accueil ------------------------------------------- */
 
-/* Sur téléphone, la grille n'existe pas : l'ordre du HTML suffit, et il est
-   déjà le bon — identité, projets, notes, puis compétences et parcours. */
-.layout { max-width: var(--measure-large); }
+/* Téléphone : pas de grille. `display: contents` dissout le panneau de gauche
+   pour que ses sections puissent être réordonnées une à une — l'identité en
+   tête, les projets juste après, le parcours à la fin. */
+@media (max-width: 59.99rem) {
+  .layout { display: flex; flex-direction: column; }
+  .pane-side { display: contents; }
+  .masthead      { order: 1; }
+  .pane-main     { order: 2; }
+  #competences   { order: 3; }
+  #experience    { order: 4; }
+  #formation     { order: 5; }
+  footer.wrap    { order: 6; }
+  .pane { max-width: var(--measure); margin: 0 auto; padding: 0 1.1rem; width: 100%; }
+}
 
 @media (min-width: 60rem) {
   .layout {
     display: grid;
-    grid-template-columns: 22rem minmax(0, 1fr);
+    grid-template-columns: 23rem minmax(0, 1fr);
     column-gap: 3.5rem;
     align-items: start;
+    max-width: var(--measure-large);
+    margin: 0 auto;
+    padding: 0 2rem;
   }
 
-  /* Le placement explicite permet de garder l'ordre du HTML pensé pour le
-     téléphone tout en remontant les projets à droite sur grand écran. */
-  .masthead  { grid-column: 1; grid-row: 1; }
-  .col-side  { grid-column: 1; grid-row: 2; }
-  .col-main  { grid-column: 2; grid-row: 1 / span 2; }
-
-  /* La colonne de droite démarre à hauteur du nom, pas en dessous. */
-  .col-main > section:first-child { margin-top: 3.5rem; }
-
-  /* Dans une colonne de 22rem, quatre chiffres sur une rangée se chevauchent :
-     deux par deux, ils restent lisibles. */
-  .figures {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.85rem 1rem;
-  }
+  .pane-main > section:first-child { margin-top: 3.5rem; }
+  .pane-side > section:first-child { margin-top: 3rem; }
 
   /* Colonne étroite : les grilles à deux colonnes n'y tiennent pas. */
-  .col-side .entry,
-  .col-side .skill-row { grid-template-columns: 1fr; gap: 0.1rem; }
-  .col-side .entry .when,
-  .col-side .skill-row dt { padding-top: 0; margin-bottom: 0.15rem; }
-  .col-side .entry .note { grid-column: 1; }
+  .figures { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem 1rem; }
   .facts.about { grid-template-columns: 1fr; gap: 0.7rem; }
+  .pane-side .entry,
+  .pane-side .skill-row { grid-template-columns: 1fr; gap: 0.1rem; }
+  .pane-side .entry .when,
+  .pane-side .skill-row dt { padding-top: 0; margin-bottom: 0.15rem; }
+  .pane-side .entry .note { grid-column: 1; }
+  .pane-side footer.wrap { padding-left: 0; padding-right: 0; max-width: none; }
+
+  /* Dans une colonne de 23rem, le nom se coupait en deux lignes : la taille
+     fluide n'a pas conscience de la largeur réelle du panneau. */
+  .pane-side .masthead h1 { font-size: 1.7rem; }
+  .pane-side .identity { gap: 0.9rem; }
+  .pane-side .avatar { width: 64px; height: 64px; }
+}
+
+/* Écran large et assez haut : chaque panneau défile pour lui-même, ce qui
+   permet de parcourir les projets sans perdre le profil de vue. En dessous de
+   ces seuils on garde un défilement de page classique, plus sûr. */
+@media (min-width: 75rem) and (min-height: 40rem) {
+  html, body { height: 100%; overflow: hidden; }
+
+  .layout {
+    height: 100dvh;
+    max-width: none;
+    padding: 0;
+    column-gap: 0;
+    grid-template-columns: 26rem minmax(0, 1fr);
+  }
+
+  .pane {
+    height: 100%;
+    overflow-y: auto;
+    /* Le défilement s'arrête au bord du panneau au lieu d'entraîner la page. */
+    overscroll-behavior: contain;
+    padding: 0 2.5rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--rule-strong) transparent;
+  }
+
+  .pane-side { border-right: 1px solid var(--rule); }
+  .pane-main { padding-right: 3rem; }
+
+  /* Le contenu garde une mesure de lecture confortable même sur très grand
+     écran : la largeur gagnée sert aux colonnes, pas aux lignes de texte. */
+  .pane-main > section { max-width: 64rem; }
+
+  .pane::-webkit-scrollbar { width: 10px; }
+  .pane::-webkit-scrollbar-thumb {
+    background: var(--rule-strong);
+    border-radius: 5px;
+    border: 3px solid var(--bg);
+  }
+  .pane::-webkit-scrollbar-track { background: transparent; }
 }
 
 /* --- Sections ----------------------------------------------------------- */
 
 section { margin-top: 3.25rem; }
-.col-side > section:first-child { margin-top: 3rem; }
 
 .section-head {
   display: flex;
@@ -931,6 +978,18 @@ footer .spacer { margin-left: auto; }
     --faint: #555; --rule: #ccc; --rule-strong: #999; --accent: #000;
   }
   .actions, .filters, #theme-toggle, .skip { display: none !important; }
+
+  /* Les panneaux à défilement propre n'ont pas de sens sur papier : sans cela
+     l'impression s'arrêterait à la hauteur d'un écran. */
+  html, body { height: auto !important; overflow: visible !important; }
+  .layout { display: block !important; max-width: none !important; }
+  .pane {
+    height: auto !important;
+    overflow: visible !important;
+    max-width: none !important;
+    padding: 0 !important;
+    border: 0 !important;
+  }
   .thumb, .avatar, .techbar .bar, .tech i {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;

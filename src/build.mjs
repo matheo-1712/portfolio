@@ -318,27 +318,28 @@ function footer(profile, generated) {
 
 function indexPage(profile, data, detailSlugs, notes, assetVersion) {
   const seo = profile.seo || {};
-  // Deux colonnes : le profil a gauche, les projets a droite. Sans cela, tout
-  // ce qui n'est pas la liste de projets se retrouve a plus de trois mille
-  // pixels du haut de page, donc invisible pour qui ne fait pas defiler.
-  // L'ordre du HTML reste celui du telephone — identite, projets, puis le
-  // reste — et la grille se charge du placement sur grand ecran.
+  // Deux panneaux : le profil a gauche, les projets a droite, chacun avec son
+  // propre defilement sur grand ecran. Le panneau de gauche regroupe donc tout
+  // le profil — en-tete comprise — pour defiler d'un bloc.
+  //
+  // Sur telephone la grille disparait et `display: contents` rend les enfants
+  // du panneau reordonnables : l'identite reste en tete, les projets suivent
+  // immediatement, le parcours ferme la marche.
   const body = `
-<div class="wrap layout">
-  ${masthead(profile, data.projects)}
-
-  <main id="main" class="col-main">
-    ${projectsSection(profile, data.projects, detailSlugs)}
-    ${notesSection(notes)}
-  </main>
-
-  <aside class="col-side">
+<div class="layout">
+  <aside class="pane pane-side">
+    ${masthead(profile, data.projects)}
     ${skillsSection(profile, data.projects)}
     ${experienceSection(profile)}
     ${educationSection(profile)}
+    ${footer(profile, data.generated)}
   </aside>
-</div>
-${footer(profile, data.generated)}`;
+
+  <main id="main" class="pane pane-main">
+    ${projectsSection(profile, data.projects, detailSlugs)}
+    ${notesSection(notes)}
+  </main>
+</div>`;
 
   return layout({
     title: seo.title || profile.identity?.name || "Portfolio",
