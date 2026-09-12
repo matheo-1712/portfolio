@@ -1,6 +1,6 @@
 {
-  "generated": "2026-09-12T16:55:40.435Z",
-  "count": 13,
+  "generated": "2026-09-12T17:04:59.160Z",
+  "count": 14,
   "projects": [
     {
       "key": "l-antre-des-loutres/astroloutre",
@@ -26,6 +26,12 @@
         "demo": "https://antredesloutres.fr"
       },
       "stars": 1,
+      "contribution": {
+        "commits": 357,
+        "total": 568,
+        "rank": 1,
+        "contributors": 2
+      },
       "org": "L-Antre-des-Loutres",
       "hidden": false,
       "sources": [
@@ -33,7 +39,7 @@
       ],
       "service": {
         "up": true,
-        "uncertain": false,
+        "uncertain": true,
         "lastSeenUp": "2026-09-12",
         "urls": {
           "https://antredesloutres.fr": true
@@ -62,6 +68,12 @@
         "repo": "https://github.com/L-Antre-des-Loutres/Mateloutre"
       },
       "stars": 1,
+      "contribution": {
+        "commits": 75,
+        "total": 88,
+        "rank": 1,
+        "contributors": 2
+      },
       "org": "L-Antre-des-Loutres",
       "hidden": false,
       "sources": [
@@ -90,6 +102,12 @@
         "repo": "https://github.com/L-Antre-des-Loutres/Otterbots"
       },
       "stars": 2,
+      "contribution": {
+        "commits": 124,
+        "total": 126,
+        "rank": 1,
+        "contributors": 2
+      },
       "org": "L-Antre-des-Loutres",
       "hidden": false,
       "sources": [
@@ -115,7 +133,7 @@
         "TypeScript"
       ],
       "status": "prod",
-      "started": "2024-05-28T15:58:36Z",
+      "started": "2024-02-10T15:55:48Z",
       "ended": "",
       "updated": "2026-06-22T14:32:10Z",
       "featured": false,
@@ -126,40 +144,25 @@
         "repo": "https://github.com/L-Antre-des-Loutres/Arisoutre",
         "demo": "https://discord.gg/k4ZBFVdntp"
       },
-      "stars": 1,
-      "org": "L-Antre-des-Loutres",
-      "hidden": false,
-      "sources": [
-        "github"
-      ]
-    },
-    {
-      "key": "l-antre-des-loutres/mineotter",
-      "slug": "mineotter",
-      "title": "Mineotter",
-      "summary": "Mineotter est un bot conçu pour l'Antre des Loutres dans le but de permettre aux utilisateurs de notre Discord d'interagir avec nos serveurs Minecraft.",
-      "body": "",
-      "type": "Bot Discord",
-      "stack": [
-        "TypeScript"
-      ],
-      "status": "prod",
-      "started": "2024-06-25T14:27:03Z",
-      "ended": "",
-      "updated": "2026-06-03T07:46:27Z",
-      "featured": false,
-      "version": "v2.0.1",
-      "prerelease": false,
-      "image": null,
-      "links": {
-        "repo": "https://github.com/L-Antre-des-Loutres/Mineotter",
-        "demo": "https://discord.gg/k4ZBFVdntp"
+      "stars": 2,
+      "contribution": {
+        "commits": 128,
+        "total": 128,
+        "rank": 1,
+        "contributors": 1
       },
-      "stars": 6,
       "org": "L-Antre-des-Loutres",
       "hidden": false,
       "sources": [
         "github"
+      ],
+      "aliases": [
+        {
+          "key": "matheo-1712/arisoutrev2",
+          "title": "ArisoutreV2",
+          "repo": "https://github.com/matheo-1712/ArisoutreV2",
+          "status": "archived"
+        }
       ]
     },
     {
@@ -186,6 +189,12 @@
         "demo": "https://modrinth.com/mod/cobblemon-trainers-rerebleue"
       },
       "stars": 1,
+      "contribution": {
+        "commits": 164,
+        "total": 164,
+        "rank": 1,
+        "contributors": 1
+      },
       "org": null,
       "hidden": false,
       "sources": [
@@ -214,6 +223,12 @@
         "repo": "https://github.com/matheo-1712/OAPI"
       },
       "stars": 0,
+      "contribution": {
+        "commits": 91,
+        "total": 91,
+        "rank": 1,
+        "contributors": 1
+      },
       "org": null,
       "hidden": false,
       "sources": [
@@ -242,6 +257,12 @@
         "repo": "https://github.com/L-Antre-des-Loutres/Ottergames-plugin"
       },
       "stars": 1,
+      "contribution": {
+        "commits": 73,
+        "total": 128,
+        "rank": 1,
+        "contributors": 2
+      },
       "org": "L-Antre-des-Loutres",
       "hidden": false,
       "sources": [
@@ -270,6 +291,12 @@
         "repo": "https://github.com/matheo-1712/RustSSH"
       },
       "stars": 0,
+      "contribution": {
+        "commits": 7,
+        "total": 7,
+        "rank": 1,
+        "contributors": 1
+      },
       "org": null,
       "hidden": false,
       "sources": [
@@ -299,6 +326,12 @@
         "demo": "https://discord.com/oauth2/authorize?client_id=1300834433221267549&permissions=0&integration_type=0&scope=bot"
       },
       "stars": 1,
+      "contribution": {
+        "commits": 81,
+        "total": 81,
+        "rank": 1,
+        "contributors": 1
+      },
       "org": null,
       "hidden": false,
       "sources": [
@@ -327,6 +360,12 @@
         "repo": "https://github.com/matheo-1712/CitlAPI"
       },
       "stars": 1,
+      "contribution": {
+        "commits": 60,
+        "total": 60,
+        "rank": 1,
+        "contributors": 1
+      },
       "org": null,
       "hidden": false,
       "sources": [
@@ -344,7 +383,7 @@
         "TypeScript"
       ],
       "status": "archived",
-      "started": "2025-08-01T17:59:48Z",
+      "started": "2024-06-24T16:08:51Z",
       "ended": "2026-01-14T09:00:33Z",
       "updated": "2026-01-14T09:00:33Z",
       "featured": false,
@@ -356,7 +395,65 @@
         "demo": "https://api.antredesloutres.fr/"
       },
       "stars": 2,
+      "contribution": {
+        "commits": 158,
+        "total": 159,
+        "rank": 1,
+        "contributors": 2
+      },
       "org": "L-Antre-des-Loutres",
+      "hidden": false,
+      "sources": [
+        "github"
+      ],
+      "aliases": [
+        {
+          "key": "matheo-1712/api-serveur",
+          "title": "API Serveur",
+          "repo": "https://github.com/matheo-1712/API-Serveur",
+          "status": "archived"
+        }
+      ],
+      "service": {
+        "up": false,
+        "uncertain": false,
+        "lastSeenUp": null,
+        "urls": {
+          "https://api.antredesloutres.fr/": false
+        }
+      }
+    },
+    {
+      "key": "matheo-1712/ticket-tool",
+      "slug": "ticket-tool",
+      "title": "Ticket Tool",
+      "summary": "TicketTool est une application ASP.NET MVC Core (C#) destinée à gérer les demandes des utilisateurs en créant des tickets de support.",
+      "body": "**Ticket-Tool** est une application web développée en **ASP.NET Core MVC** permettant de gérer efficacement des tickets de support. Elle permet aux utilisateurs de créer, modifier, visualiser et suivre l’état de leurs demandes. --- ## Fonctionnalités - Création de tickets via un formulaire simple\n- Modification des tickets existants\n- Changement de statut du ticket: `Non traité`, `En cours`, `Résolu`\n- Interface utilisateur simple et efficace **Bootstrap 5**\n- API REST pour interaction front/back --- ## Aperçu de l'application | Page d'accueil | Formulaire d'édition |\n|----------------|----------------------|\n| Affichage de tous les tickets avec leur statut coloré | Modification des champs et du statut | ---",
+      "type": "",
+      "stack": [
+        "HTML",
+        "C#"
+      ],
+      "status": "archived",
+      "started": "2025-04-06T14:00:25Z",
+      "ended": "2025-04-06T22:02:29Z",
+      "updated": "2025-04-06T22:02:29Z",
+      "featured": false,
+      "version": "",
+      "prerelease": false,
+      "image": null,
+      "links": {
+        "repo": "https://github.com/matheo-1712/Ticket-Tool",
+        "demo": "https://support.perodeau-matheo.xyz"
+      },
+      "stars": 0,
+      "contribution": {
+        "commits": 17,
+        "total": 17,
+        "rank": 1,
+        "contributors": 1
+      },
+      "org": null,
       "hidden": false,
       "sources": [
         "github"
@@ -366,7 +463,7 @@
         "uncertain": false,
         "lastSeenUp": null,
         "urls": {
-          "https://api.antredesloutres.fr/": false
+          "https://support.perodeau-matheo.xyz": false
         }
       }
     },
@@ -392,7 +489,47 @@
         "repo": "https://github.com/L-Antre-des-Loutres/OtterMinded"
       },
       "stars": 1,
+      "contribution": {
+        "commits": 62,
+        "total": 150,
+        "rank": 1,
+        "contributors": 3
+      },
       "org": "L-Antre-des-Loutres",
+      "hidden": false,
+      "sources": [
+        "github"
+      ]
+    },
+    {
+      "key": "matheo-1712/furina",
+      "slug": "furina",
+      "title": "Furina",
+      "summary": "Un bot Discord en JavaScript spécialisé dans le jeu Genshin Impact.",
+      "body": "Furina est un bot Discord spécialisé pour le jeu **Genshin Impact**. ## Fonctionnalités Le bot Furina permet de: - Afficher les builds conseillés pour les personnages\n- Montrer les événements à venir dans le jeu (fonctionnalité en cours de développement)\n- Gérer les UID des utilisateurs\n- Proposer de nombreuses autres fonctionnalités à venir pour améliorer l'expérience des utilisateurs Ce bot est en constante évolution et de nouvelles fonctionnalités seront ajoutées régulièrement. Il possède également ça propre API pour récupérer les données des personnages et encore plus à venir. Cette api sera disponible prochainement sur le site web du bot. [furina.antredesloutres.fr](https://furina.antredesloutres.fr) (encore en cours de développement)",
+      "type": "",
+      "stack": [
+        "JavaScript"
+      ],
+      "status": "archived",
+      "started": "2024-08-13T20:59:51Z",
+      "ended": "2025-01-12T13:52:45Z",
+      "updated": "2025-01-12T13:52:45Z",
+      "featured": false,
+      "version": "",
+      "prerelease": false,
+      "image": null,
+      "links": {
+        "repo": "https://github.com/matheo-1712/Furina"
+      },
+      "stars": 0,
+      "contribution": {
+        "commits": 16,
+        "total": 17,
+        "rank": 1,
+        "contributors": 2
+      },
+      "org": null,
       "hidden": false,
       "sources": [
         "github"
