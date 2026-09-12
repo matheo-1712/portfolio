@@ -1,0 +1,48 @@
+---
+# Tous les champs sont facultatifs : ce qui manque est repris du depot GitHub
+# (description, topics, langages, derniere release, dates).
+
+title: "OAPI"                    # sinon : nom du depot, mis en forme
+type: "API REST"                 # sinon : premier topic GitHub
+summary: >                       # sinon : description GitHub, sinon 1er paragraphe du README
+  API d'orchestration asynchrone en Rust. Genere les images de la communaute,
+  surveille l'infrastructure et agrege les API externes.
+
+status: prod                     # prod | wip | paused | archived — sinon deduit de l'activite
+started: 2026-05                 # sinon : date de creation du depot
+ended: ""                        # laisser vide si toujours actif
+
+stack: [Rust, Axum, Tokio, PostgreSQL]   # sinon : langages detectes par GitHub
+
+featured: true                   # remonte en haut de l'index
+order: 1                         # force une position precise (prioritaire sur featured)
+hidden: false                    # true pour retirer le projet sans enlever le topic
+
+links:
+  demo: "https://api.antredesloutres.fr"
+  docs: "https://github.com/matheo-1712/OAPI/blob/main/docs/README.md"
+  # `repo` est ajoute automatiquement
+
+# Fusionne un ancien depot dans celui-ci : l'ancien disparait de l'index et
+# apparait en "versions precedentes" sur la fiche.
+# alias_of: "matheo-1712/ancien-repo"
+---
+
+Tout ce qui suit alimente la fiche detaillee du projet. Ecris-la pour un
+lecteur qui ne connait ni le projet ni son contexte : ce qu'il resout, comment
+il est construit, ce que tu en as appris.
+
+## Le probleme
+
+Trois services distincts generaient des images de profil, chacun avec sa
+propre logique de rendu et ses propres bugs.
+
+## L'approche
+
+Une API unique en Rust, asynchrone, qui centralise le rendu et expose un
+contrat stable aux clients.
+
+## Ce que j'en retiens
+
+Le typage strict de Rust a elimine une classe entiere de bugs que nous
+traquions depuis des mois cote Node.

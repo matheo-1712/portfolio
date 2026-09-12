@@ -1,0 +1,31 @@
+# A copier dans .github/workflows/ d'un depot que tu veux voir se repercuter
+# immediatement sur le portfolio, au lieu d'attendre la collecte quotidienne.
+#
+# Prerequis : un secret PORTFOLIO_DISPATCH_TOKEN dans CE depot, contenant un
+# jeton personnel GitHub avec la permission "contents: write" sur
+# matheo-1712/matheo-1712.github.io.
+#
+# A reserver aux projets phares : pour les autres, le passage quotidien suffit.
+
+name: Notifier le portfolio
+
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - "portfolio.md"
+      - "README.md"
+  release:
+    types: [published]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Declencher la reconstruction du portfolio
+        run: |
+          curl -sSf -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${{ secrets.PORTFOLIO_DISPATCH_TOKEN }}" \
+            https://api.github.com/repos/matheo-1712/matheo-1712.github.io/dispatches \
+            -d '{"event_type":"project-updated","client_payload":{"repo":"${{ github.repository }}"}}'

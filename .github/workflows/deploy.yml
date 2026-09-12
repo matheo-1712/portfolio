@@ -1,0 +1,98 @@
+name: Collecte et déploiement
+
+on:
+  # Rafraîchit le portfolio une fois par jour.
+  schedule:
+    - cron: "17 5 * * *"
+  # Bouton « Run workflow » dans l'onglet Actions.
+  workflow_dispatch:
+    inputs:
+      skip_collect:
+        description: "Reconstruire sans réinterroger GitHub ni PocketBase"
+        type: boolean
+        default: false
+  # Déclenchement immédiat depuis un autre dépôt (voir notify-portfolio.yml).
+  repository_dispatch:
+    types: [project-updated]
+  push:
+    branches: [main]
+    paths-ignore:
+      - "README.md"
+      - "docs/**"
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+# Une seule publication à la fois ; une exécution en cours n'est pas annulée
+# pour ne pas laisser le dépôt avec un projects.json committé à moitié.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - run: npm ci
+
+      - name: Collecte des projets
+        id: collect
+        if: github.event.inputs.skip_collect != 'true'
+        env:
+          # PORTFOLIO_GH_TOKEN (facultatif) permet d'atteindre des dépôts privés.
+          # Sans lui, le jeton d'Actions suffit pour tout ce qui est public.
+          GITHUB_TOKEN: ${{ secrets.PORTFOLIO_GH_TOKEN || secrets.GITHUB_TOKEN }}
+          PB_EMAIL: ${{ secrets.PB_EMAIL }}
+          PB_PASSWORD: ${{ secrets.PB_PASSWORD }}
+        # La collecte ne doit jamais bloquer la publication : en cas d'échec
+        # (quota, source indisponible), data/projects.json reste celui du dernier
+        # passage réussi et le site est publié avec ces données.
+        continue-on-error: true
+        run: npm run collect
+
+      # La collecte vérifie déjà les services ; cette étape couvre le cas où
+      # elle a été sautée ou a échoué, pour que l'état affiché reste juste.
+      - name: Vérifier l'état des services
+        # `continue-on-error` masque l'échec au workflow : il faut donc lire
+        # l'issue réelle de l'étape, que `failure()` ne verrait pas.
+        if: github.event.inputs.skip_collect == 'true' || steps.collect.outcome == 'failure'
+        continue-on-error: true
+        run: npm run health
+
+      - name: Enregistrer les données collectées
+        run: |
+          if [ -n "$(git status --porcelain data/projects.json)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add data/projects.json
+            git commit -m "chore: rafraîchit les projets collectés"
+            git push
+          else
+            echo "Aucun changement dans les projets."
+          fi
+
+      - run: npm run build
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

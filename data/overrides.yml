@@ -1,0 +1,34 @@
+# Corrections manuelles, appliquees APRES toutes les autres sources.
+# Cle = "owner/repo" en minuscules, ou le slug du projet PocketBase.
+#
+# Champs disponibles :
+#   title, summary, type, stack[], status (prod|wip|archived|paused),
+#   started, ended, featured (bool), order (int), links{}, hidden (bool),
+#   alias_of ("owner/repo" — fusionne ce projet dans un autre)
+#
+# Exemple :
+# matheo-1712/re-otterbots:
+#   alias_of: "l-antre-des-loutres/otterbots"
+#
+# l-antre-des-loutres/otterbots:
+#   featured: true
+#   order: 2
+#   summary: "Framework Discord modulaire qui propulse quatre bots en production."
+
+matheo-1712/re-otterbots:
+  alias_of: "l-antre-des-loutres/otterbots"
+
+matheo-1712/arisoutrev2:
+  alias_of: "l-antre-des-loutres/arisoutre"
+
+matheo-1712/api-serveur:
+  alias_of: "l-antre-des-loutres/otterlyapi"
+
+matheo-1712/otterlyapi:
+  alias_of: "l-antre-des-loutres/otterlyapi"
+
+# L'API est citee dans le README d'OtterlyApi mais n'etait declaree nulle part :
+# sans URL declaree, aucune verification de disponibilite n'est possible.
+l-antre-des-loutres/otterlyapi:
+  links:
+    demo: "https://api.antredesloutres.fr/"

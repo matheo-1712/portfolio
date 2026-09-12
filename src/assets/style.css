@@ -1,0 +1,658 @@
+/* Portfolio — Mathéo Pérodeau
+   Parti pris : un index, pas une brochure. Densité d'information, typographie
+   système, une seule couleur d'accent. Pas de dégradé, pas d'ombre portée,
+   pas d'animation d'apparition. */
+
+:root {
+  --bg: #fdfdfc;
+  --surface: #ffffff;
+  --text: #1b1e21;
+  --muted: #666c73;
+  --faint: #8b9198;
+  --rule: #e2e2de;
+  --rule-strong: #c9c9c4;
+  --accent: #0d7581;
+  --accent-bg: #e7f2f3;
+  --prod: #1f7a4d;
+  --warn: #a06a12;
+
+  --mono: ui-monospace, "SFMono-Regular", "Cascadia Mono", "Segoe UI Mono", Menlo, Consolas, monospace;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  --measure: 46rem;
+}
+
+:root[data-theme="dark"] {
+  --bg: #14171a;
+  --surface: #191d21;
+  --text: #e3e6e8;
+  --muted: #9aa0a7;
+  --faint: #767c83;
+  --rule: #272c32;
+  --rule-strong: #3a4149;
+  --accent: #45c0cf;
+  --accent-bg: #16272a;
+  --prod: #5cc48d;
+  --warn: #d4a44f;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #14171a;
+    --surface: #191d21;
+    --text: #e3e6e8;
+    --muted: #9aa0a7;
+    --faint: #767c83;
+    --rule: #272c32;
+    --rule-strong: #3a4149;
+    --accent: #45c0cf;
+    --accent-bg: #16272a;
+    --prod: #5cc48d;
+    --warn: #d4a44f;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration-color: var(--rule-strong); text-underline-offset: 3px; }
+a:hover { text-decoration-color: var(--accent); color: var(--accent); }
+
+h1, h2, h3 { line-height: 1.25; font-weight: 600; margin: 0; letter-spacing: -0.012em; }
+
+.wrap {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.skip { position: absolute; left: -9999px; }
+.skip:focus {
+  left: 1rem; top: 1rem;
+  z-index: 10;
+  background: var(--surface);
+  border: 1px solid var(--accent);
+  padding: 0.5rem 0.75rem;
+  border-radius: 2px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 1px;
+}
+
+/* --- En-tête ------------------------------------------------------------ */
+
+.masthead { padding: 3.5rem 0 0; }
+
+.identity {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+.avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  flex: none;
+  /* Un simple anneau : le portrait doit se détacher du fond sans effet de carte. */
+  box-shadow: 0 0 0 1px var(--rule-strong);
+  background: var(--surface);
+}
+
+.masthead h1 {
+  font-size: clamp(1.6rem, 4.5vw, 2.1rem);
+  letter-spacing: -0.02em;
+}
+
+.masthead .role {
+  margin: 0.35rem 0 0;
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.masthead .meta {
+  margin: 0.15rem 0 0;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--faint);
+  letter-spacing: 0.01em;
+}
+
+/* L'accroche porte le propos : elle est plus grande que le corps de texte,
+   mais reste une phrase, pas un slogan centré. */
+.headline {
+  margin: 1.75rem 0 0;
+  max-width: 36rem;
+  font-size: 1.12rem;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+.subline {
+  margin: 0.5rem 0 0;
+  max-width: 36rem;
+  color: var(--muted);
+  font-size: 0.97rem;
+}
+
+/* Chiffres calculés à partir des projets : ils donnent à la présentation la
+   même densité factuelle que l'index, sans prendre le ton d'un tableau de bord. */
+.figures {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 2.25rem;
+  margin: 1.75rem 0 0;
+  padding: 0.9rem 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+
+.figures div { display: flex; flex-direction: column; gap: 0.1rem; }
+
+.figures b {
+  font-family: var(--mono);
+  font-size: 1.32rem;
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.figures span {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--faint);
+}
+
+.facts.about {
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  margin-top: 1.25rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.5rem 0 0;
+}
+
+.btn {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  padding: 0.4rem 0.7rem;
+  border: 1px solid var(--rule-strong);
+  border-radius: 2px;
+  background: var(--surface);
+  color: var(--text);
+  text-decoration: none;
+  cursor: pointer;
+  line-height: 1.4;
+}
+.btn:hover { border-color: var(--accent); color: var(--accent); }
+.btn[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-bg); color: var(--accent); }
+
+/* --- Sections ----------------------------------------------------------- */
+
+section { margin-top: 3.25rem; }
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  border-bottom: 1px solid var(--rule-strong);
+  padding-bottom: 0.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.section-head h2 {
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--text);
+}
+
+.section-head .count {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--faint);
+  margin-left: auto;
+}
+
+/* --- Index des projets -------------------------------------------------- */
+
+/* Contrôles optionnels : masqués tant que le script n'a pas pris la main,
+   pour ne jamais afficher un bouton inerte. */
+.filters, #theme-toggle { display: none; }
+.js .filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.5rem;
+}
+.js #theme-toggle { display: inline-block; }
+
+.projects { list-style: none; margin: 0; padding: 0; }
+
+.project {
+  padding: 1.15rem 0;
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.95rem;
+}
+.project:last-child { border-bottom: 0; }
+
+.project-main { flex: 1; min-width: 0; }
+
+/* Vignette : le logo du projet, ou son monogramme quand il n'en a pas.
+   La teinte du monogramme est dérivée du nom, donc stable et sans collision
+   visuelle entre deux voisins. */
+.thumb {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 6px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: var(--surface);
+  box-shadow: inset 0 0 0 1px var(--rule);
+}
+.thumb img { width: 100%; height: 100%; object-fit: contain; display: block; }
+
+.thumb-mono {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: hsl(var(--hue) 55% 30%);
+  background: hsl(var(--hue) 48% 93%);
+  box-shadow: inset 0 0 0 1px hsl(var(--hue) 40% 84%);
+}
+:root[data-theme="dark"] .thumb-mono {
+  color: hsl(var(--hue) 62% 76%);
+  background: hsl(var(--hue) 28% 18%);
+  box-shadow: inset 0 0 0 1px hsl(var(--hue) 25% 30%);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .thumb-mono {
+    color: hsl(var(--hue) 62% 76%);
+    background: hsl(var(--hue) 28% 18%);
+    box-shadow: inset 0 0 0 1px hsl(var(--hue) 25% 30%);
+  }
+}
+
+.project-title {
+  font-size: 1.02rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.project-title a { text-decoration: none; }
+.project-title a:hover { text-decoration: underline; }
+
+.project-version {
+  flex: none;
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  color: var(--faint);
+  white-space: nowrap;
+  padding-top: 0.25rem;
+}
+
+.project-summary {
+  margin: 0.3rem 0 0;
+  color: var(--muted);
+  font-size: 0.94rem;
+  max-width: 38rem;
+}
+
+.project-foot {
+  margin-top: 0.55rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.8rem;
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  color: var(--faint);
+}
+
+.stack { display: flex; flex-wrap: wrap; gap: 0.55rem; }
+
+/* Pastille de langage : la couleur est celle que GitHub associe à la techno,
+   donc un repère déjà connu du lecteur plutôt qu'une décoration. */
+.tech { display: inline-flex; align-items: center; gap: 0.3rem; }
+.tech i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex: none;
+  /* Un contour très léger garde les teintes claires visibles sur fond blanc. */
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.18);
+}
+.tech b { font-weight: 600; color: var(--muted); }
+
+.project-links { display: flex; gap: 0.8rem; margin-left: auto; }
+.project-links a { color: var(--accent); text-decoration: none; }
+.project-links a:hover { text-decoration: underline; }
+
+/* Statut : une pastille discrète, colorée uniquement quand c'est signifiant. */
+.status {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--faint);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.32rem;
+  white-space: nowrap;
+}
+.status::before {
+  content: "";
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  flex: none;
+}
+.status[data-status="prod"] { color: var(--prod); }
+.status[data-status="wip"] { color: var(--warn); }
+.status[data-status="archived"]::before { background: none; box-shadow: inset 0 0 0 1px currentColor; }
+
+.empty { padding: 2rem 0; color: var(--muted); font-size: 0.94rem; }
+
+/* --- Notes --------------------------------------------------------------- */
+
+.notes { list-style: none; margin: 0; padding: 0; }
+
+.note-row {
+  display: grid;
+  grid-template-columns: 8.5rem 1fr;
+  gap: 0.2rem 1.25rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+.note-row:last-child { border-bottom: 0; }
+
+.note-row .when {
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  color: var(--faint);
+  padding-top: 0.22rem;
+  white-space: nowrap;
+}
+
+.note-title {
+  font-size: 1.02rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.note-title a { text-decoration: none; }
+.note-title a:hover { text-decoration: underline; }
+
+.note-summary {
+  margin: 0.3rem 0 0;
+  color: var(--muted);
+  font-size: 0.94rem;
+  max-width: 38rem;
+}
+
+.note-foot {
+  margin: 0.45rem 0 0;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--faint);
+}
+
+/* --- Parcours ----------------------------------------------------------- */
+
+.timeline { list-style: none; margin: 0; padding: 0; }
+
+.entry {
+  display: grid;
+  grid-template-columns: 8.5rem 1fr;
+  gap: 0.2rem 1.25rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+.entry:last-child { border-bottom: 0; }
+
+.entry .when {
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  color: var(--faint);
+  padding-top: 0.18rem;
+  white-space: nowrap;
+}
+.entry .what { font-weight: 600; font-size: 0.97rem; }
+.entry .where { color: var(--muted); font-size: 0.88rem; }
+.entry .note { grid-column: 2; color: var(--muted); font-size: 0.9rem; margin-top: 0.25rem; }
+
+/* --- Compétences -------------------------------------------------------- */
+
+/* Barre de répartition des technologies, calculée à partir des projets réels. */
+.techbar { margin: 0 0 1.5rem; }
+
+.techbar .bar {
+  display: flex;
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--rule);
+}
+.techbar .slice { height: 100%; }
+.techbar .slice + .slice { box-shadow: inset 1px 0 0 var(--bg); }
+
+.techbar .legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 0.9rem;
+  margin-top: 0.6rem;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--faint);
+}
+
+.skills { margin: 0; padding: 0; }
+.skill-row {
+  display: grid;
+  grid-template-columns: 8.5rem 1fr;
+  gap: 1.25rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+.skill-row:last-child { border-bottom: 0; }
+.skill-row dt { font-family: var(--mono); font-size: 0.76rem; color: var(--faint); padding-top: 0.15rem; }
+.skill-row dd { margin: 0; font-size: 0.94rem; }
+
+/* --- Pied de page ------------------------------------------------------- */
+
+footer {
+  margin-top: 4rem;
+  padding: 1.25rem 0 3rem;
+  border-top: 1px solid var(--rule-strong);
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  color: var(--faint);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  align-items: center;
+}
+footer a { color: var(--faint); }
+footer .spacer { margin-left: auto; }
+
+/* --- Fiche projet ------------------------------------------------------- */
+
+.crumb {
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  color: var(--faint);
+  padding-top: 2.5rem;
+}
+.crumb a { color: var(--accent); text-decoration: none; }
+.crumb a:hover { text-decoration: underline; }
+
+.detail-head {
+  padding: 1rem 0 1.25rem;
+  border-bottom: 1px solid var(--rule-strong);
+}
+/* Bannière de projet : ces visuels sont des bandeaux de titre, ils sont donc
+   affichés dans leur format d'origine plutôt que recadrés en icône. Le cadre
+   garantit le contraste des bannières claires sur fond blanc. */
+.banner {
+  margin: 1.5rem 0 0;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--surface);
+  line-height: 0;
+}
+.banner img { width: 100%; height: auto; display: block; }
+
+.detail-head .identity { gap: 0.9rem; }
+.detail-head .thumb { width: 56px; height: 56px; border-radius: 8px; }
+.detail-head .thumb-mono { font-size: 1.05rem; }
+.detail-head h1 { font-size: clamp(1.5rem, 4vw, 1.95rem); }
+.detail-head .lede { margin: 0.6rem 0 0; color: var(--muted); max-width: 38rem; }
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: 0.9rem 1.5rem;
+  margin: 1.25rem 0 0;
+}
+.facts div { min-width: 0; }
+.facts dt {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--faint);
+}
+.facts dd { margin: 0.15rem 0 0; font-size: 0.9rem; overflow-wrap: break-word; }
+
+.prose { margin-top: 2rem; max-width: 40rem; }
+.prose h1 { font-size: 1.35rem; margin: 2rem 0 0.6rem; }
+.prose h2 { font-size: 1.15rem; margin: 2rem 0 0.6rem; padding-bottom: 0.3rem; border-bottom: 1px solid var(--rule); }
+.prose h3 { font-size: 1rem; margin: 1.5rem 0 0.4rem; }
+.prose h4 { font-size: 0.92rem; margin: 1.25rem 0 0.35rem; color: var(--muted); }
+.prose p, .prose ul, .prose ol { margin: 0 0 0.9rem; }
+.prose ul, .prose ol { padding-left: 1.25rem; }
+.prose li { margin-bottom: 0.3rem; }
+.prose li::marker { color: var(--faint); }
+.prose img { max-width: 100%; height: auto; border: 1px solid var(--rule); border-radius: 2px; }
+.prose blockquote {
+  margin: 0 0 0.9rem;
+  padding-left: 1rem;
+  border-left: 2px solid var(--rule-strong);
+  color: var(--muted);
+}
+.prose code {
+  font-family: var(--mono);
+  font-size: 0.85em;
+  background: var(--accent-bg);
+  padding: 0.12em 0.35em;
+  border-radius: 2px;
+}
+.prose pre {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: 0.85rem 1rem;
+  overflow-x: auto;
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+.prose pre code { background: none; padding: 0; font-size: inherit; }
+.prose hr { border: 0; border-top: 1px solid var(--rule); margin: 2rem 0; }
+
+.table-scroll { overflow-x: auto; margin: 0 0 0.9rem; }
+.prose table { border-collapse: collapse; font-size: 0.88rem; min-width: 100%; }
+.prose th, .prose td {
+  text-align: left;
+  padding: 0.45rem 0.75rem 0.45rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+.prose th {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--faint);
+  font-weight: 600;
+}
+
+/* --- Responsive --------------------------------------------------------- */
+
+@media (max-width: 34rem) {
+  body { font-size: 15px; }
+  .masthead { padding-top: 2.5rem; }
+  .project { gap: 0.75rem; }
+  .thumb { width: 36px; height: 36px; }
+  /* La version passe sous le titre plutot que de comprimer la colonne. */
+  .project-version { display: none; }
+  .project-links { margin-left: 0; width: 100%; }
+  .identity { gap: 0.85rem; }
+  .avatar { width: 60px; height: 60px; }
+  .entry, .skill-row, .note-row { grid-template-columns: 1fr; gap: 0.1rem; }
+  .entry .note { grid-column: 1; }
+  .note-row .when { padding-top: 0; margin-bottom: 0.15rem; }
+  .figures { gap: 0.9rem 1.75rem; }
+  .headline { font-size: 1.05rem; }
+}
+
+/* --- Impression --------------------------------------------------------- */
+
+@media print {
+  :root {
+    --bg: #fff; --surface: #fff; --text: #000; --muted: #333;
+    --faint: #555; --rule: #ccc; --rule-strong: #999; --accent: #000;
+  }
+  .actions, .filters, #theme-toggle, .skip { display: none !important; }
+  .thumb, .avatar, .techbar .bar, .tech i {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  body { font-size: 11pt; }
+  .project, .entry { break-inside: avoid; }
+  section { margin-top: 1.5rem; }
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.75em;
+    color: #555;
+    word-break: break-all;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

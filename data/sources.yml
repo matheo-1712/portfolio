@@ -1,0 +1,48 @@
+# Ou le collecteur va chercher les projets.
+
+github:
+  # Un repo n'est retenu que s'il porte ce topic OU un fichier portfolio.md.
+  topic: "portfolio"
+  users:
+    - "matheo-1712"
+  orgs:
+    - "L-Antre-des-Loutres"
+  # Inclus d'office, meme sans topic ni portfolio.md.
+  # Pratique pour demarrer avant d'avoir tague les repos sur GitHub.
+  include:
+    - "matheo-1712/OAPI"
+    - "matheo-1712/Citlali"
+    - "matheo-1712/CitlAPI"
+    - "matheo-1712/RustSSH"
+    - "matheo-1712/cobblemon-trainers"
+    - "matheo-1712/re-otterbots"
+    - "L-Antre-des-Loutres/Otterbots"
+    - "L-Antre-des-Loutres/Arisoutre"
+    - "L-Antre-des-Loutres/Astroloutre"
+    - "L-Antre-des-Loutres/Mineotter"
+    - "L-Antre-des-Loutres/Mateloutre"
+    - "L-Antre-des-Loutres/Ottergames-plugin"
+    - "L-Antre-des-Loutres/OtterMinded"
+    - "L-Antre-des-Loutres/OtterlyApi"
+
+  # Ignores meme s'ils portent le topic.
+  exclude:
+    - "matheo-1712/portfolio"
+    - "matheo-1712/portfolio_old"
+    - "matheo-1712/matheo-1712"
+
+pocketbase:
+  enabled: true
+  url: "https://pocketbase.antredesloutres.fr"
+  collection: "projects"
+  # Laisse vide si la regle de list de la collection est publique.
+  # Sinon, renseigne les secrets PB_EMAIL / PB_PASSWORD dans GitHub Actions.
+  auth: env
+  # Un projet PocketBase est ignore si son repo est deja collecte via GitHub.
+  # Le rapprochement se fait sur le champ repository, sinon sur le slug du nom.
+
+# Verifie que les URLs declarees par les projets repondent encore.
+# Les plateformes tierces (Discord, Modrinth, GitHub) ne sont jamais testees :
+# leur disponibilite ne dit rien de ton infrastructure.
+healthcheck:
+  enabled: true
