@@ -858,7 +858,7 @@ footer .spacer { margin-left: auto; }
 .detail-head .thumb { width: 3.5rem; height: 3.5rem; border-radius: 8px; }
 .detail-head .thumb-mono { font-size: 1.05rem; }
 .detail-head h1 { font-size: clamp(1.5rem, 4vw, 1.95rem); }
-.detail-head .lede { margin: 0.6rem 0 0; color: var(--muted); max-width: 64rem; }
+.detail-head .lede { margin: 0.6rem 0 0; color: var(--muted); }
 
 .facts {
   display: grid;
@@ -921,18 +921,9 @@ footer .spacer { margin-left: auto; }
   .gallery { grid-template-columns: 1fr; gap: 1.25rem; }
 }
 
-/* Une seule largeur pour tout le README gachait la moitie du panneau : le
-   texte etait bride a 40rem et les tableaux, eux, etouffaient dedans. La
-   contrainte descend donc au niveau des blocs. Les paragraphes gardent une
-   longueur de ligne lisible ; titres, tableaux, blocs de code et captures
-   prennent toute la largeur disponible. */
+/* Le texte suit la meme largeur que la ligne de faits au-dessus : une colonne
+   plus etroite laissait un vide a droite du panneau. */
 .prose { margin-top: 2rem; }
-.prose > p,
-.prose > ul,
-.prose > ol,
-.prose > dl,
-.prose > blockquote,
-.prose > .alert { max-width: 64rem; }
 .prose h1 { font-size: 1.35rem; margin: 2rem 0 0.6rem; }
 .prose h2 { font-size: 1.15rem; margin: 2rem 0 0.6rem; padding-bottom: 0.3rem; border-bottom: 1px solid var(--rule); }
 .prose h3 { font-size: 1rem; margin: 1.5rem 0 0.4rem; }
