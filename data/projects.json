@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-12T20:50:49.284Z",
+  "generated": "2026-09-12T22:43:09.895Z",
   "count": 15,
   "projects": [
     {
@@ -236,7 +236,7 @@
       "modrinth": {
         "slug": "cobblemon-rlm",
         "url": "https://modrinth.com/project/cobblemon-rlm",
-        "downloads": 9314,
+        "downloads": 9321,
         "followers": 17,
         "license": "MIT"
       },
@@ -526,7 +526,7 @@
       "modrinth": {
         "slug": "cobblemon-trainers-rerebleue",
         "url": "https://modrinth.com/project/cobblemon-trainers-rerebleue",
-        "downloads": 237,
+        "downloads": 242,
         "followers": 4,
         "license": "CC0-1.0"
       },
