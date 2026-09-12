@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-12T22:49:12.665Z",
+  "generated": "2026-09-12T22:52:20.053Z",
   "count": 15,
   "projects": [
     {
@@ -285,7 +285,7 @@
       ],
       "service": {
         "up": true,
-        "uncertain": false,
+        "uncertain": true,
         "lastSeenUp": "2026-09-12",
         "urls": {
           "https://antredesloutres.fr": true
