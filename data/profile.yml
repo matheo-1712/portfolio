@@ -8,7 +8,11 @@ identity:
   email: "perod.matheo@gmail.com"
   github: "matheo-1712"
   linkedin: "https://www.linkedin.com/in/mathéo-perodeau"
-  cv: "/cv.pdf"
+  # Chemin relatif : le site fonctionne aussi bien a la racine du domaine
+  # que dans un sous-chemin (/portfolio/).
+  cv: "cv.pdf"
+  # Depot du site, pour le lien "source" en pied de page.
+  repo: "https://github.com/matheo-1712/matheo-1712.github.io"
 
 # L'accroche : une a deux phrases, concretes. Ce que tu fais, pas ce que tu aimes.
 headline: >

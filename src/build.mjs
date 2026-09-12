@@ -296,7 +296,11 @@ function footer(profile, generated) {
 <footer class="wrap">
   <span>${esc(id.name || "")}</span>
   ${when ? `<span>mis à jour le ${esc(when)}</span>` : ""}
-  <span class="spacer"><a href="https://github.com/${attr(id.github)}/portfolio" target="_blank" rel="noopener noreferrer">source</a></span>
+  ${
+    id.repo
+      ? `<span class="spacer"><a href="${attr(id.repo)}" target="_blank" rel="noopener noreferrer">source</a></span>`
+      : ""
+  }
 </footer>`;
 }
 
