@@ -573,6 +573,13 @@ footer .spacer { margin-left: auto; }
 }
 .banner img { width: 100%; height: auto; display: block; }
 
+.aliases {
+  margin: 0.9rem 0 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+.aliases a { color: var(--accent); }
+
 .detail-head .identity { gap: 0.9rem; }
 .detail-head .thumb { width: 56px; height: 56px; border-radius: 8px; }
 .detail-head .thumb-mono { font-size: 1.05rem; }
@@ -629,6 +636,97 @@ footer .spacer { margin-left: auto; }
 }
 .prose pre code { background: none; padding: 0; font-size: inherit; }
 .prose hr { border: 0; border-top: 1px solid var(--rule); margin: 2rem 0; }
+
+/* Le langage du bloc de code, en étiquette, comme sur GitHub. */
+.prose pre[data-lang] { position: relative; padding-top: 1.9rem; }
+.prose pre[data-lang]::before {
+  content: attr(data-lang);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 0.25rem 1rem;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--faint);
+  border-bottom: 1px solid var(--rule);
+  background: var(--bg);
+}
+
+/* Ancre de titre : discrète, révélée au survol, comme sur GitHub. */
+.prose h2, .prose h3, .prose h4 { position: relative; }
+.prose .anchor {
+  position: absolute;
+  left: -1.1rem;
+  width: 1.1rem;
+  text-align: left;
+  color: var(--faint);
+  text-decoration: none;
+  opacity: 0;
+  font-weight: 400;
+}
+.prose h2:hover .anchor,
+.prose h3:hover .anchor,
+.prose h4:hover .anchor,
+.prose .anchor:focus { opacity: 1; }
+@media (max-width: 48rem) { .prose .anchor { display: none; } }
+
+/* Alertes GitHub : `> [!NOTE]`, `> [!WARNING]`… */
+.prose .alert {
+  border-left: 3px solid var(--alert, var(--rule-strong));
+  padding: 0.75rem 1rem;
+  margin: 0 0 1rem;
+  color: var(--text);
+  background: color-mix(in srgb, var(--alert, var(--rule)) 7%, transparent);
+  border-radius: 0 3px 3px 0;
+}
+.prose .alert p { margin: 0 0 0.5rem; }
+.prose .alert p:last-child { margin-bottom: 0; }
+.prose .alert-title {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--alert, var(--muted));
+}
+.prose .alert-note { --alert: #3b7ea1; }
+.prose .alert-tip { --alert: var(--prod); }
+.prose .alert-important { --alert: #7c5cbf; }
+.prose .alert-warning { --alert: var(--warn); }
+.prose .alert-caution { --alert: #b4453c; }
+
+/* Listes de tâches : la puce est remplacée par la case à cocher. */
+.prose li.task { list-style: none; margin-left: -1.25rem; }
+.prose li.task input {
+  margin: 0 0.5rem 0 0;
+  vertical-align: middle;
+  accent-color: var(--accent);
+}
+
+/* Balises que les README emploient sans qu'on les ait prévues. */
+.prose kbd {
+  font-family: var(--mono);
+  font-size: 0.8em;
+  padding: 0.12em 0.4em;
+  border: 1px solid var(--rule-strong);
+  border-bottom-width: 2px;
+  border-radius: 3px;
+  background: var(--surface);
+}
+.prose mark { background: var(--accent-bg); color: var(--text); padding: 0 0.2em; }
+.prose details {
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 0.6rem 0.9rem;
+  margin: 0 0 0.9rem;
+}
+.prose summary { cursor: pointer; font-weight: 600; }
+.prose details[open] summary { margin-bottom: 0.6rem; }
+.prose ul ul, .prose ol ol, .prose ul ol, .prose ol ul { margin: 0.3rem 0 0; }
+.prose p > img { margin: 0.3rem 0; }
 
 .table-scroll { overflow-x: auto; margin: 0 0 0.9rem; }
 .prose table { border-collapse: collapse; font-size: 0.88rem; min-width: 100%; }

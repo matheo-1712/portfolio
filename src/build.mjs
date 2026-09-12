@@ -388,14 +388,34 @@ function detailPage(profile, project, assetVersion) {
     )
     .join("");
 
-  const aliases = (project.aliases || []).length
-    ? `<p class="project-summary">Versions précédentes : ${project.aliases
-        .map((a) =>
-          a.repo
-            ? `<a href="${attr(a.repo)}" target="_blank" rel="noopener noreferrer">${esc(a.title)}</a>`
-            : esc(a.title)
-        )
-        .join(", ")}.</p>`
+  const linkAlias = (a) =>
+    a.repo
+      ? `<a href="${attr(a.repo)}" target="_blank" rel="noopener noreferrer">${esc(a.title)}</a>`
+      : esc(a.title);
+
+  const groupes = [
+    {
+      items: (project.aliases || []).filter((a) => a.relation !== "successor"),
+      label: (n) => (n > 1 ? "Versions précédentes" : "Version précédente"),
+    },
+    {
+      items: (project.aliases || []).filter(
+        (a) => a.relation === "successor" && a.status === "wip"
+      ),
+      label: () => "Réécriture en cours",
+    },
+    {
+      items: (project.aliases || []).filter(
+        (a) => a.relation === "successor" && a.status !== "wip"
+      ),
+      label: () => "Remplacé par",
+    },
+  ].filter((g) => g.items.length);
+
+  const aliases = groupes.length
+    ? `<p class="aliases">${groupes
+        .map((g) => `${g.label(g.items.length)} : ${g.items.map(linkAlias).join(", ")}`)
+        .join(" · ")}.</p>`
     : "";
 
   const body = `
@@ -478,28 +498,34 @@ async function main() {
       .then(() => true)
       .catch(() => false);
 
-  if (await exists("img/avatar.webp")) profile.__avatar = "img/avatar.webp";
+  const firstExisting = async (base) => {
+    for (const ext of ["webp", "png", "svg", "jpg", "jpeg"]) {
+      if (await exists(`${base}.${ext}`)) return `${base}.${ext}`;
+    }
+    return null;
+  };
+
+  profile.__avatar = await firstExisting("img/avatar");
 
   for (const project of data.projects) {
     // Une vignette carree (img/projects/) sert l'index ; une banniere large
     // (img/banners/) coiffe la fiche detaillee. Les deux sont facultatives.
-    const thumb = `img/projects/${project.slug}.webp`;
-    if (await exists(thumb)) project.thumb = thumb;
-
-    const banner = `img/banners/${project.slug}.webp`;
-    if (await exists(banner)) project.banner = banner;
+    // On accepte les formats courants pour qu'un logo puisse etre depose tel
+    // quel, sans conversion prealable.
+    project.thumb = await firstExisting(`img/projects/${project.slug}`);
+    project.banner = await firstExisting(`img/banners/${project.slug}`);
   }
 
-  const notes = await loadNotes(path.join(ROOT, "content", "notes"));
-
   // Empreinte commune aux deux assets : ils changent presque toujours ensemble,
-  // et une seule valeur suffit a invalider les caches.
+  // et une seule valeur suffit a invalider les caches des visiteurs.
   const assetVersion = crypto
     .createHash("sha1")
     .update(await fs.readFile(path.join(ASSETS, "style.css")))
     .update(await fs.readFile(path.join(ASSETS, "app.js")))
     .digest("hex")
     .slice(0, 8);
+
+  const notes = await loadNotes(path.join(ROOT, "content", "notes"));
 
   const withDetail = data.projects.filter((p) => (p.body || "").length >= DETAIL_MIN_CHARS);
   const detailSlugs = new Set(withDetail.map((p) => p.key));

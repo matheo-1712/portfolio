@@ -1,5 +1,5 @@
 import { Marked } from "marked";
-import { formatDate, labelType } from "./normalize.mjs";
+import { formatDate, labelType, slugify } from "./normalize.mjs";
 import { monogram, monogramHue, techColor } from "./colors.mjs";
 
 export const esc = (s) =>
@@ -13,15 +13,61 @@ const attr = (s) => esc(s).replace(/'/g, "&#39;");
 
 const marked = new Marked({ gfm: true, breaks: false });
 
-// Les tableaux doivent pouvoir déborder sans casser la largeur de la page.
 marked.use({
   renderer: {
+    // Les tableaux doivent pouvoir deborder sans casser la largeur de la page.
     table(token) {
       const html = this.constructor.prototype.table.call(this, token);
       return `<div class="table-scroll">${html}</div>`;
     },
+
+    // Titres ancres, comme sur GitHub : un sommaire ecrit en markdown pointe
+    // vers `#mon-titre`, ces liens doivent aboutir.
+    heading(token) {
+      const text = this.parser.parseInline(token.tokens);
+      const id = slugify(token.text);
+      const level = token.depth;
+      return `<h${level} id="${id}"><a class="anchor" href="#${id}" aria-hidden="true">#</a>${text}</h${level}>\n`;
+    },
+
+    // Le langage d'un bloc de code est porte par <code> ; on le remonte sur
+    // <pre> pour pouvoir l'afficher en etiquette.
+    code(token) {
+      const html = this.constructor.prototype.code.call(this, token);
+      const lang = (token.lang || "").split(/\s+/)[0];
+      return lang ? html.replace("<pre>", `<pre data-lang="${esc(lang)}">`) : html;
+    },
   },
 });
+
+const ALERTS = {
+  NOTE: "Note",
+  TIP: "Astuce",
+  IMPORTANT: "Important",
+  WARNING: "Attention",
+  CAUTION: "Danger",
+};
+
+// Les alertes GitHub (`> [!NOTE]`) sont rendues par marked comme de simples
+// citations : on les reconnait apres coup pour leur donner leur forme propre.
+function renderAlerts(html) {
+  return html.replace(
+    /<blockquote>\s*<p>\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]\s*(?:<br>)?\s*/gi,
+    (_, kind) => {
+      const key = kind.toUpperCase();
+      return `<blockquote class="alert alert-${key.toLowerCase()}"><p class="alert-title">${ALERTS[key]}</p><p>`;
+    }
+  );
+}
+
+// Cases a cocher des listes de taches. L'ordre des attributs varie selon que
+// la case est cochee ou non : on cible donc la balise, pas sa forme exacte.
+function renderTaskLists(html) {
+  return html.replace(
+    /<li>(\s*<input[^>]*type="checkbox"[^>]*>)/g,
+    '<li class="task">$1'
+  );
+}
 
 export function markdown(src, { baseUrl } = {}) {
   if (!src) return "";
@@ -35,8 +81,15 @@ export function markdown(src, { baseUrl } = {}) {
     });
   }
 
-  // Les liens sortants s'ouvrent dans un nouvel onglet, avec la protection d'usage.
-  html = html.replace(/<a href="(https?:\/\/[^"]+)"/g, '<a href="$1" target="_blank" rel="noopener noreferrer"');
+  html = renderAlerts(html);
+  html = renderTaskLists(html);
+
+  // Les liens sortants s'ouvrent dans un nouvel onglet, avec la protection
+  // d'usage. Les ancres internes (#section) restent dans la page.
+  html = html.replace(
+    /<a href="(https?:\/\/[^"]+)"/g,
+    '<a href="$1" target="_blank" rel="noopener noreferrer"'
+  );
   return html;
 }
 
@@ -91,9 +144,15 @@ function projectLinks(project, { detailHref } = {}) {
 // est derivee du nom — stable d'un build a l'autre, et jamais deux fois la meme
 // couleur pour deux projets voisins.
 export function thumbnail(project, { prefix = "" } = {}) {
-  if (project.thumb) {
-    return `<span class="thumb"><img src="${attr(prefix + project.thumb)}" alt="" width="44" height="44" loading="lazy" decoding="async"></span>`;
+  // Deux origines possibles : un fichier depose dans static/img/projects/ (repere
+  // au build), ou une image declaree dans portfolio.md / overrides.yml. La
+  // premiere gagne, parce qu'elle est servie par le site lui-meme.
+  const src = project.thumb ? prefix + project.thumb : project.image || "";
+
+  if (src) {
+    return `<span class="thumb"><img src="${attr(src)}" alt="" width="44" height="44" loading="lazy" decoding="async"></span>`;
   }
+
   const hue = monogramHue(project.slug || project.title);
   return `<span class="thumb thumb-mono" style="--hue:${hue}" aria-hidden="true">${esc(
     monogram(project.title)

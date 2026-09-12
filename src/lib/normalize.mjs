@@ -142,8 +142,11 @@ export function stripEmoji(s) {
       /[\u{1F000}-\u{1FAFF}\u{2300}-\u{27BF}\u{2B00}-\u{2BFF}\u{FE0F}\u{20E3}]/gu,
       ""
     )
-    .replace(/\s{2,}/g, " ")
-    .replace(/\s+([.,;:!?])/g, "$1")
+    // Seuls les espaces horizontaux sont resserres : `\s` engloberait les sauts
+    // de ligne et aplatirait tout un README en un unique paragraphe.
+    .replace(/[^\S\r\n]{2,}/g, " ")
+    .replace(/[^\S\r\n]+([.,;:!?])/g, "$1")
+    .replace(/[^\S\r\n]+$/gm, "")
     .trim();
 }
 

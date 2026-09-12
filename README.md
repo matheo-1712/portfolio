@@ -66,8 +66,20 @@ dépôt d'organisation, une fiche PocketBase.
 - Une fiche PocketBase est rattachée au dépôt qu'elle déclare ; à défaut, au
   dépôt dont le nom donne le même slug.
 - Deux dépôts décrivant le même projet se fusionnent avec `alias_of`
-  (dans `data/overrides.yml` ou dans le `portfolio.md`). Le dépôt absorbé
-  disparaît de l'index et réapparaît en « versions précédentes » sur la fiche.
+  (dans `data/overrides.yml`). Le dépôt absorbé disparaît de l'index et
+  réapparaît sur la fiche de sa cible.
+
+Le sens du lien est déduit des **dates de début**, car une réécriture en cours
+est plus récente que le projet qu'elle remplacera :
+
+| Cas | Libellé sur la fiche |
+|---|---|
+| Le dépôt absorbé est plus ancien | « Version précédente » |
+| Plus récent et encore en cours | « Réécriture en cours » |
+| Plus récent et publié | « Remplacé par » |
+
+Ajouter `relation: successor` ou `relation: predecessor` à côté de `alias_of`
+force le sens quand la déduction se trompe.
 
 ## Mise à jour automatique
 
@@ -112,6 +124,20 @@ Les réponses sont aussi mises en cache une heure dans `.cache/`.
 | `data/overrides.yml` | corrections par projet, alias, masquage |
 | `data/projects.json` | **généré** — ne pas éditer à la main |
 | `static/` | fichiers copiés tels quels dans `dist/` (le CV, par exemple) |
+
+## Rendu des README
+
+Le corps des fiches est du markdown GitHub rendu au plus près de l'original :
+
+- titres ancrés (`#mon-titre`), pour que les sommaires écrits en markdown marchent ;
+- alertes GitHub — `> [!NOTE]`, `> [!TIP]`, `> [!IMPORTANT]`, `> [!WARNING]`, `> [!CAUTION]` ;
+- listes de tâches `- [x]` / `- [ ]`, listes imbriquées, tableaux à défilement ;
+- blocs de code avec le langage en étiquette ;
+- `<details>`, `<kbd>`, `<mark>`, citations, séparateurs.
+
+Avant le rendu, le README est nettoyé : badges, titre de niveau 1 répétant le
+nom du dépôt, images d'en-tête, et sections « Installation », « Licence »,
+« Sommaire », « Crédits »… sont retirées. Ce qui reste décrit le projet.
 
 ## État des services
 
@@ -171,12 +197,28 @@ est dérivée de son nom, stable d'un build à l'autre.
 
 | Fichier | Où il apparaît | Format conseillé |
 |---|---|---|
-| `static/img/avatar.webp` | en-tête de la page d'accueil | carré, 144 px |
-| `static/img/projects/<slug>.webp` | vignette dans l'index | carré, 96 px |
-| `static/img/banners/<slug>.webp` | bandeau de la fiche projet | large, 900 px, ratio ≥ 2,5 |
+| `static/img/avatar.*` | en-tête de la page d'accueil | carré, 144 px |
+| `static/img/projects/<slug>.*` | **logo** du projet, index et fiche | carré, 96 px |
+| `static/img/banners/<slug>.*` | bandeau large de la fiche projet | 900 px, ratio ≥ 2,5 |
 
+Extensions acceptées, dans cet ordre : `webp`, `png`, `svg`, `jpg`, `jpeg`.
 Le `<slug>` est celui du projet dans `data/projects.json`. Déposer le fichier
-suffit : le build le détecte au prochain passage.
+suffit : le build le détecte au prochain passage, aucune configuration.
+
+Pour alléger un logo avant de le déposer (un PNG de logo pèse souvent 100 ko
+là où 3 suffisent) :
+
+```bash
+python scripts/add-logo.py mon-logo.png cobblemon-trainers
+```
+
+Le script recadre au carré, redimensionne en 96 px et écrit le WebP au bon
+endroit. Il n'est pas obligatoire — déposer le fichier à la main fonctionne.
+
+Sans logo, le projet reçoit un monogramme (« OT » pour Otterbots) dont la teinte
+est dérivée de son nom. Un logo peut aussi être déclaré par URL avec `image:`
+dans le `portfolio.md` du dépôt ou dans `data/overrides.yml` — le fichier local
+l'emporte quand les deux existent.
 
 Les couleurs des technologies (pastilles et barre de répartition) viennent de
 `src/lib/colors.mjs` — les teintes de GitHub Linguist pour les langages, les

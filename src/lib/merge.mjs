@@ -94,21 +94,45 @@ export function matchPocketbase(pbItems, githubByKey) {
   return { matched, orphans };
 }
 
-// Applique alias_of : le projet source disparait et enrichit sa cible.
+// Applique alias_of : le projet source disparait de l'index et enrichit sa cible.
+//
+// Le sens du lien n'est pas toujours « ancienne version » : une reecriture en
+// cours est plus recente que le projet qu'elle remplacera. On le deduit donc
+// des dates de debut, et `relation` permet de trancher a la main.
 export function collapseAliases(projects, overrides) {
   const byKey = new Map(projects.map((p) => [p.key, p]));
   const removed = [];
 
   for (const p of projects) {
-    const target = overrides?.[p.key]?.alias_of;
+    const ovr = overrides?.[p.key] || {};
+    const target = ovr.alias_of;
     if (!target) continue;
     const dest = byKey.get(String(target).toLowerCase());
     if (!dest || dest.key === p.key) continue;
 
+    const declared = String(ovr.relation || "").toLowerCase();
+    const relation =
+      declared === "successor" || declared === "predecessor"
+        ? declared
+        : dateRank(p.started) > dateRank(dest.started)
+          ? "successor"
+          : "predecessor";
+
     dest.aliases = dest.aliases || [];
-    dest.aliases.push({ key: p.key, title: p.title, repo: p.links?.repo || null, status: p.status });
+    dest.aliases.push({
+      key: p.key,
+      title: p.title,
+      repo: p.links?.repo || null,
+      status: p.status,
+      relation,
+    });
+
     dest.stars += p.stars || 0;
-    if (!dest.started || dateRank(p.started) < dateRank(dest.started)) dest.started = p.started;
+    // Seul un predecesseur recule la date de debut : un successeur est, par
+    // definition, plus recent que le projet qu'il prolonge.
+    if (relation === "predecessor" && (!dest.started || dateRank(p.started) < dateRank(dest.started))) {
+      dest.started = p.started;
+    }
     removed.push(p.key);
   }
 
