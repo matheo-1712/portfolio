@@ -642,6 +642,21 @@ a:hover > .ico { opacity: 1; }
   .projects .project:last-child,
   .notes .note-row:last-child { border-bottom: 1px solid var(--rule); }
 
+  /* Les colonnes ci-dessus se lisent de haut en bas, colonne par colonne. Avec
+     JavaScript on repasse a une lecture de gauche a droite — la plus recente en
+     haut a gauche — sans rouvrir de trou : chaque fiche occupe un nombre entier
+     de rangees d'1 px, et le placement automatique la glisse dans le premier
+     creux libre. La classe est posee par le script juste avant de calculer ces
+     hauteurs ; sans lui, les colonnes ci-dessus restent en place. */
+  .projects.mosaique, .notes.mosaique {
+    column-count: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 3rem;
+    grid-auto-rows: 1px;
+    align-items: start;
+  }
+
   /* Sur deux colonnes, la version en bout de ligne n'a plus la place : elle
      rejoint les métadonnées sous le titre. */
   .project { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0 0.95rem; }

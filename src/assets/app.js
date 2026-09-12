@@ -55,6 +55,52 @@
     });
   }
 
+  // --- Mosaïque ------------------------------------------------------------
+  // Sur deux colonnes, une grille ordinaire aligne les fiches par paires : la
+  // rangée prend la hauteur de la plus haute et la plus courte laisse un vide
+  // sous elle. On donne donc à chaque fiche une hauteur exprimée en rangées
+  // d'1 px : le placement automatique la glisse alors dans le premier creux
+  // libre, de gauche à droite, sans jamais reculer — la plus récente reste en
+  // haut à gauche, et rien ne se lit à contre-sens.
+
+  function poserMosaique(scope) {
+    var listes = scope.querySelectorAll(".projects, .notes");
+
+    for (var l = 0; l < listes.length; l++) {
+      var liste = listes[l];
+      liste.classList.add("mosaique");
+
+      // La classe ne suffit pas : hors des deux colonnes la liste reste un
+      // bloc ordinaire, et les hauteurs n'ont alors rien à contraindre.
+      var enGrille = getComputedStyle(liste).display === "grid";
+      var items = liste.children;
+
+      // Toutes les mesures d'abord, toutes les écritures ensuite : mesurer et
+      // écrire en alternance forcerait un recalcul de mise en page par fiche.
+      var hauteurs = [];
+      for (var i = 0; i < items.length; i++) {
+        hauteurs.push(
+          enGrille && !items[i].hidden ? Math.ceil(items[i].getBoundingClientRect().height) : 0
+        );
+      }
+      for (var j = 0; j < items.length; j++) {
+        items[j].style.gridRowEnd = hauteurs[j] ? "span " + hauteurs[j] : "";
+      }
+    }
+  }
+
+  // Le redimensionnement change la largeur des colonnes, donc la hauteur des
+  // fiches : on repose la mosaïque, mais une seule fois par image.
+  var enAttente = false;
+  window.addEventListener("resize", function () {
+    if (enAttente) return;
+    enAttente = true;
+    requestAnimationFrame(function () {
+      enAttente = false;
+      if (main) poserMosaique(main);
+    });
+  });
+
   // --- Filtres -------------------------------------------------------------
   // Réinitialisés après chaque navigation, puisque le panneau est remplacé.
 
@@ -97,6 +143,9 @@
           shown === items.length ? items.length + " projets" : shown + " sur " + items.length;
       }
       if (empty) empty.hidden = shown !== 0;
+
+      // Masquer une fiche libère sa place : la mosaïque doit se retasser.
+      poserMosaique(scope);
 
       // Le filtre vit dans le fragment, mais il n'est pas seul a y vivre : une
       // ancre de section (#experience) doit survivre au premier rendu.
@@ -234,4 +283,12 @@
 
   initTheme();
   initFilters(main);
+
+  // Une substitution de police après coup changerait la hauteur des fiches
+  // sous la mosaïque : on la repose une fois les polices résolues.
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () {
+      if (main) poserMosaique(main);
+    });
+  }
 })();
