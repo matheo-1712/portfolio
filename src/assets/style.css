@@ -65,14 +65,25 @@
    sans jamais les masquer. */
 [hidden] { display: none !important; }
 
-html { -webkit-text-size-adjust: 100%; }
+/* Tout le site est dimensionne en rem : agrandir la base agrandit la page
+   entiere — texte, vignettes, gouttieres — sans rien deregler. Le palier bas
+   laisse le telephone et les ecrans etroits exactement comme ils etaient ; au
+   dela de 1200 px l'echelle monte doucement jusqu'a 18,5 px, la ou il y a de
+   la place a revendre.
+
+   Note : dans une media query, `rem` se mesure toujours sur 16 px, jamais sur
+   cette valeur. Les points de rupture ne bougent donc pas. */
+html {
+  -webkit-text-size-adjust: 100%;
+  font-size: clamp(16px, 13px + 0.25vw, 18.5px);
+}
 
 body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
   font-family: var(--sans);
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
@@ -117,8 +128,8 @@ h1, h2, h3 { line-height: 1.25; font-weight: 600; margin: 0; letter-spacing: -0.
 }
 
 .avatar {
-  width: 72px;
-  height: 72px;
+  width: 4.5rem;
+  height: 4.5rem;
   border-radius: 50%;
   flex: none;
   /* Un simple anneau : le portrait doit se détacher du fond sans effet de carte. */
@@ -311,7 +322,7 @@ h1, h2, h3 { line-height: 1.25; font-weight: 600; margin: 0; letter-spacing: -0.
 @media (min-width: 60rem) {
   .layout {
     display: grid;
-    grid-template-columns: 23rem minmax(0, 1fr);
+    grid-template-columns: 25rem minmax(0, 1fr);
     column-gap: 3.5rem;
     align-items: start;
     max-width: var(--measure-large);
@@ -334,9 +345,9 @@ h1, h2, h3 { line-height: 1.25; font-weight: 600; margin: 0; letter-spacing: -0.
 
   /* Dans une colonne de 23rem, le nom se coupait en deux lignes : la taille
      fluide n'a pas conscience de la largeur réelle du panneau. */
-  .pane-side .masthead h1 { font-size: 1.7rem; }
+  .pane-side .masthead h1 { font-size: 1.85rem; }
   .pane-side .identity { gap: 0.9rem; }
-  .pane-side .avatar { width: 64px; height: 64px; }
+  .pane-side .avatar { width: 4.25rem; height: 4.25rem; }
 }
 
 /* Écran large et assez haut : chaque panneau défile pour lui-même, ce qui
@@ -350,7 +361,10 @@ h1, h2, h3 { line-height: 1.25; font-weight: 600; margin: 0; letter-spacing: -0.
     max-width: none;
     padding: 0;
     column-gap: 0;
-    grid-template-columns: 26rem minmax(0, 1fr);
+    /* La colonne de profil suit la fenetre au lieu d'etre figee : large ecran,
+       colonne large. Les bornes l'empechent d'etouffer les projets en dessous
+       de 1400 px et de s'etaler betement au dela de 2000 px. */
+    grid-template-columns: clamp(26rem, 25vw, 31rem) minmax(0, 1fr);
   }
 
   .pane {
@@ -462,8 +476,8 @@ section { margin-top: 3.25rem; }
    visuelle entre deux voisins. */
 .thumb {
   flex: none;
-  width: 44px;
-  height: 44px;
+  width: 2.75rem;
+  height: 2.75rem;
   border-radius: 6px;
   display: grid;
   place-items: center;
@@ -603,7 +617,10 @@ a:hover > .ico { opacity: 1; }
 /* Au-delà de cette largeur, une liste sur une seule colonne laisse un vide à
    droite et éloigne les liens du texte. Deux colonnes remplissent l'espace et
    montrent plus de projets d'un coup, sans changer la nature de la liste. */
-@container (min-width: 66rem) {
+/* Seuil en pixels, pas en rem : la base typographique suit desormais la
+   largeur de la fenetre, un seuil en rem se deplacerait donc avec elle et la
+   deuxieme colonne disparaitrait au moment ou l'ecran s'agrandit. */
+@container (min-width: 1015px) {
   .projects, .notes {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -809,7 +826,7 @@ footer .spacer { margin-left: auto; }
 .aliases a { color: var(--accent); }
 
 .detail-head .identity { gap: 0.9rem; }
-.detail-head .thumb { width: 56px; height: 56px; border-radius: 8px; }
+.detail-head .thumb { width: 3.5rem; height: 3.5rem; border-radius: 8px; }
 .detail-head .thumb-mono { font-size: 1.05rem; }
 .detail-head h1 { font-size: clamp(1.5rem, 4vw, 1.95rem); }
 .detail-head .lede { margin: 0.6rem 0 0; color: var(--muted); max-width: 38rem; }
@@ -1024,7 +1041,7 @@ footer .spacer { margin-left: auto; }
 
   .masthead { padding-top: 2.25rem; }
   .identity { gap: 0.85rem; }
-  .avatar { width: 60px; height: 60px; }
+  .avatar { width: 3.75rem; height: 3.75rem; }
   .masthead h1 { font-size: 1.45rem; }
   .masthead .role { font-size: 0.93rem; }
   .headline { font-size: 1.05rem; }
@@ -1046,7 +1063,7 @@ footer .spacer { margin-left: auto; }
   .note-row .when { padding-top: 0; margin-bottom: 0.15rem; }
 
   .project { gap: 0.7rem; }
-  .thumb { width: 34px; height: 34px; border-radius: 5px; }
+  .thumb { width: 2.15rem; height: 2.15rem; border-radius: 5px; }
   .thumb-mono { font-size: 0.72rem; }
   /* La version passe sous le titre plutot que de comprimer la colonne. */
   .project-version { display: none; }
