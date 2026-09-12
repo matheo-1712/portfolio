@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-12T17:54:52.036Z",
+  "generated": "2026-09-12T18:27:55.964Z",
   "count": 15,
   "projects": [
     {
@@ -673,7 +673,26 @@
         "rank": 1,
         "contributors": 1
       },
-      "gallery": [],
+      "gallery": [
+        {
+          "url": "img/shots/citlali/infographies.webp",
+          "full": "img/shots/citlali/infographies.webp",
+          "title": "Commande /build [nom du personnage]",
+          "description": ""
+        },
+        {
+          "url": "img/shots/citlali/autocompletion.webp",
+          "full": "img/shots/citlali/autocompletion.webp",
+          "title": "Système d'autocomplétion",
+          "description": ""
+        },
+        {
+          "url": "img/shots/citlali/profil.webp",
+          "full": "img/shots/citlali/profil.webp",
+          "title": "Profil de l'utilisateur via la commande /get-uid",
+          "description": ""
+        }
+      ],
       "modrinth": null,
       "org": null,
       "hidden": false,
@@ -845,7 +864,44 @@
         "rank": 1,
         "contributors": 3
       },
-      "gallery": [],
+      "gallery": [
+        {
+          "url": "img/shots/otterminded/accueil.webp",
+          "full": "img/shots/otterminded/accueil.webp",
+          "title": "Page d'accueil de l'application (mode clair)",
+          "description": ""
+        },
+        {
+          "url": "img/shots/otterminded/navbar.webp",
+          "full": "img/shots/otterminded/navbar.webp",
+          "title": "Menu de navigation de l'application",
+          "description": ""
+        },
+        {
+          "url": "img/shots/otterminded/profil.webp",
+          "full": "img/shots/otterminded/profil.webp",
+          "title": "Page profil de l'application",
+          "description": ""
+        },
+        {
+          "url": "img/shots/otterminded/adminpanel_commentaire.webp",
+          "full": "img/shots/otterminded/adminpanel_commentaire.webp",
+          "title": "Page commentaire sur le panel Admin",
+          "description": ""
+        },
+        {
+          "url": "img/shots/otterminded/adminpanel_question.webp",
+          "full": "img/shots/otterminded/adminpanel_question.webp",
+          "title": "Page question sur le panel admin",
+          "description": ""
+        },
+        {
+          "url": "img/shots/otterminded/adminpanel_utilisateur.webp",
+          "full": "img/shots/otterminded/adminpanel_utilisateur.webp",
+          "title": "Page utilisateur sur le panel admin",
+          "description": ""
+        }
+      ],
       "modrinth": null,
       "org": "L-Antre-des-Loutres",
       "hidden": false,
