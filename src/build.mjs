@@ -498,9 +498,15 @@ async function main() {
       .then(() => true)
       .catch(() => false);
 
+  // Le nom du fichier suit le slug du projet, mais tiret et tiret bas se
+  // confondent facilement au moment de deposer une image : on accepte les deux
+  // plutot que d'ignorer silencieusement un logo mal nomme.
   const firstExisting = async (base) => {
-    for (const ext of ["webp", "png", "svg", "jpg", "jpeg"]) {
-      if (await exists(`${base}.${ext}`)) return `${base}.${ext}`;
+    const noms = [...new Set([base, base.replace(/-/g, "_"), base.replace(/_/g, "-")])];
+    for (const nom of noms) {
+      for (const ext of ["webp", "png", "svg", "jpg", "jpeg"]) {
+        if (await exists(`${nom}.${ext}`)) return `${nom}.${ext}`;
+      }
     }
     return null;
   };
