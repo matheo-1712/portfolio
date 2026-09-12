@@ -93,6 +93,28 @@ export function markdown(src, { baseUrl } = {}) {
   return html;
 }
 
+// Jeu de pictogrammes, defini une seule fois par page et reference par <use> :
+// repeter le SVG a chaque lien couterait plusieurs kilooctets pour rien.
+const ICONES = {
+  details: '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/>',
+  code: '<polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>',
+  site: '<circle cx="12" cy="12" r="9"/><line x1="3" y1="12" x2="21" y2="12"/><path d="M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/>',
+  doc: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>',
+  telecharger: '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>',
+  paquet: '<path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.3 7 12 12 20.7 7"/><line x1="12" y1="22" x2="12" y2="12"/>',
+  retour: '<line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>',
+};
+
+export function spriteIcones() {
+  const symbols = Object.entries(ICONES)
+    .map(([nom, d]) => `<symbol id="i-${nom}" viewBox="0 0 24 24">${d}</symbol>`)
+    .join("");
+  return `<svg class="sprite" aria-hidden="true" focusable="false"><defs>${symbols}</defs></svg>`;
+}
+
+export const icone = (nom) =>
+  ICONES[nom] ? `<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-${nom}"/></svg>` : "";
+
 const STATUS_LABEL = {
   prod: "en production",
   wip: "en cours",
@@ -117,10 +139,16 @@ function period(project) {
   return end || startYear || "";
 }
 
-function linkLabel(key) {
-  const labels = { repo: "code", demo: "site", docs: "doc", download: "télécharger", package: "paquet" };
-  return labels[key] || key;
-}
+const LIENS = {
+  repo: { label: "code", icone: "code" },
+  demo: { label: "site", icone: "site" },
+  docs: { label: "doc", icone: "doc" },
+  download: { label: "télécharger", icone: "telecharger" },
+  package: { label: "paquet", icone: "paquet" },
+};
+
+const linkLabel = (key) => (LIENS[key] || {}).label || key;
+const linkIcone = (key) => icone((LIENS[key] || {}).icone || "");
 
 // Un lien vers un service eteint n'est pas propose : mieux vaut ne rien
 // afficher qu'envoyer le lecteur sur une page morte. L'information reste
@@ -130,11 +158,13 @@ export const linkIsDead = (project, url) =>
 
 function projectLinks(project, { detailHref } = {}) {
   const parts = [];
-  if (detailHref) parts.push(`<a href="${attr(detailHref)}">détails</a>`);
+  if (detailHref) parts.push(`<a href="${attr(detailHref)}">${icone("details")}détails</a>`);
   for (const [key, url] of Object.entries(project.links || {})) {
     if (!url || linkIsDead(project, url)) continue;
     parts.push(
-      `<a href="${attr(url)}" target="_blank" rel="noopener noreferrer">${esc(linkLabel(key))}</a>`
+      `<a href="${attr(url)}" target="_blank" rel="noopener noreferrer">${linkIcone(key)}${esc(
+        linkLabel(key)
+      )}</a>`
     );
   }
   return parts.length ? `<span class="project-links">${parts.join("")}</span>` : "";
@@ -248,6 +278,7 @@ ${extraHead}
 </head>
 <body>
 <a class="skip" href="#main">Aller au contenu</a>
+${spriteIcones()}
 ${body}
 <script src="${assetsPrefix}app.js${v}" defer></script>
 </body>

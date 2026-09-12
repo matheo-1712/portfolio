@@ -8,6 +8,7 @@ import YAML from "yaml";
 
 import {
   esc,
+  icone,
   layout,
   linkIsDead,
   markdown,
@@ -49,7 +50,7 @@ function keyFigures(projects) {
   ].filter(Boolean);
 }
 
-function masthead(profile, projects) {
+function masthead(profile, projects, prefix = "") {
   const id = profile.identity || {};
 
   const links = [];
@@ -60,11 +61,11 @@ function masthead(profile, projects) {
     );
   if (id.linkedin)
     links.push(`<a class="btn" href="${attr(id.linkedin)}" target="_blank" rel="noopener noreferrer">linkedin</a>`);
-  if (id.cv) links.push(`<a class="btn" href="${attr(id.cv)}">cv (pdf)</a>`);
+  if (id.cv) links.push(`<a class="btn" href="${attr(prefix + id.cv)}">cv (pdf)</a>`);
   links.push(`<button class="btn" id="theme-toggle" type="button">thème sombre</button>`);
 
   const avatar = profile.__avatar
-    ? `<img class="avatar" src="${attr(profile.__avatar)}" width="72" height="72"
+    ? `<img class="avatar" src="${attr(prefix + profile.__avatar)}" width="72" height="72"
          alt="Portrait de ${attr(id.name || "")}" fetchpriority="high" decoding="async">`
     : "";
 
@@ -85,7 +86,7 @@ function masthead(profile, projects) {
   <div class="identity">
     ${avatar}
     <div>
-      <h1>${esc(id.name || "")}</h1>
+      <h1><a href="${attr(prefix || "index.html")}">${esc(id.name || "")}</a></h1>
       <p class="role">${esc(id.role || "")}</p>
       <p class="meta">${esc(id.location || "")}</p>
     </div>
@@ -296,7 +297,7 @@ function skillsSection(profile, projects) {
 </section>`;
 }
 
-function footer(profile, generated) {
+function footer(profile, generated, prefix = "") {
   const id = profile.identity || {};
   const when = generated
     ? new Date(generated).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" })
@@ -316,6 +317,20 @@ function footer(profile, generated) {
 
 // --- Pages -------------------------------------------------------------------
 
+// Le panneau de gauche est identique partout : c'est ce qui permet de passer
+// d'un projet a l'autre sans que le profil bouge, et de garder chaque fiche
+// autonome quand le script ne s'execute pas.
+function sidePane(profile, projects, generated, prefix = "") {
+  return `
+  <aside class="pane pane-side">
+    ${masthead(profile, projects, prefix)}
+    ${skillsSection(profile, projects)}
+    ${experienceSection(profile)}
+    ${educationSection(profile)}
+    ${footer(profile, generated, prefix)}
+  </aside>`;
+}
+
 function indexPage(profile, data, detailSlugs, notes, assetVersion) {
   const seo = profile.seo || {};
   // Deux panneaux : le profil a gauche, les projets a droite, chacun avec son
@@ -327,15 +342,9 @@ function indexPage(profile, data, detailSlugs, notes, assetVersion) {
   // immediatement, le parcours ferme la marche.
   const body = `
 <div class="layout">
-  <aside class="pane pane-side">
-    ${masthead(profile, data.projects)}
-    ${skillsSection(profile, data.projects)}
-    ${experienceSection(profile)}
-    ${educationSection(profile)}
-    ${footer(profile, data.generated)}
-  </aside>
+  ${sidePane(profile, data.projects, data.generated)}
 
-  <main id="main" class="pane pane-main">
+  <main id="main" class="pane pane-main" data-page="index">
     ${projectsSection(profile, data.projects, detailSlugs)}
     ${notesSection(notes)}
   </main>
@@ -351,7 +360,7 @@ function indexPage(profile, data, detailSlugs, notes, assetVersion) {
   });
 }
 
-function detailPage(profile, project, assetVersion) {
+function detailPage(profile, project, assetVersion, allProjects) {
   const seo = profile.seo || {};
   const base = project.links?.repo ? `${project.links.repo}/raw/HEAD` : null;
 
@@ -398,9 +407,9 @@ function detailPage(profile, project, assetVersion) {
     .filter(([, url]) => url && !linkIsDead(project, url))
     .map(
       ([key, url]) =>
-        `<a class="btn" href="${attr(url)}" target="_blank" rel="noopener noreferrer">${esc(
-          { repo: "voir le code", demo: "voir le site", docs: "documentation" }[key] || key
-        )}</a>`
+        `<a class="btn" href="${attr(url)}" target="_blank" rel="noopener noreferrer">${icone(
+          { repo: "code", demo: "site", docs: "doc", download: "telecharger" }[key] || ""
+        )}${esc({ repo: "voir le code", demo: "voir le site", docs: "documentation" }[key] || key)}</a>`
     )
     .join("");
 
@@ -435,29 +444,32 @@ function detailPage(profile, project, assetVersion) {
     : "";
 
   const body = `
-<div class="wrap">
-  <p class="crumb"><a href="../index.html">← tous les projets</a></p>
-  ${
-    project.banner
-      ? `<div class="banner"><img src="../${attr(project.banner)}" alt="Bannière du projet ${attr(
-          project.title
-        )}" loading="eager" decoding="async"></div>`
-      : ""
-  }
-  <header class="detail-head">
-    <div class="identity">
-      ${project.banner ? "" : thumbnail(project, { prefix: "../" })}
-      <h1>${esc(project.title)}</h1>
-    </div>
-    ${project.summary ? `<p class="lede">${esc(project.summary)}</p>` : ""}
-    <dl class="facts">${facts}</dl>
-    ${links ? `<div class="actions">${links}</div>` : ""}
-    ${aliases}
-  </header>
-  <main id="main" class="prose">${markdown(project.body, { baseUrl: base })}</main>
-  ${gallerySection(project, "../")}
-</div>
-${footer(profile, null)}`;
+<div class="layout">
+  ${sidePane(profile, allProjects, null, "../")}
+
+  <main id="main" class="pane pane-main" data-page="projet">
+    <p class="crumb"><a href="../index.html" data-back>${icone("retour")}tous les projets</a></p>
+    ${
+      project.banner
+        ? `<div class="banner"><img src="../${attr(project.banner)}" alt="Bannière du projet ${attr(
+            project.title
+          )}" loading="eager" decoding="async"></div>`
+        : ""
+    }
+    <header class="detail-head">
+      <div class="identity">
+        ${project.banner ? "" : thumbnail(project, { prefix: "../" })}
+        <h1>${esc(project.title)}</h1>
+      </div>
+      ${project.summary ? `<p class="lede">${esc(project.summary)}</p>` : ""}
+      <dl class="facts">${facts}</dl>
+      ${links ? `<div class="actions">${links}</div>` : ""}
+      ${aliases}
+    </header>
+    <div class="prose">${markdown(project.body, { baseUrl: base })}</div>
+    ${gallerySection(project, "../")}
+  </main>
+</div>`;
 
   return layout({
     title: `${project.title} — ${profile.identity?.name || ""}`.trim(),
@@ -509,25 +521,28 @@ function gallerySection(project, prefix = "") {
   </section>`;
 }
 
-function notePage(profile, note, assetVersion) {
+function notePage(profile, note, assetVersion, allProjects) {
   const seo = profile.seo || {};
   const base = seo.url ? `${seo.url.replace(/\/$/, "")}/n/${note.slug}.html` : "";
 
   const body = `
-<div class="wrap">
-  <p class="crumb"><a href="../index.html">← retour à l'accueil</a></p>
-  <header class="detail-head">
-    <h1>${esc(note.title)}</h1>
-    ${note.summary ? `<p class="lede">${esc(note.summary)}</p>` : ""}
-    <p class="note-foot">
-      ${esc(formatLongDate(note.date))} · ${esc(`${note.minutes} min de lecture`)}${
-        note.tags.length ? ` · ${esc(note.tags.join(" · "))}` : ""
-      }
-    </p>
-  </header>
-  <main id="main" class="prose">${markdown(note.body)}</main>
-</div>
-${footer(profile, null)}`;
+<div class="layout">
+  ${sidePane(profile, allProjects, null, "../")}
+
+  <main id="main" class="pane pane-main" data-page="note">
+    <p class="crumb"><a href="../index.html" data-back>${icone("retour")}retour à l'accueil</a></p>
+    <header class="detail-head">
+      <h1>${esc(note.title)}</h1>
+      ${note.summary ? `<p class="lede">${esc(note.summary)}</p>` : ""}
+      <p class="note-foot">
+        ${esc(formatLongDate(note.date))} · ${esc(`${note.minutes} min de lecture`)}${
+          note.tags.length ? ` · ${esc(note.tags.join(" · "))}` : ""
+        }
+      </p>
+    </header>
+    <div class="prose">${markdown(note.body)}</div>
+  </main>
+</div>`;
 
   return layout({
     title: `${note.title} — ${profile.identity?.name || ""}`.trim(),
@@ -599,11 +614,11 @@ async function main() {
   await fs.writeFile(path.join(DIST, "index.html"), indexPage(profile, data, detailSlugs, notes, assetVersion), "utf8");
 
   for (const project of withDetail) {
-    await fs.writeFile(path.join(DIST, "p", `${project.slug}.html`), detailPage(profile, project, assetVersion), "utf8");
+    await fs.writeFile(path.join(DIST, "p", `${project.slug}.html`), detailPage(profile, project, assetVersion, data.projects), "utf8");
   }
 
   for (const note of notes) {
-    await fs.writeFile(path.join(DIST, "n", `${note.slug}.html`), notePage(profile, note, assetVersion), "utf8");
+    await fs.writeFile(path.join(DIST, "n", `${note.slug}.html`), notePage(profile, note, assetVersion, data.projects), "utf8");
   }
 
   for (const asset of ["style.css", "app.js"]) {
