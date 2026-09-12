@@ -1,5 +1,25 @@
 import { dateRank, normalizeStatus, repoKey, slugify, titleize, toArray } from "./normalize.mjs";
 
+// Une galerie peut etre declaree en forme courte (une liste de chemins) ou
+// detaillee (objets avec legende). On ramene les deux a la meme structure.
+function normalizeGallery(value) {
+  if (!Array.isArray(value)) return [];
+  return value
+    .map((item) => {
+      if (typeof item === "string") return { url: item, title: "", description: "" };
+      if (!item || typeof item !== "object") return null;
+      const url = item.url || item.src || item.image;
+      if (!url) return null;
+      return {
+        url: String(url),
+        full: item.full ? String(item.full) : String(url),
+        title: item.title || item.caption || item.legende || "",
+        description: item.description || "",
+      };
+    })
+    .filter(Boolean);
+}
+
 const first = (...values) => {
   for (const v of values) {
     if (v === null || v === undefined) continue;
@@ -67,7 +87,7 @@ export function mergeLayers({ gh, pmd, pb, ovr }) {
     contribution: g.contribution || null,
     // Galerie declaree a la main ; les sources externes (Modrinth) viennent
     // s'ajouter plus tard, sans ecraser ce qui a ete choisi ici.
-    gallery: first(o.gallery, p.gallery, []) || [],
+    gallery: normalizeGallery(first(o.gallery, p.gallery, [])),
     modrinth: first(o.modrinth, p.modrinth, null) || null,
     org: g.org || null,
     hidden: firstBool(o.hidden, p.hidden) ?? false,

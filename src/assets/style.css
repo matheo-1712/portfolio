@@ -19,7 +19,10 @@
   --mono: ui-monospace, "SFMono-Regular", "Cascadia Mono", "Segoe UI Mono", Menlo, Consolas, monospace;
   --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 
+  /* Largeur de lecture pour les fiches et les articles. */
   --measure: 46rem;
+  /* La page d'accueil tient sur deux colonnes et respire plus large. */
+  --measure-large: 74rem;
 }
 
 :root[data-theme="dark"] {
@@ -247,9 +250,50 @@ h1, h2, h3 { line-height: 1.25; font-weight: 600; margin: 0; letter-spacing: -0.
   margin: 0 0.25rem;
 }
 
+/* --- Mise en page de l'accueil ------------------------------------------- */
+
+/* Sur téléphone, la grille n'existe pas : l'ordre du HTML suffit, et il est
+   déjà le bon — identité, projets, notes, puis compétences et parcours. */
+.layout { max-width: var(--measure-large); }
+
+@media (min-width: 60rem) {
+  .layout {
+    display: grid;
+    grid-template-columns: 22rem minmax(0, 1fr);
+    column-gap: 3.5rem;
+    align-items: start;
+  }
+
+  /* Le placement explicite permet de garder l'ordre du HTML pensé pour le
+     téléphone tout en remontant les projets à droite sur grand écran. */
+  .masthead  { grid-column: 1; grid-row: 1; }
+  .col-side  { grid-column: 1; grid-row: 2; }
+  .col-main  { grid-column: 2; grid-row: 1 / span 2; }
+
+  /* La colonne de droite démarre à hauteur du nom, pas en dessous. */
+  .col-main > section:first-child { margin-top: 3.5rem; }
+
+  /* Dans une colonne de 22rem, quatre chiffres sur une rangée se chevauchent :
+     deux par deux, ils restent lisibles. */
+  .figures {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.85rem 1rem;
+  }
+
+  /* Colonne étroite : les grilles à deux colonnes n'y tiennent pas. */
+  .col-side .entry,
+  .col-side .skill-row { grid-template-columns: 1fr; gap: 0.1rem; }
+  .col-side .entry .when,
+  .col-side .skill-row dt { padding-top: 0; margin-bottom: 0.15rem; }
+  .col-side .entry .note { grid-column: 1; }
+  .facts.about { grid-template-columns: 1fr; gap: 0.7rem; }
+}
+
 /* --- Sections ----------------------------------------------------------- */
 
 section { margin-top: 3.25rem; }
+.col-side > section:first-child { margin-top: 3rem; }
 
 .section-head {
   display: flex;
@@ -650,12 +694,14 @@ footer .spacer { margin-left: auto; }
 
 .shot img {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
-  /* Les captures n'ont pas toutes le même format : on impose un cadre commun
-     pour que la grille ne parte pas en escalier. */
+  /* Un cadre commun évite que la grille parte en escalier, mais l'image y est
+     contenue et non rognée : une capture verticale d'application mobile doit
+     rester lisible, quitte à laisser des marges latérales. */
   aspect-ratio: 16 / 9;
-  object-fit: cover;
+  object-fit: contain;
+  background: var(--accent-bg);
 }
 
 .shot figcaption {

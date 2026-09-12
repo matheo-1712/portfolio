@@ -10,6 +10,7 @@ import * as gh from "./lib/gh.mjs";
 import { fetchProjects as fetchPocketbase } from "./lib/pb.mjs";
 import { checkUrls } from "./lib/health.mjs";
 import * as modrinth from "./lib/modrinth.mjs";
+import { collectRepoGallery } from "./lib/repo-gallery.mjs";
 import { attachHealth, previousHealth } from "./health.mjs";
 import {
   cleanReadme,
@@ -217,6 +218,36 @@ async function main() {
   }
 
   const projects = buildProjects(githubByKey, pbMatched, pbOrphans, overrides);
+
+  // Galerie portee par le depot lui-meme : `.portfolio/gallery/`.
+  // Elle passe avant Modrinth, parce qu'elle est un choix explicite.
+  {
+    log("Galeries de depot");
+    let trouvees = 0;
+    for (const project of projects) {
+      const [owner, repo] = (project.key || "").split("/");
+      if (!owner || !repo || project.gallery.length) continue;
+
+      try {
+        const galerie = await collectRepoGallery({
+          owner,
+          repo,
+          slug: project.slug,
+          listDir: gh.listDir,
+          rawFile: gh.rawFile,
+          staticDir: path.join(ROOT, "static"),
+        });
+        if (galerie.length) {
+          project.gallery = galerie;
+          trouvees++;
+          log(`    ${project.title} — ${galerie.length} image(s)`);
+        }
+      } catch (err) {
+        warn(`${project.title} : ${err.message}`);
+      }
+    }
+    if (!trouvees) log("  aucun depot ne declare .portfolio/gallery/");
+  }
 
   // Modrinth : captures d'ecran, icone et telechargements. Ces informations
   // vivent sur la page de publication, jamais dans le depot.

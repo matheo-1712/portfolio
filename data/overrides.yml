@@ -32,3 +32,29 @@ matheo-1712/otterlyapi:
 l-antre-des-loutres/otterlyapi:
   links:
     demo: "https://api.antredesloutres.fr/"
+
+# Galerie declaree a la main : les chemins sont relatifs a static/.
+# Elle est prioritaire sur une galerie recuperee depuis Modrinth.
+l-antre-des-loutres/otterminded:
+  gallery:
+    - url: "img/shots/otterminded/accueil.webp"
+      title: "Page d'accueil de l'application (mode clair)"
+    - url: "img/shots/otterminded/navbar.webp"
+      title: "Menu de navigation de l'application"
+    - url: "img/shots/otterminded/profil.webp"
+      title: "Page profil de l'application"
+    - url: "img/shots/otterminded/adminpanel_commentaire.webp"
+      title: "Page commentaire sur le panel Admin"
+    - url: "img/shots/otterminded/adminpanel_question.webp"
+      title: "Page question sur le panel admin"
+    - url: "img/shots/otterminded/adminpanel_utilisateur.webp"
+      title: "Page utilisateur sur le panel admin"
+
+matheo-1712/citlali:
+  gallery:
+    - url: "img/shots/citlali/infographies.webp"
+      title: "Commande /build [nom du personnage]"
+    - url: "img/shots/citlali/autocompletion.webp"
+      title: "Système d'autocomplétion"
+    - url: "img/shots/citlali/profil.webp"
+      title: "Profil de l'utilisateur via la commande /get-uid"

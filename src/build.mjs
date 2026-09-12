@@ -81,7 +81,7 @@ function masthead(profile, projects) {
   const clean = (v) => String(v || "").replace(/\s*\n\s*/g, " ").trim();
 
   return `
-<header class="masthead wrap">
+<header class="masthead">
   <div class="identity">
     ${avatar}
     <div>
@@ -318,15 +318,26 @@ function footer(profile, generated) {
 
 function indexPage(profile, data, detailSlugs, notes, assetVersion) {
   const seo = profile.seo || {};
+  // Deux colonnes : le profil a gauche, les projets a droite. Sans cela, tout
+  // ce qui n'est pas la liste de projets se retrouve a plus de trois mille
+  // pixels du haut de page, donc invisible pour qui ne fait pas defiler.
+  // L'ordre du HTML reste celui du telephone — identite, projets, puis le
+  // reste — et la grille se charge du placement sur grand ecran.
   const body = `
-${masthead(profile, data.projects)}
-<main id="main" class="wrap">
-  ${projectsSection(profile, data.projects, detailSlugs)}
-  ${notesSection(notes)}
-  ${experienceSection(profile)}
-  ${educationSection(profile)}
-  ${skillsSection(profile, data.projects)}
-</main>
+<div class="wrap layout">
+  ${masthead(profile, data.projects)}
+
+  <main id="main" class="col-main">
+    ${projectsSection(profile, data.projects, detailSlugs)}
+    ${notesSection(notes)}
+  </main>
+
+  <aside class="col-side">
+    ${skillsSection(profile, data.projects)}
+    ${experienceSection(profile)}
+    ${educationSection(profile)}
+  </aside>
+</div>
 ${footer(profile, data.generated)}`;
 
   return layout({
@@ -443,7 +454,7 @@ function detailPage(profile, project, assetVersion) {
     ${aliases}
   </header>
   <main id="main" class="prose">${markdown(project.body, { baseUrl: base })}</main>
-  ${gallerySection(project)}
+  ${gallerySection(project, "../")}
 </div>
 ${footer(profile, null)}`;
 
@@ -460,18 +471,23 @@ ${footer(profile, null)}`;
 
 // Galerie d'illustrations. Les vignettes sont chargees paresseusement : une
 // fiche peut en compter dix, et elles sont sous la ligne de flottaison.
-function gallerySection(project) {
+function gallerySection(project, prefix = "") {
   const images = project.gallery || [];
   if (!images.length) return "";
+
+  // Les fiches vivent dans /p/ : un chemin declare relativement a la racine du
+  // site doit etre reecrit, alors qu'une URL absolue est laissee intacte.
+  const resolve = (url) =>
+    /^(https?:)?\/\//.test(url) || url.startsWith("data:") ? url : prefix + url.replace(/^\//, "");
 
   const items = images
     .map((img, i) => {
       const legende = img.title || img.description || "";
       return `
       <figure class="shot">
-        <a href="${attr(img.full || img.url)}" target="_blank" rel="noopener noreferrer"
+        <a href="${attr(resolve(img.full || img.url))}" target="_blank" rel="noopener noreferrer"
            aria-label="${attr(legende || `Image ${i + 1}`)} — ouvrir en pleine résolution">
-          <img src="${attr(img.url)}" alt="${attr(legende)}" loading="lazy" decoding="async">
+          <img src="${attr(resolve(img.url))}" alt="${attr(legende)}" loading="lazy" decoding="async">
         </a>
         ${legende ? `<figcaption>${esc(legende)}</figcaption>` : ""}
       </figure>`;

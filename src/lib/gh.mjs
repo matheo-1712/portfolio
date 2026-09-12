@@ -140,6 +140,13 @@ export async function contributors(owner, repo) {
     .sort((a, b) => b.commits - a.commits);
 }
 
+// Contenu d'un dossier du depot. Renvoie null si le dossier n'existe pas —
+// le cas courant, puisque la galerie est facultative.
+export async function listDir(owner, repo, dir) {
+  const data = await api(`/repos/${owner}/${repo}/contents/${dir}`, { allow404: true });
+  return Array.isArray(data) ? data : null;
+}
+
 export async function rateStatus() {
   try {
     const d = await api("/rate_limit");

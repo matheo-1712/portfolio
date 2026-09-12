@@ -160,17 +160,77 @@ Les images mises en avant sur Modrinth passent en tête, comme sur leur page.
 La vignette affichée est la version allégée servie par le CDN ; un clic ouvre
 l'original en pleine résolution.
 
-Pour une galerie qui ne vient pas de Modrinth, déclare-la à la main — elle est
-prioritaire sur la source externe :
-
-```yaml
-gallery:
-  - url: "img/shots/mon-projet-1.png"
-    title: "Écran d'accueil"
-```
-
 L'icône Modrinth sert de logo quand aucun fichier local n'existe dans
 `static/img/projects/`.
+
+### Depuis le dépôt du projet (recommandé)
+
+Dépose les captures dans **`.portfolio/gallery/`** à la racine du dépôt. Rien à
+configurer côté portfolio : la collecte les rapatrie et les affiche.
+
+```
+mon-projet/
+└── .portfolio/
+    ├── gallery/
+    │   ├── 01-ecran-accueil.png
+    │   └── 02-menu.png
+    └── gallery.yml          (facultatif, pour les légendes exactes)
+```
+
+L'ordre suit les noms de fichiers ; le préfixe numérique le contrôle sans
+apparaître dans la légende, déduite du reste du nom
+(`01-ecran-accueil.png` → « Ecran accueil »). Pour une légende exacte, liste-la
+dans `.portfolio/gallery.yml` :
+
+```yaml
+01-ecran-accueil.png: "Page d'accueil, en thème sombre"
+```
+
+Les images sont copiées dans `static/img/shots/<slug>/` puis servies par le
+site. Une image retirée du dépôt disparaît à la collecte suivante ; une image
+inchangée n'est pas retéléchargée.
+
+Détails complets : [`docs/gallery-exemple.md`](docs/gallery-exemple.md).
+
+### Déclarer une galerie à la main
+
+Quand tu ne veux pas toucher au dépôt d'origine — par exemple un dépôt
+d'organisation ou un projet scolaire. Cette déclaration est **prioritaire sur
+toutes les autres sources**.
+
+Ordre de priorité, la première qui répond l'emporte :
+`overrides.yml` → `portfolio.md` → `.portfolio/gallery/` → Modrinth.
+
+Range les images sous `static/img/shots/<projet>/`, puis, dans
+`data/overrides.yml` (ou le front-matter du `portfolio.md` du dépôt) :
+
+```yaml
+l-antre-des-loutres/otterminded:
+  gallery:
+    - url: "img/shots/otterminded/accueil.webp"
+      title: "Page d'accueil de l'application"
+    - url: "img/shots/otterminded/profil.webp"
+      title: "Profil utilisateur"
+```
+
+La forme courte suffit quand les légendes sont inutiles :
+
+```yaml
+  gallery:
+    - "img/shots/mon-projet/1.webp"
+    - "img/shots/mon-projet/2.webp"
+```
+
+**Les chemins sont relatifs à `static/`**, sans barre oblique initiale. Le build
+les réécrit pour les fiches, qui vivent dans `/p/`. Une URL absolue
+(`https://…`) est utilisée telle quelle.
+
+Champs reconnus par image : `url` (ou `src`, `image`), `title` (ou `caption`),
+`description`, et `full` pour pointer une version haute résolution différente
+de la vignette.
+
+Les images sont contenues dans un cadre 16/9 sans être rognées : une capture
+verticale d'application mobile reste entière, avec des marges latérales.
 
 ## État des services
 
