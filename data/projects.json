@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-12T22:43:09.895Z",
+  "generated": "2026-09-12T22:49:12.665Z",
   "count": 15,
   "projects": [
     {
@@ -432,7 +432,7 @@
       ],
       "status": "wip",
       "started": "2026-08-15T15:04:01Z",
-      "ended": "2026-09-12T14:51:56Z",
+      "ended": "",
       "updated": "2026-09-12T14:51:56Z",
       "featured": false,
       "version": "v0.8.0",
@@ -548,7 +548,7 @@
       ],
       "status": "wip",
       "started": "2026-05-19T23:06:56Z",
-      "ended": "2026-07-25T21:53:28Z",
+      "ended": "",
       "updated": "2026-07-25T21:53:28Z",
       "featured": false,
       "version": "v0.4.1",
@@ -584,7 +584,7 @@
       ],
       "status": "wip",
       "started": "2025-09-24T08:44:27Z",
-      "ended": "2026-05-11T01:11:27Z",
+      "ended": "",
       "updated": "2026-05-11T01:11:27Z",
       "featured": false,
       "version": "",
@@ -620,7 +620,7 @@
       ],
       "status": "wip",
       "started": "2026-01-22T19:18:13Z",
-      "ended": "2026-02-15T21:04:45Z",
+      "ended": "",
       "updated": "2026-02-15T21:04:45Z",
       "featured": false,
       "version": "",
