@@ -415,7 +415,10 @@ function detailPage(profile, project, assetVersion, allProjects) {
     ["Stack", project.stack.join(", ")],
     ["Version", project.version ? `${project.version}${project.prerelease ? " (pré-release)" : ""}` : ""],
     ["Début", formatDate(project.started)],
-    [project.status === "prod" ? "Dernière activité" : "Fin", formatDate(project.ended || project.updated)],
+    // Un projet vivant n'a pas de fin : son dernier push n'est qu'une activite.
+    project.status === "prod" || project.status === "wip"
+      ? ["Dernière activité", formatDate(project.updated)]
+      : ["Fin", formatDate(project.ended || project.updated)],
   ]
     .filter(([, v]) => v)
     .map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`)

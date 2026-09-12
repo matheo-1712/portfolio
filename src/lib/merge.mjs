@@ -75,7 +75,7 @@ export function mergeLayers({ gh, pmd, pb, ovr }) {
     stack: [...new Set(stack.map(String))].slice(0, 8),
     status,
     started: first(o.started, p.started ?? p.date_debut, b.date_debut, g.created) || "",
-    ended: first(o.ended, p.ended ?? p.date_fin, b.date_fin, status === "prod" ? "" : g.pushed) || "",
+    ended: first(o.ended, p.ended ?? p.date_fin, b.date_fin, status === "prod" || status === "wip" ? "" : g.pushed) || "",
     updated: g.pushed || first(b.updated, "") || "",
     featured: firstBool(o.featured, p.featured ?? p.pinned, b.pinned) ?? false,
     order: first(o.order, p.order, null),
