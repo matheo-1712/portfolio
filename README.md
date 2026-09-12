@@ -139,6 +139,38 @@ Avant le rendu, le README est nettoyé : badges, titre de niveau 1 répétant le
 nom du dépôt, images d'en-tête, et sections « Installation », « Licence »,
 « Sommaire », « Crédits »… sont retirées. Ce qui reste décrit le projet.
 
+## Galerie et Modrinth
+
+Un projet publié sur Modrinth voit sa **galerie de captures**, son **icône** et
+son **nombre de téléchargements** récupérés automatiquement. Ces informations
+n'existent nulle part dans un dépôt GitHub : une capture d'écran de mod vit sur
+la page de publication, pas dans le code.
+
+La détection se fait sur les liens du projet (`modrinth.com/mod/<slug>`, ou
+`plugin`, `datapack`, `resourcepack`, `shader`, `modpack`). Sinon, déclare le
+slug explicitement :
+
+```yaml
+# portfolio.md du dépôt, ou data/overrides.yml
+modrinth: "cobblemon-trainers-rerebleue"
+```
+
+Les images mises en avant sur Modrinth passent en tête, comme sur leur page.
+La vignette affichée est la version allégée servie par le CDN ; un clic ouvre
+l'original en pleine résolution.
+
+Pour une galerie qui ne vient pas de Modrinth, déclare-la à la main — elle est
+prioritaire sur la source externe :
+
+```yaml
+gallery:
+  - url: "img/shots/mon-projet-1.png"
+    title: "Écran d'accueil"
+```
+
+L'icône Modrinth sert de logo quand aucun fichier local n'existe dans
+`static/img/projects/`.
+
 ## État des services
 
 `status` dit où en est le **code**. Il ne dit rien de l'état du **service** :

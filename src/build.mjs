@@ -368,6 +368,12 @@ function detailPage(profile, project, assetVersion) {
     ["Statut", statusLabel(project.status)],
     ["Service", service],
     ["Contribution", contribution],
+    [
+      "Téléchargements",
+      project.modrinth?.downloads
+        ? new Intl.NumberFormat("fr-FR").format(project.modrinth.downloads)
+        : "",
+    ],
     ["Type", project.type ? labelType(project.type) : ""],
     ["Stack", project.stack.join(", ")],
     ["Version", project.version ? `${project.version}${project.prerelease ? " (pré-release)" : ""}` : ""],
@@ -439,6 +445,7 @@ function detailPage(profile, project, assetVersion) {
     ${aliases}
   </header>
   <main id="main" class="prose">${markdown(project.body, { baseUrl: base })}</main>
+  ${gallerySection(project)}
 </div>
 ${footer(profile, null)}`;
 
@@ -451,6 +458,40 @@ ${footer(profile, null)}`;
     assetsPrefix: "../",
     assetVersion,
   });
+}
+
+// Galerie d'illustrations. Les vignettes sont chargees paresseusement : une
+// fiche peut en compter dix, et elles sont sous la ligne de flottaison.
+function gallerySection(project) {
+  const images = project.gallery || [];
+  if (!images.length) return "";
+
+  const items = images
+    .map((img, i) => {
+      const legende = img.title || img.description || "";
+      return `
+      <figure class="shot">
+        <a href="${attr(img.full || img.url)}" target="_blank" rel="noopener noreferrer"
+           aria-label="${attr(legende || `Image ${i + 1}`)} — ouvrir en pleine résolution">
+          <img src="${attr(img.url)}" alt="${attr(legende)}" loading="lazy" decoding="async">
+        </a>
+        ${legende ? `<figcaption>${esc(legende)}</figcaption>` : ""}
+      </figure>`;
+    })
+    .join("");
+
+  const origine = project.modrinth
+    ? ` <span class="count">via <a href="${attr(project.modrinth.url)}" target="_blank" rel="noopener noreferrer">Modrinth</a></span>`
+    : "";
+
+  return `
+  <section class="gallery-section">
+    <div class="section-head">
+      <h2>Aperçu</h2>
+      <span class="count">${images.length} image${images.length > 1 ? "s" : ""}${origine}</span>
+    </div>
+    <div class="gallery">${items}</div>
+  </section>`;
 }
 
 function notePage(profile, note, assetVersion) {

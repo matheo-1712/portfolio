@@ -65,6 +65,10 @@ export function mergeLayers({ gh, pmd, pb, ovr }) {
     links,
     stars: g.stars || 0,
     contribution: g.contribution || null,
+    // Galerie declaree a la main ; les sources externes (Modrinth) viennent
+    // s'ajouter plus tard, sans ecraser ce qui a ete choisi ici.
+    gallery: first(o.gallery, p.gallery, []) || [],
+    modrinth: first(o.modrinth, p.modrinth, null) || null,
     org: g.org || null,
     hidden: firstBool(o.hidden, p.hidden) ?? false,
     sources: [g && "github", p.__present && "portfolio.md", b.id && "pocketbase"].filter(Boolean),

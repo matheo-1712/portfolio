@@ -59,3 +59,9 @@ pocketbase:
 # leur disponibilite ne dit rien de ton infrastructure.
 healthcheck:
   enabled: true
+
+# Recupere les captures d'ecran, l'icone et les telechargements des projets
+# publies sur Modrinth. Le lien est detecte dans les liens du projet, ou
+# declare avec `modrinth: <slug>` dans son portfolio.md.
+modrinth:
+  enabled: true

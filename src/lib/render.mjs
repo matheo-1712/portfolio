@@ -172,7 +172,16 @@ export function projectRow(project, { detailHref } = {}) {
   const when = period(project);
   const type = project.type ? labelType(project.type) : "";
 
-  const meta = [type, when].filter(Boolean).map((v) => `<span>${esc(v)}</span>`).join("");
+  // Un compteur de telechargements est une preuve d'usage : il a sa place dans
+  // l'index, pas seulement sur la fiche.
+  const downloads = project.modrinth?.downloads
+    ? `${new Intl.NumberFormat("fr-FR").format(project.modrinth.downloads)} téléchargements`
+    : "";
+
+  const meta = [type, when, downloads]
+    .filter(Boolean)
+    .map((v) => `<span>${esc(v)}</span>`)
+    .join("");
 
   const version = project.version
     ? `<span class="project-version">${esc(project.version)}${project.prerelease ? " (pré)" : ""}</span>`

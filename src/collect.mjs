@@ -9,6 +9,7 @@ import YAML from "yaml";
 import * as gh from "./lib/gh.mjs";
 import { fetchProjects as fetchPocketbase } from "./lib/pb.mjs";
 import { checkUrls } from "./lib/health.mjs";
+import * as modrinth from "./lib/modrinth.mjs";
 import { attachHealth, previousHealth } from "./health.mjs";
 import {
   cleanReadme,
@@ -216,6 +217,42 @@ async function main() {
   }
 
   const projects = buildProjects(githubByKey, pbMatched, pbOrphans, overrides);
+
+  // Modrinth : captures d'ecran, icone et telechargements. Ces informations
+  // vivent sur la page de publication, jamais dans le depot.
+  if (sources.modrinth?.enabled !== false) {
+    log("Modrinth");
+    let trouves = 0;
+    for (const project of projects) {
+      const slug = modrinth.findSlug(project);
+      if (!slug) continue;
+      try {
+        const data = await modrinth.fetchProject(slug);
+        if (!data) continue;
+
+        project.modrinth = {
+          slug: data.slug,
+          url: data.url,
+          downloads: data.downloads,
+          followers: data.followers,
+          license: data.license,
+        };
+
+        // Une galerie declaree a la main reste prioritaire.
+        if (!project.gallery.length && data.gallery.length) {
+          project.gallery = data.gallery.map((img) => ({ ...img, source: "modrinth" }));
+        }
+        // L'icone Modrinth sert de logo quand le projet n'en a pas d'autre.
+        if (!project.image && data.icon) project.image = data.icon;
+
+        trouves++;
+        log(`    ${project.title} — ${data.gallery.length} image(s), ${data.downloads} telechargements`);
+      } catch (err) {
+        warn(`${project.title} : ${err.message}`);
+      }
+    }
+    if (!trouves) log("  aucun projet publie sur Modrinth");
+  }
 
   // Etat des services : verifie a chaque collecte, car c'est la seule donnee
   // qu'aucune metadonnee de depot ne peut fournir.
