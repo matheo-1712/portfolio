@@ -19,11 +19,23 @@ github:
     - "L-Antre-des-Loutres/Otterbots"
     - "L-Antre-des-Loutres/Arisoutre"
     - "L-Antre-des-Loutres/Astroloutre"
-    - "L-Antre-des-Loutres/Mineotter"
     - "L-Antre-des-Loutres/Mateloutre"
     - "L-Antre-des-Loutres/Ottergames-plugin"
     - "L-Antre-des-Loutres/OtterMinded"
     - "L-Antre-des-Loutres/OtterlyApi"
+    - "matheo-1712/Furina"
+    - "matheo-1712/API-Serveur"
+    - "matheo-1712/ArisoutreV2"
+    - "LP-Applications-Web-Angers-2025-2026/HiddenInk"
+    - "LP-Applications-Web-Angers-2025-2026/projet2"
+
+  # Ne retenir que les depots ou l'une des identites ci-dessous a reellement
+  # commite. Figurer dans une organisation ne vaut pas contribution.
+  # Laisse la liste vide pour reprendre `users` comme identites.
+  requireContribution: true
+  minCommits: 1
+  identities:
+    - "matheo-1712"
 
   # Ignores meme s'ils portent le topic.
   exclude:

@@ -17,6 +17,28 @@ Un dépôt GitHub apparaît sur le portfolio s'il remplit **une** de ces conditi
 Tout le reste est ignoré. C'est volontaire : sans ce filtre, les TP et dépôts
 d'exercice noieraient les vrais projets.
 
+## Filtre de contribution
+
+Un dépôt sélectionné n'est retenu que si tu y as réellement commité. Appartenir
+à une organisation ne vaut pas contribution : sans ce filtre, les projets des
+autres membres remonteraient sur ton portfolio.
+
+```yaml
+# data/sources.yml
+github:
+  requireContribution: true
+  minCommits: 1
+  identities: ["matheo-1712"]   # à défaut, `users` est utilisé
+```
+
+Le nombre de commits est conservé et affiché sur la fiche du projet :
+« auteur principal · 142 commits » quand tu es en tête des contributeurs,
+« 12 commits sur 340 » sinon.
+
+Si GitHub ne peut pas répondre (dépôt vide, statistiques en cours de calcul),
+**le projet est conservé** : mieux vaut une fiche sans donnée de contribution
+qu'un projet disparu à cause d'une API momentanément muette.
+
 ## D'où vient le contenu d'un projet
 
 Pour chaque champ, la première source qui répond l'emporte :

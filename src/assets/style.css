@@ -612,19 +612,66 @@ footer .spacer { margin-left: auto; }
 
 @media (max-width: 34rem) {
   body { font-size: 15px; }
-  .masthead { padding-top: 2.5rem; }
-  .project { gap: 0.75rem; }
-  .thumb { width: 36px; height: 36px; }
-  /* La version passe sous le titre plutot que de comprimer la colonne. */
-  .project-version { display: none; }
-  .project-links { margin-left: 0; width: 100%; }
+
+  /* Sur un écran étroit, chaque millimètre de gouttière est pris sur la
+     largeur de lecture : on la resserre pour laisser respirer le texte. */
+  .wrap { padding: 0 1.1rem; }
+
+  .masthead { padding-top: 2.25rem; }
   .identity { gap: 0.85rem; }
   .avatar { width: 60px; height: 60px; }
+  .masthead h1 { font-size: 1.45rem; }
+  .masthead .role { font-size: 0.93rem; }
+  .headline { font-size: 1.05rem; }
+
+  /* Quatre chiffres sur une seule rangée deviennent illisibles sous 375 px :
+     deux colonnes leur redonnent de l'air. */
+  .figures {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.85rem 1rem;
+  }
+  .figures b { font-size: 1.2rem; }
+
+  /* Une colonne : à deux, les valeurs se coupent en plein milieu d'un mot. */
+  .facts, .facts.about { grid-template-columns: 1fr; gap: 0.7rem; }
+
   .entry, .skill-row, .note-row { grid-template-columns: 1fr; gap: 0.1rem; }
   .entry .note { grid-column: 1; }
   .note-row .when { padding-top: 0; margin-bottom: 0.15rem; }
-  .figures { gap: 0.9rem 1.75rem; }
-  .headline { font-size: 1.05rem; }
+
+  .project { gap: 0.7rem; }
+  .thumb { width: 34px; height: 34px; border-radius: 5px; }
+  .thumb-mono { font-size: 0.72rem; }
+  /* La version passe sous le titre plutot que de comprimer la colonne. */
+  .project-version { display: none; }
+
+  /* Les métadonnées descendent à 11 px sur mobile : on les remonte un peu,
+     elles portent la stack et les dates. */
+  .project-foot, .note-foot { font-size: 0.77rem; gap: 0.3rem 0.7rem; }
+
+  /* Une description de six lignes par projet rend l'index interminable au
+     pouce. On la borne ici ; la fiche du projet affiche le texte entier. */
+  .project-summary {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    overflow: hidden;
+  }
+  .section-head .count { font-size: 0.75rem; }
+
+  /* Cibles tactiles : des liens de 11 px collés les uns aux autres sont
+     impossibles à viser au pouce. */
+  .project-links {
+    margin-left: 0;
+    width: 100%;
+    gap: 1.25rem;
+    margin-top: 0.1rem;
+  }
+  .project-links a { padding: 0.3rem 0; }
+  .btn { padding: 0.5rem 0.8rem; }
+  .filters { gap: 0.45rem; }
 }
 
 /* --- Impression --------------------------------------------------------- */

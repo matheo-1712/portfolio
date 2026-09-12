@@ -64,6 +64,7 @@ export function mergeLayers({ gh, pmd, pb, ovr }) {
     image: first(o.image, p.image ?? p.logo, b.image) || null,
     links,
     stars: g.stars || 0,
+    contribution: g.contribution || null,
     org: g.org || null,
     hidden: firstBool(o.hidden, p.hidden) ?? false,
     sources: [g && "github", p.__present && "portfolio.md", b.id && "pocketbase"].filter(Boolean),

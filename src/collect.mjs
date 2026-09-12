@@ -35,6 +35,13 @@ async function collectGithub(config) {
   const topic = config.topic || "portfolio";
   const exclude = new Set((config.exclude || []).map((s) => s.toLowerCase()));
   const include = new Set((config.include || []).map((s) => s.toLowerCase()));
+  const requireContribution = config.requireContribution === true;
+  const minCommits = Math.max(1, config.minCommits || 1);
+  const identities = new Set(
+    (config.identities?.length ? config.identities : config.users || []).map((s) =>
+      String(s).toLowerCase()
+    )
+  );
 
   const raw = [];
   for (const user of config.users || []) raw.push(...(await gh.listUserRepos(user)));
@@ -79,10 +86,28 @@ async function collectGithub(config) {
     const readme =
       (await gh.rawFile(owner, name, "README.md")) || (await gh.rawFile(owner, name, "readme.md"));
 
-    const [languages, release] = await Promise.all([
+    const [languages, release, contribs] = await Promise.all([
       gh.repoLanguages(owner, name),
       gh.latestRelease(owner, name),
+      gh.contributors(owner, name),
     ]);
+
+    // Part reelle dans le depot. `contribs` vaut null quand GitHub ne peut pas
+    // repondre (depot vide, statistiques en cours) : dans ce cas on ne filtre
+    // pas, pour ne pas perdre un projet a cause d'une API momentanement muette.
+    let contribution = null;
+    if (contribs) {
+      const mine = contribs.filter((c) => identities.has(c.login));
+      const commits = mine.reduce((sum, c) => sum + c.commits, 0);
+      const total = contribs.reduce((sum, c) => sum + c.commits, 0);
+      const rank = commits ? contribs.findIndex((c) => identities.has(c.login)) + 1 : 0;
+      contribution = { commits, total, rank, contributors: contribs.length };
+
+      if (requireContribution && commits < minCommits) {
+        log(`    ${key}  — ignore : ${commits} commit(s) de ${[...identities].join("/")}`);
+        continue;
+      }
+    }
 
     const links = { repo: repo.html_url };
     if (repo.homepage && /^https?:\/\//.test(repo.homepage)) links.demo = repo.homepage;
@@ -107,6 +132,7 @@ async function collectGithub(config) {
       links,
       portfolioMd,
       type: knownType((repo.topics || []).filter((t) => t !== topic)),
+      contribution,
       inferred: inferStatus({ archived: repo.archived, pushed: repo.pushed_at, release }),
     });
 

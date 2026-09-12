@@ -128,6 +128,18 @@ export async function latestRelease(owner, repo) {
   return { tag: rel.tag_name, prerelease: !!rel.prerelease, published: rel.published_at };
 }
 
+// Qui a reellement ecrit du code dans ce depot, et combien.
+// Sert a ne retenir que les projets auxquels on a participe : figurer dans une
+// organisation ne signifie pas avoir contribue au depot.
+export async function contributors(owner, repo) {
+  const list = await api(`/repos/${owner}/${repo}/contributors?per_page=100`, { allow404: true });
+  if (!Array.isArray(list)) return null; // depot vide, ou statistiques indisponibles
+  return list
+    .filter((c) => c.type !== "Bot" && c.login)
+    .map((c) => ({ login: c.login.toLowerCase(), commits: c.contributions || 0 }))
+    .sort((a, b) => b.commits - a.commits);
+}
+
 export async function rateStatus() {
   try {
     const d = await api("/rate_limit");
