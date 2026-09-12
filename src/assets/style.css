@@ -427,7 +427,7 @@ section { margin-top: 3.25rem; }
 
 .note-row {
   display: grid;
-  grid-template-columns: 8.5rem 1fr;
+  grid-template-columns: 10.5rem 1fr;
   gap: 0.2rem 1.25rem;
   padding: 1rem 0;
   border-bottom: 1px solid var(--rule);
@@ -471,9 +471,12 @@ section { margin-top: 3.25rem; }
 
 .timeline { list-style: none; margin: 0; padding: 0; }
 
+/* La colonne de dates doit contenir la plus longue d'entre elles
+   (« janv. 2025 – juill. 2025 ») sans empieter sur le texte : 10.5rem couvre
+   le format le plus large que produise `formatDate`. */
 .entry {
   display: grid;
-  grid-template-columns: 8.5rem 1fr;
+  grid-template-columns: 10.5rem 1fr;
   gap: 0.2rem 1.25rem;
   padding: 0.85rem 0;
   border-bottom: 1px solid var(--rule);
@@ -490,6 +493,19 @@ section { margin-top: 3.25rem; }
 .entry .what { font-weight: 600; font-size: 0.97rem; }
 .entry .where { color: var(--muted); font-size: 0.88rem; }
 .entry .note { grid-column: 2; color: var(--muted); font-size: 0.9rem; margin-top: 0.25rem; }
+
+/* Là où subgrid existe, la colonne se cale sur la date la plus longue de la
+   liste : plus de largeur à deviner, et toutes les lignes restent alignées. */
+@supports (grid-template-columns: subgrid) {
+  .timeline, .notes {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+  }
+  .entry, .note-row {
+    grid-column: 1 / -1;
+    grid-template-columns: subgrid;
+  }
+}
 
 /* --- Compétences -------------------------------------------------------- */
 
@@ -519,7 +535,7 @@ section { margin-top: 3.25rem; }
 .skills { margin: 0; padding: 0; }
 .skill-row {
   display: grid;
-  grid-template-columns: 8.5rem 1fr;
+  grid-template-columns: 10.5rem 1fr;
   gap: 1.25rem;
   padding: 0.5rem 0;
   border-bottom: 1px solid var(--rule);
