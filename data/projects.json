@@ -1,7 +1,50 @@
 {
-  "generated": "2026-09-12T17:16:40.035Z",
-  "count": 14,
+  "generated": "2026-09-12T17:20:29.119Z",
+  "count": 15,
   "projects": [
+    {
+      "key": "l-antre-des-loutres/cobblemon-rlm",
+      "slug": "cobblemon-rlm",
+      "title": "Cobblemon RLM",
+      "summary": "Un datapack/ressourcepack fait pour ajouter les fakemon de RLM dans Cobblemon.",
+      "body": "--- ## Qu'est-ce que Cobblemon RLM? **Cobblemon RLM** est un datapack / mod pour **[Cobblemon](https://cobblemon.com)** créé par l'**Antre des Loutres**.\nIl enrichit votre aventure avec des **formes régionales inédites**, des **Fakemons originaux**, de **nouveaux talents exclusifs** et des **Méga-Évolutions** issues de l'univers du **Royaume de Loutre Mer** (RLM). > Compatible **Fabric** et **NeoForge** — disponible en `.jar` (mod) et `.zip` (datapack). --- ## Contenu du Pack ### Formes Régionales RLM | Pokémon | Typing | Pré-évolution |\n|---------|--------|---------------|\n| **Meganium** | Plante / Acier | Macronium (Plante) |\n| **Tortank** | Eau / Vol | Carabaffe (Eau) |\n| **Pingoléon** | Eau / Électrik | Prinplouf (Eau) |\n| **Goupelin** | Feu / Fée | Roussil (Feu) |\n| **Pharamp** | Électrik / Spectre | Lainergie, Wattouat |\n| **Tarinorme** | Roche / Fée | Tarinor |\n| **Spiritomb** | Feu / Ténèbres | — |\n| **Luxray** | Glace | Luxio, Lixy |\n| **Togekiss** | Fée / Dragon | — |\n| **Ninjask** | Eau / Vol | Ningale (Insecte / Eau) |\n| **Munja** | Eau / Roche | — |\n| **Mysdibule** | Poison / Fée *ou* Dragon / Fée | Smowile (Fée) |\n| **Héliatronc** | Ciel: Plante / Vol · Océan: Plante / Eau · Volcan: Plante / Feu | — | ### Fakemons Originaux | Pokémon | Typing | Notes |\n|---------|--------|-------|\n| **Flammiko** | Feu / Électrik | — |\n| **Apheos** | Fée / Vol | Évolue en Aphelis |\n| **Aphelis** | Fée / Vol | — |\n| **Rineshell** | Normal | Évolue en Galama |\n| **Galama** | Acier / Normal | — |\n| **Kotora** | Électrik / Fée | Ne spawn pas naturellement |\n| **Tinywone** | Insecte | Évolue en Wamek |\n| **Wamek** | Insecte / Combat | — |\n| **Smowile** | Fée | Pré-évolution de Mysdibule | ### Talents Exclusifs | Talent | Effet |\n|--------|-------|\n| **Dragonate** | Transforme les capacités Normal en type Dragon. |\n| **Garde Émoussée** | Protège de toutes les capacités sauf celles « peu efficaces ». |\n| **Trombe Marine** | Invoque la pluie à l'entrée. Sous la pluie: Attaque et Att. Spé. ×1.5. |\n| **Mystiforce** | L'Attaque Spéciale est doublée. |\n| **Psycho-Prio** | Priorité sur les attaques tant que les PV dépassent 50%. |\n| **Armure Venimeuse** | Déf. Spé. +50% et 50% de chance d'empoisonner gravement au contact. | ### Méga-Évolutions RLM > *Nécessite [Cobblemon: Mega Showdown](https://modrinth.com/project/mega-showdown)* | Pokémon | Typing | Talent |\n|---------|--------|--------|\n| **Méga-Pharamp RLM** | Électrik / Feu | — |\n| **Méga-Flammiko** | Feu / Électrik | Simple |\n| **Méga-Mysdibule** (Poison) | Poison / Fée | Armure Venimeuse |\n| **Méga-Mysdibule** (Dragon) | Dragon / Fée | Mystiforce |\n| **Méga-Wamek** | Insecte / Dragon | Dragonate | --- ### En tant que Mod (recommandé)\n1. Téléchargez le fichier **`.jar`** depuis [Modrinth](https://modrinth.com/project/cobblemon-rlm).\n2. Placez-le dans votre dossier **`mods/`**.\n3. Lancez Minecraft avec **Fabric** ou **NeoForge**. ### En tant que Datapack\n1. Téléchargez le fichier **`.zip`** depuis [Modrinth](https://modrinth.com/project/cobblemon-rlm).\n2. Placez-le dans le dossier **`datapacks/`** de votre monde. ## Crédits | | |\n|---|---|\n| **Projet** | [Antre des Loutres](https://antredesloutres.fr) |\n| **Design & Développement** | [TheAzertor](https://github.com/Corentin-cott) · [RereBleue](https://github.com/matheo-1712) |\n| **Modèles & Textures de base** | [Cobblemon](https://cobblemon.com) | ---",
+      "type": "Datapack",
+      "stack": [
+        "JavaScript"
+      ],
+      "status": "prod",
+      "started": "2025-07-24T20:12:46Z",
+      "ended": "",
+      "updated": "2026-09-11T15:13:45Z",
+      "featured": false,
+      "version": "v1.6.1",
+      "prerelease": false,
+      "image": null,
+      "links": {
+        "repo": "https://github.com/L-Antre-des-Loutres/Cobblemon-RLM",
+        "demo": "https://antredesloutres.fr/projets/cobblemon_rlm/"
+      },
+      "stars": 1,
+      "contribution": {
+        "commits": 367,
+        "total": 580,
+        "rank": 1,
+        "contributors": 2
+      },
+      "org": "L-Antre-des-Loutres",
+      "hidden": false,
+      "sources": [
+        "github"
+      ],
+      "service": {
+        "up": true,
+        "uncertain": false,
+        "lastSeenUp": "2026-09-12",
+        "urls": {
+          "https://antredesloutres.fr/projets/cobblemon_rlm/": true
+        }
+      }
+    },
     {
       "key": "l-antre-des-loutres/astroloutre",
       "slug": "astroloutre",
