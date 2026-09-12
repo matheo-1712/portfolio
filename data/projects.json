@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-12T17:46:00.244Z",
+  "generated": "2026-09-12T17:51:50.387Z",
   "count": 15,
   "projects": [
     {
@@ -19,10 +19,10 @@
       "featured": false,
       "version": "v1.6.1",
       "prerelease": false,
-      "image": null,
+      "image": "https://cdn.modrinth.com/data/GC58bFHM/3bf877dff9d979aac58d4df761f378cd57210cdb_96.webp",
       "links": {
         "repo": "https://github.com/L-Antre-des-Loutres/Cobblemon-RLM",
-        "demo": "https://antredesloutres.fr/projets/cobblemon_rlm/"
+        "demo": "https://modrinth.com/datapack/cobblemon-rlm"
       },
       "stars": 1,
       "contribution": {
@@ -31,21 +31,220 @@
         "rank": 1,
         "contributors": 2
       },
-      "gallery": [],
-      "modrinth": null,
+      "gallery": [
+        {
+          "url": "https://cdn.modrinth.com/data/GC58bFHM/images/cb256dcfe389bf440c8ed160ecfb73acb71460a6_350.webp",
+          "full": "https://cdn.modrinth.com/data/GC58bFHM/images/cb256dcfe389bf440c8ed160ecfb73acb71460a6.png",
+          "title": "Mega Mawile RLM Poison",
+          "description": "",
+          "featured": true,
+          "source": "modrinth"
+        },
+        {
+          "url": "https://cdn.modrinth.com/data/GC58bFHM/images/10d532c0fa22ddf3ff065dd9ba50e8b6cd1c6d58_350.webp",
+          "full": "https://cdn.modrinth.com/data/GC58bFHM/images/10d532c0fa22ddf3ff065dd9ba50e8b6cd1c6d58.png",
+          "title": "Flammiko",
+          "description": "New fakemon",
+          "featured": false,
+          "source": "modrinth"
+        },
+        {
+          "url": "https://cdn.modrinth.com/data/GC58bFHM/images/baf5a4d0c7530be1e65fcaf8c92afb41b3e06451_350.webp",
+          "full": "https://cdn.modrinth.com/data/GC58bFHM/images/baf5a4d0c7530be1e65fcaf8c92afb41b3e06451.png",
+          "title": "Gallama",
+          "description": "",
+          "featured": false,
+          "source": "modrinth"
+        },
+        {
+          "url": "https://cdn.modrinth.com/data/GC58bFHM/images/f391682454864ba02e09a867de90b91524684105_350.webp",
+          "full": "https://cdn.modrinth.com/data/GC58bFHM/images/f391682454864ba02e09a867de90b91524684105.png",
+          "title": "Rineshell",
+          "description": "A new fakemon",
+          "featured": false,
+          "source": "modrinth"
+        },
+        {
+          "url": "https://cdn.modrinth.com/data/GC58bFHM/images/aa4d4f7a688b3ede5158afd982d310a398bceb92_350.webp",
+          "full": "https://cdn.modrinth.com/data/GC58bFHM/images/aa4d4f7a688b3ede5158afd982d310a398bceb92.png",
+          "title": "Bayleef ",
+          "description": "RLM Form",
+          "featured": false,
+          "source": "modrinth"
+        },
+        {
+          "url": "https://cdn.modrinth.com/data/GC58bFHM/images/1834433feb585c8b2bb6a2a319979dab30ab54f2_350.webp",
+          "full": "https://cdn.modrinth.com/data/GC58bFHM/images/1834433feb585c8b2bb6a2a319979dab30ab54f2.png",
+          "title": "Meganium",
+          "description": "RLM Form",
+          "featured": false,
+          "source": "modrinth"
+        },
+        {
+          "url": "https://cdn.modrinth.com/data/GC58bFHM/images/d51cc6faec9a2755c90318e0775bf61958be8735_350.webp",
+          "full": "https://cdn.modrinth.com/data/GC58bFHM/images/d51cc6faec9a2755c90318e0775bf61958be8735.png",
+          "title": "Wartortle",
+          "description": "RLM Form",
+          "featured": false,
+          "source": "modrinth"
+        },
+        {
+          "url": "https://cdn.modrinth.com/data/GC58bFHM/images/206a75d0d0029c8a9d1d7ce37f93f7a73ba01f9e_350.webp",
+          "full": "https://cdn.modrinth.com/data/GC58bFHM/images/206a75d0d0029c8a9d1d7ce37f93f7a73ba01f9e.png",
+          "title": "Blastoise",
+          "description": "RLM Form",
+          "featured": false,
+          "source": "modrinth"
+        },
+        {
+          "url": "https://cdn.modrinth.com/data/GC58bFHM/images/49234e832dbd1c24eafd0162bf6af415ab91e93d_350.webp",
+          "full": "https://cdn.modrinth.com/data/GC58bFHM/images/49234e832dbd1c24eafd0162bf6af415ab91e93d.png",
+          "title": "Prinplup",
+          "description": "RLM Form",
+          "featured": false,
+          "source": "modrinth"
+        },
+        {
+          "url": "https://cdn.modrinth.com/data/GC58bFHM/images/7817b8bda4e046485b9fa15ec08013900a9d003f_350.webp",
+          "full": "https://cdn.modrinth.com/data/GC58bFHM/images/7817b8bda4e046485b9fa15ec08013900a9d003f.png",
+          "title": "Emploleon",
+          "description": "RLM Form",
+          "featured": false,
+          "source": "modrinth"
+        },
+        {
+          "url": "https://cdn.modrinth.com/data/GC58bFHM/images/9ae5f8c15308073934e2f7bdaa2ea0d00fd18835_350.webp",
+          "full": "https://cdn.modrinth.com/data/GC58bFHM/images/9ae5f8c15308073934e2f7bdaa2ea0d00fd18835.png",
+          "title": "Braixen",
+          "description": "RLM Form",
+          "featured": false,
+          "source": "modrinth"
+        },
+        {
+          "url": "https://cdn.modrinth.com/data/GC58bFHM/images/2abb5c6399a7b11b80fa360d36bb9c278a8e84bd_350.webp",
+          "full": "https://cdn.modrinth.com/data/GC58bFHM/images/2abb5c6399a7b11b80fa360d36bb9c278a8e84bd.png",
+          "title": "Delphox",
+          "description": "RLM Form",
+          "featured": false,
+          "source": "modrinth"
+        },
+        {
+          "url": "https://cdn.modrinth.com/data/GC58bFHM/images/37a1a9ae2f76f2f169a3b2f1090a4444ef202bab_350.webp",
+          "full": "https://cdn.modrinth.com/data/GC58bFHM/images/37a1a9ae2f76f2f169a3b2f1090a4444ef202bab.png",
+          "title": "Nosepass",
+          "description": "RLM Form",
+          "featured": false,
+          "source": "modrinth"
+        },
+        {
+          "url": "https://cdn.modrinth.com/data/GC58bFHM/images/666c88da750efccad5d7537a0ea78beda30d7647_350.webp",
+          "full": "https://cdn.modrinth.com/data/GC58bFHM/images/666c88da750efccad5d7537a0ea78beda30d7647.png",
+          "title": "Probopass",
+          "description": "RLM Form",
+          "featured": false,
+          "source": "modrinth"
+        },
+        {
+          "url": "https://cdn.modrinth.com/data/GC58bFHM/images/fc239143e9bef4dc214aac2bdaccdb65e371aa4f_350.webp",
+          "full": "https://cdn.modrinth.com/data/GC58bFHM/images/fc239143e9bef4dc214aac2bdaccdb65e371aa4f.png",
+          "title": "Mareep",
+          "description": "RLM Form",
+          "featured": false,
+          "source": "modrinth"
+        },
+        {
+          "url": "https://cdn.modrinth.com/data/GC58bFHM/images/c2517ee3e139c3367631faf2353a8ff1dac34f78_350.webp",
+          "full": "https://cdn.modrinth.com/data/GC58bFHM/images/c2517ee3e139c3367631faf2353a8ff1dac34f78.png",
+          "title": "Flaafy",
+          "description": "RLM Form",
+          "featured": false,
+          "source": "modrinth"
+        },
+        {
+          "url": "https://cdn.modrinth.com/data/GC58bFHM/images/a3fb071c04cfd61baa1254d9ff6ec1eacb38fa28_350.webp",
+          "full": "https://cdn.modrinth.com/data/GC58bFHM/images/a3fb071c04cfd61baa1254d9ff6ec1eacb38fa28.png",
+          "title": "Ampharos",
+          "description": "RLM Form",
+          "featured": false,
+          "source": "modrinth"
+        },
+        {
+          "url": "https://cdn.modrinth.com/data/GC58bFHM/images/6fb5b15e7203b88057efa7b8ab7ef4e520fa6984_350.webp",
+          "full": "https://cdn.modrinth.com/data/GC58bFHM/images/6fb5b15e7203b88057efa7b8ab7ef4e520fa6984.png",
+          "title": "Sunflora",
+          "description": "RLM Form Ocean",
+          "featured": false,
+          "source": "modrinth"
+        },
+        {
+          "url": "https://cdn.modrinth.com/data/GC58bFHM/images/f799b4332dbf5eaf1e6c8b0287262e431f7f0c08_350.webp",
+          "full": "https://cdn.modrinth.com/data/GC58bFHM/images/f799b4332dbf5eaf1e6c8b0287262e431f7f0c08.png",
+          "title": "Sunflora",
+          "description": "RLM Form Ciel",
+          "featured": false,
+          "source": "modrinth"
+        },
+        {
+          "url": "https://cdn.modrinth.com/data/GC58bFHM/images/ff747270010e3310187ab0e42d42d194f6689b4a_350.webp",
+          "full": "https://cdn.modrinth.com/data/GC58bFHM/images/ff747270010e3310187ab0e42d42d194f6689b4a.png",
+          "title": "Sunflora",
+          "description": "RLM Form Volcan",
+          "featured": false,
+          "source": "modrinth"
+        },
+        {
+          "url": "https://cdn.modrinth.com/data/GC58bFHM/images/06a356d01f276709fd702ef4d061bf56c80eecfa_350.webp",
+          "full": "https://cdn.modrinth.com/data/GC58bFHM/images/06a356d01f276709fd702ef4d061bf56c80eecfa.png",
+          "title": "Spiritomb",
+          "description": "RLM Form",
+          "featured": false,
+          "source": "modrinth"
+        },
+        {
+          "url": "https://cdn.modrinth.com/data/GC58bFHM/images/b32ab1802c0414a6387a98ec3ffc73c264531d9c.png",
+          "full": "https://cdn.modrinth.com/data/GC58bFHM/images/b32ab1802c0414a6387a98ec3ffc73c264531d9c.png",
+          "title": "Craft : Mawilite RLM Poison",
+          "description": "",
+          "featured": false,
+          "source": "modrinth"
+        },
+        {
+          "url": "https://cdn.modrinth.com/data/GC58bFHM/images/6008a430180cd967c08035e3c59e62a84d8feb4f.png",
+          "full": "https://cdn.modrinth.com/data/GC58bFHM/images/6008a430180cd967c08035e3c59e62a84d8feb4f.png",
+          "title": "Craft : Mawilite RLM Dragon",
+          "description": "",
+          "featured": false,
+          "source": "modrinth"
+        },
+        {
+          "url": "https://cdn.modrinth.com/data/GC58bFHM/images/3efaf41b2d97209621b6ca652beda39dacfc4c3b_350.webp",
+          "full": "https://cdn.modrinth.com/data/GC58bFHM/images/3efaf41b2d97209621b6ca652beda39dacfc4c3b.png",
+          "title": "Mega Mawile RLM Dragon",
+          "description": "",
+          "featured": false,
+          "source": "modrinth"
+        },
+        {
+          "url": "https://cdn.modrinth.com/data/GC58bFHM/images/b50825e1f6f749a44eb2b80b7bfd38d05ca42e0f.png",
+          "full": "https://cdn.modrinth.com/data/GC58bFHM/images/b50825e1f6f749a44eb2b80b7bfd38d05ca42e0f.png",
+          "title": "Craft : Ampharosite RLM",
+          "description": "",
+          "featured": false,
+          "source": "modrinth"
+        }
+      ],
+      "modrinth": {
+        "slug": "cobblemon-rlm",
+        "url": "https://modrinth.com/project/cobblemon-rlm",
+        "downloads": 9308,
+        "followers": 17,
+        "license": "MIT"
+      },
       "org": "L-Antre-des-Loutres",
       "hidden": false,
       "sources": [
         "github"
-      ],
-      "service": {
-        "up": true,
-        "uncertain": false,
-        "lastSeenUp": "2026-09-12",
-        "urls": {
-          "https://antredesloutres.fr/projets/cobblemon_rlm/": true
-        }
-      }
+      ]
     },
     {
       "key": "l-antre-des-loutres/astroloutre",
