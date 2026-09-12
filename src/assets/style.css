@@ -100,7 +100,9 @@ h1, h2, h3 { line-height: 1.25; font-weight: 600; margin: 0; letter-spacing: -0.
 
 /* --- En-tête ------------------------------------------------------------ */
 
-.masthead { padding: 3.5rem 0 0; }
+/* Même conflit que le pied de page : `padding` en raccourci remettrait le
+   retrait horizontal de `.wrap` à zéro. */
+.masthead { padding-top: 3.5rem; }
 
 .identity {
   display: flex;
@@ -546,9 +548,15 @@ section { margin-top: 3.25rem; }
 
 /* --- Pied de page ------------------------------------------------------- */
 
-footer {
-  margin-top: 4rem;
-  padding: 1.25rem 0 3rem;
+/* Le pied de page porte aussi la classe `wrap`, dont la spécificité (une
+   classe) l'emporte sur un sélecteur d'élément : sans `footer.wrap`, la marge
+   et les retraits verticaux ci-dessous étaient purement et simplement ignorés.
+   Les retraits sont déclarés séparément pour ne pas écraser le retrait
+   horizontal que `.wrap` fournit. */
+footer.wrap {
+  margin-top: 4.5rem;
+  padding-top: 1.5rem;
+  padding-bottom: 3.5rem;
   border-top: 1px solid var(--rule-strong);
   font-family: var(--mono);
   font-size: 0.74rem;
