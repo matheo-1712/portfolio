@@ -138,23 +138,32 @@ function filterBar(projects) {
     projects.some((p) => p.status === s)
   );
 
-  // Une techno ne merite un filtre que si elle revient assez souvent pour
-  // que le filtre serve a quelque chose.
+  // Toutes les technologies presentes, les plus frequentes d'abord. Aucune n'est
+  // ecartee : une techno qui n'apparait qu'une fois est justement celle qu'on
+  // cherche quand on filtre dessus.
   const counts = new Map();
   for (const p of projects) for (const s of p.stack) counts.set(s, (counts.get(s) || 0) + 1);
   const techs = [...counts.entries()]
-    .filter(([, n]) => n >= 2)
-    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
-    .slice(0, 6)
-    .map(([name]) => name);
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "fr"))
+    .map(([name, n]) => ({ name, n }));
 
-  const button = (value, label) =>
-    `<button class="btn" type="button" data-filter="${attr(value)}" aria-pressed="false">${esc(label)}</button>`;
+  const button = (value, label, count) =>
+    `<button class="btn" type="button" data-filter="${attr(value)}" aria-pressed="false">` +
+    `${esc(label)}${count ? `<b>${count}</b>` : ""}</button>`;
 
   return `
   <div class="filters" role="group" aria-label="Filtrer les projets">
-    ${statuses.map((s) => button(s, statusLabel(s))).join("")}
-    ${techs.map((t) => button(t, t)).join("")}
+    ${statuses
+      .map((s) => button(s, statusLabel(s), projects.filter((p) => p.status === s).length))
+      .join("")}
+    <span class="filters-sep" aria-hidden="true"></span>
+    ${techs
+      .map(
+        (t) =>
+          `<button class="btn" type="button" data-filter="${attr(t.name)}" aria-pressed="false">` +
+          `<i class="dot" style="background:${techColor(t.name)}"></i>${esc(t.name)}<b>${t.n}</b></button>`
+      )
+      .join("")}
   </div>`;
 }
 
