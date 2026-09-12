@@ -353,15 +353,13 @@ function detailPage(profile, project, assetVersion) {
         : "hors ligne"
     : "";
 
-  // Part dans le depot : sur un projet d'organisation, c'est ce qui distingue
-  // l'auteur principal d'un contributeur occasionnel.
+  // Part dans le depot, toujours exprimee en proportion : le chiffre brut parle
+  // de lui-meme, et le lecteur situe l'implication sans qu'on la qualifie.
   const c = project.contribution;
   const contribution = c?.commits
-    ? c.rank === 1 && c.contributors > 1
-      ? `auteur principal · ${c.commits} commits`
-      : c.contributors > 1
-        ? `${c.commits} commits sur ${c.total}`
-        : `${c.commits} commits`
+    ? c.contributors > 1
+      ? `${c.commits} commits sur ${c.total}`
+      : `${c.commits} commits`
     : "";
 
   const facts = [

@@ -31,9 +31,10 @@ github:
   identities: ["matheo-1712"]   # à défaut, `users` est utilisé
 ```
 
-Le nombre de commits est conservé et affiché sur la fiche du projet :
-« auteur principal · 142 commits » quand tu es en tête des contributeurs,
-« 12 commits sur 340 » sinon.
+Le nombre de commits est conservé et affiché sur la fiche du projet, toujours
+en proportion : « 142 commits sur 300 ». Un dépôt dont tu es le seul
+contributeur affiche simplement « 87 commits », la proportion n'ayant alors
+rien à apprendre.
 
 Si GitHub ne peut pas répondre (dépôt vide, statistiques en cours de calcul),
 **le projet est conservé** : mieux vaut une fiche sans donnée de contribution
