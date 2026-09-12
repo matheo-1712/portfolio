@@ -1,6 +1,6 @@
 {
-  "generated": "2026-09-12T16:15:29.717Z",
-  "count": 14,
+  "generated": "2026-09-12T16:48:25.869Z",
+  "count": 13,
   "projects": [
     {
       "key": "l-antre-des-loutres/astroloutre",
@@ -8,7 +8,7 @@
       "title": "Astroloutre",
       "summary": "Site de l'Antre des Loutres, lieu ou nos utilisateurs peuvent admirer leurs statistiques et accomplissements.",
       "body": "Bienvenue sur le dépôt du site web de [L'Antre des Loutres](https://antredesloutres.fr).\nCe projet est une application web statique moderne construite avec **Astro** et **React**, conçue pour la performance,\nla flexibilité et une expérience utilisateur fluide. ## Technologies Ce projet utilise une stack moderne: - **Framework**: [Astro](https://astro.build/) (v5) - Pour la génération statique et la performance.\n- **UI Library**: [React](https://react.dev/) (v19) - Pour les composants interactifs complexes (tableaux de classements, etc.).\n- **Styling**: [Tailwind CSS](https://tailwindcss.com/) (v4) & Variables CSS natives pour la gestion des thèmes.\n- **Langage**: TypeScript - Pour un code robuste et typé. ## Installation et Démarrage ### Étapes 1. **Cloner le projet** ```bash git clone https://github.com/L-Antre-des-Loutres/Reactisoutre.git cd Reactisoutre ``` 2. **Installer les dépendances** ```bash npm install ``` 3. **Lancer le serveur de développement** ```bash npm run dev ``` Le site sera accessible sur `http://localhost:4321`. ### Autres commandes utiles | Commande | Action |\n|:----------------------|:-------------------------------------------------------------|\n| `npm run build` | Compile le site pour la production dans le dossier `./dist/` |\n| `npm run preview` | Prévisualise le build de production localement |\n| `npm run astro check` | Lance une vérification des types et du code | ## Structure du Projet L'architecture du code source dans `src/` est organisée comme suit: - **`pages/`**: Contient les routes du site. Astro utilise un routage basé sur les fichiers (ex: `pages/classements/minecraft.astro` devient `/classements/minecraft`).\n- **`components/`**: - `classements/`: Composants React gérant l'affichage et le tri des tableaux de scores. - `sections/`: Blocs de mise en page réutilisables (Bannières, Présentations...). - `ui/`: Composants d'interface atomiques (Boutons, Inputs...).\n- **`layouts/`**: Gabarits principaux (ex: `Layout.astro`) qui définissent la structure commune (Header, Footer, Meta tags).\n- **`styles/`**: - `themes/`: Définit les palettes de couleurs pour les modes Clair et Sombre via des variables CSS. - `global/`: Styles CSS globaux spécifiques (ex: `rankings.css`).\n- **`utils/`**: Fonctions utilitaires, helpers de formatage et logique métier partagée. ## Fonctionnement des Thèmes (Dark Mode) Le site intègre un système de thème **Clair / Sombre** natif.\nCeci est géré via des variables CSS définies dans `src/styles/themes/`.\nLes composants utilisent ces variables (ex: `var(--background-color)`, `var(--ranking-text-color)`) pour s'adapter\nautomatiquement à la préférence de l'utilisateur ou au switch manuel. ## Données et API L'application est \"Frontend-only\" pour l'affichage, mais elle consomme des données dynamiques.\nToutes les statistiques (Minecraft, Palworld, Discord) sont récupérées depuis notre API publique: **[Otterly API](https://otterlyapi.antredesloutres.fr/)** ### Sources de données - **Minecraft**: Données collectées par [Otternel](https://github.com/Corentin-cott/Otternel) (Rust).\n- **Discord**: Bot Discord interne pour les statistiques d'activité. *Pour toute demande de suppression de données, veuillez consulter\nnotre [page de gestion des données](https://antredesloutres.fr/donnees/).* ## Contributeurs - **Mathéo** ([matheo-1712](https://github.com/matheo-1712)): Développement Frontend (Astro/React) & API Otterly.\n- **Corentin** ([corentin-cott](https://github.com/corentin-cott)): Développement Backend, Outils de monitoring ( Rust/Go) & DevOps.",
-      "type": "Antredesloutres",
+      "type": "",
       "stack": [
         "Astro",
         "TypeScript"
@@ -163,63 +163,6 @@
       ]
     },
     {
-      "key": "matheo-1712/citlali",
-      "slug": "citlali",
-      "title": "Citlali",
-      "summary": "Bot Discord spécialisé dans Genshin Impact.",
-      "body": "Citlali est un bot Discord spécialisé pour le jeu **Genshin Impact**. ## Fonctionnalités Ce bot permet de: - Afficher les builds conseillés pour les personnages\n- Montrer les événements à venir dans le jeu (fonctionnalité en cours de développement)\n- Gérer les UID des utilisateurs\n- Proposer de nombreuses autres fonctionnalités à venir pour améliorer l'expérience des utilisateurs Ce bot est en constante évolution et de nouvelles fonctionnalités seront ajoutées régulièrement.",
-      "type": "Bot Discord",
-      "stack": [
-        "TypeScript"
-      ],
-      "status": "prod",
-      "started": "2025-01-05T18:13:03Z",
-      "ended": "",
-      "updated": "2026-01-20T10:26:17Z",
-      "featured": false,
-      "version": "v3.0.3",
-      "prerelease": false,
-      "image": null,
-      "links": {
-        "repo": "https://github.com/matheo-1712/Citlali",
-        "demo": "https://discord.com/oauth2/authorize?client_id=1300834433221267549&permissions=0&integration_type=0&scope=bot"
-      },
-      "stars": 1,
-      "org": null,
-      "hidden": false,
-      "sources": [
-        "github"
-      ]
-    },
-    {
-      "key": "matheo-1712/citlapi",
-      "slug": "citlapi",
-      "title": "CitlAPI",
-      "summary": "Citlali - API est une API RESTful conçue pour être simple d’utilisation et facile à maintenir. Elle s’appuie sur le modèle de Otterly API. Bien qu’elle soit principalement destinée à être utilisée par le bot Citlali, elle reste ouverte à d’autres utilisateurs.",
-      "body": "Citlali - API est une API RESTful conçue pour être simple d’utilisation et facile à maintenir. Elle s’appuie sur le modèle de [Otterly API](https://github.com/matheo-1712/OtterlyAPI). Bien qu’elle soit principalement destinée à être utilisée par le bot Citlali, elle reste ouverte à d’autres utilisateurs. - [Citlali - API](#citlali---api)\n- [Sommaire](#sommaire) - [Fonctionnalités](#fonctionnalités) - [Installation](#installation) - [Exemple d'utilisation](#exemple-dutilisation) - [Auteur](#auteur) - [Liaisons avec d'autres projets](#liaisons-avec-dautres-projets) ## Fonctionnalités - Gestion de table, Création, Suppression, Recherche de données.\n- Protocole de token d'authentification pour les requêtes demandant l'authentification.\n- Lancement de commande dans un terminal. ## Exemple d'utilisation (Pas encore disponible) ## Liaisons avec d'autres projets - [Citlali](https://github.com/matheo-1712/Citlali) réalisé par [Matheo Pérodeau](https://github.com/matheo-1712)",
-      "type": "API REST",
-      "stack": [
-        "TypeScript"
-      ],
-      "status": "prod",
-      "started": "2025-05-01T20:06:37Z",
-      "ended": "",
-      "updated": "2026-01-19T13:22:45Z",
-      "featured": false,
-      "version": "v1.0.0",
-      "prerelease": false,
-      "image": null,
-      "links": {
-        "repo": "https://github.com/matheo-1712/CitlAPI"
-      },
-      "stars": 1,
-      "org": null,
-      "hidden": false,
-      "sources": [
-        "github"
-      ]
-    },
-    {
       "key": "matheo-1712/cobblemon-trainers",
       "slug": "cobblemon-trainers",
       "title": "Cobblemon Trainers",
@@ -278,49 +221,12 @@
       ]
     },
     {
-      "key": "l-antre-des-loutres/papi_back",
-      "slug": "papi-back",
-      "title": "Papi Back",
-      "summary": "PAPI (Pokémon Application Programming Interface, or Pokémon API), is a RESTful API that provides access to a comprehensive database of Pokémon data. It allows developers to retrieve information about Pokémon, including their stats, abilities, types, and more.",
-      "body": "## What is PAPI?\n**P**okémon **A**pplication **P**rogramming **I**nterface, or **Pokémon API**, is a RESTful API that provides access to a comprehensive database of Pokémon data. It allows developers to retrieve information about Pokémon, including their stats, abilities, types, and more. It is designed for small fangame developers and enthusiasts who want to build their own Pokémon-related projects without having to set up their own database or API from scratch, or deal with larger projects that can be difficult to work with and adapt due to their size and complexity. ## Tech stack used | Layer | Technology |\n|---|---|\n| Language | Java 21 |\n| Framework | Spring Boot 3.2.3 |\n| Security | Spring Security + JWT (JJWT) |\n| Persistence | Spring Data JPA + Hibernate |\n| Database | MySQL (production), H2 (tests) |\n| Mapping | MapStruct |\n| Build | Maven |\n| API Docs | SpringDoc OpenAPI (Swagger UI) |\n| Containerization | Docker + Docker Compose | ## How to setup for development 1. Clone the repository ```bash git clone <repo-url> cd papi_back ``` 2. Copy the environment template and fill in your values ```bash cp.env.example.env ``` To generate a JWT secret: ```bash mvn exec:java -Dexec.mainClass=org.antredesloutres.papi.GenerateSecret ``` 3. Start a local MySQL instance, or update `DB_URL` in `.env` to point to your database 4. Run the development server ```bash mvn spring-boot:run ``` The API will be available at `http://localhost:8080`. Swagger UI is available at `http://localhost:8080/swagger-ui.html`. ## Useful commands | Command | Description |\n|---|---|\n| `mvn spring-boot:run` | Start the app in dev mode |\n| `mvn test` | Run the test suite |\n| `mvn clean package -DskipTests` | Build the JAR |",
-      "type": "",
-      "stack": [
-        "Java"
-      ],
-      "status": "wip",
-      "started": "2026-04-29T22:19:48Z",
-      "ended": "2026-07-31T17:47:13Z",
-      "updated": "2026-07-31T17:47:13Z",
-      "featured": false,
-      "version": "",
-      "prerelease": false,
-      "image": null,
-      "links": {
-        "repo": "https://github.com/L-Antre-des-Loutres/papi_back",
-        "demo": "https://papi-back.antredesloutres.fr/"
-      },
-      "stars": 0,
-      "org": "L-Antre-des-Loutres",
-      "hidden": false,
-      "sources": [
-        "github"
-      ],
-      "service": {
-        "up": true,
-        "uncertain": false,
-        "lastSeenUp": "2026-09-12",
-        "urls": {
-          "https://papi-back.antredesloutres.fr/": true
-        }
-      }
-    },
-    {
       "key": "l-antre-des-loutres/ottergames-plugin",
       "slug": "ottergames-plugin",
       "title": "Ottergames Plugin",
       "summary": "Ottergames is a Minecraft plugin made to play multiple mini-games in a Wario Ware style.",
       "body": "Ottergames is a Minecraft plugin made for multiplayer events. The game is made of multiples mini-games that quickly chain one after the other, similary to the Wario Ware series. Les mini-jeux sont rapident et s'enchaine avec de moins en moins de temps de pause plus le jeu dure longtemps. Un systeme compte les points dans un leaderboard pour la partie en cours, mais aussi pour le total de toutes les parties. ## Lancement rapide (Windows) Le script `launch_minecraft_with_plugin.bat` fait tout automatiquement:\n1. build du plugin,\n2. installation du plugin dans le serveur local,\n3. ouverture du launcher Minecraft. Ensuite, connecte ton client sur `localhost:25565`. Le serveur est lance avec le jar Paper `26.1.2-53` telecharge depuis:\n`https://fill-data.papermc.io/v1/objects/6934188878fc351e1be5bfba5f2b8c4591224886e4b34e3de09dbec68a351caf/paper-26.1.2-53.jar` Paper 26.1.2 necessite Java 25 minimum:\n`https://docs.papermc.io/misc/java-install` Si le launcher n'est pas detecte automatiquement, definis la variable d'environnement `MINECRAFT_LAUNCHER` avec le chemin vers `MinecraftLauncher.exe`.",
-      "type": "Minecraft",
+      "type": "Plugin",
       "stack": [
         "Java"
       ],
@@ -364,6 +270,63 @@
         "repo": "https://github.com/matheo-1712/RustSSH"
       },
       "stars": 0,
+      "org": null,
+      "hidden": false,
+      "sources": [
+        "github"
+      ]
+    },
+    {
+      "key": "matheo-1712/citlali",
+      "slug": "citlali",
+      "title": "Citlali",
+      "summary": "Bot Discord spécialisé dans Genshin Impact.",
+      "body": "Citlali est un bot Discord spécialisé pour le jeu **Genshin Impact**. ## Fonctionnalités Ce bot permet de: - Afficher les builds conseillés pour les personnages\n- Montrer les événements à venir dans le jeu (fonctionnalité en cours de développement)\n- Gérer les UID des utilisateurs\n- Proposer de nombreuses autres fonctionnalités à venir pour améliorer l'expérience des utilisateurs Ce bot est en constante évolution et de nouvelles fonctionnalités seront ajoutées régulièrement.",
+      "type": "Bot Discord",
+      "stack": [
+        "TypeScript"
+      ],
+      "status": "archived",
+      "started": "2025-01-05T18:13:03Z",
+      "ended": "2026-01-20T10:26:17Z",
+      "updated": "2026-01-20T10:26:17Z",
+      "featured": false,
+      "version": "v3.0.3",
+      "prerelease": false,
+      "image": null,
+      "links": {
+        "repo": "https://github.com/matheo-1712/Citlali",
+        "demo": "https://discord.com/oauth2/authorize?client_id=1300834433221267549&permissions=0&integration_type=0&scope=bot"
+      },
+      "stars": 1,
+      "org": null,
+      "hidden": false,
+      "sources": [
+        "github"
+      ]
+    },
+    {
+      "key": "matheo-1712/citlapi",
+      "slug": "citlapi",
+      "title": "CitlAPI",
+      "summary": "Citlali - API est une API RESTful conçue pour être simple d’utilisation et facile à maintenir. Elle s’appuie sur le modèle de Otterly API. Bien qu’elle soit principalement destinée à être utilisée par le bot Citlali, elle reste ouverte à d’autres utilisateurs.",
+      "body": "Citlali - API est une API RESTful conçue pour être simple d’utilisation et facile à maintenir. Elle s’appuie sur le modèle de [Otterly API](https://github.com/matheo-1712/OtterlyAPI). Bien qu’elle soit principalement destinée à être utilisée par le bot Citlali, elle reste ouverte à d’autres utilisateurs. - [Citlali - API](#citlali---api)\n- [Sommaire](#sommaire) - [Fonctionnalités](#fonctionnalités) - [Installation](#installation) - [Exemple d'utilisation](#exemple-dutilisation) - [Auteur](#auteur) - [Liaisons avec d'autres projets](#liaisons-avec-dautres-projets) ## Fonctionnalités - Gestion de table, Création, Suppression, Recherche de données.\n- Protocole de token d'authentification pour les requêtes demandant l'authentification.\n- Lancement de commande dans un terminal. ## Exemple d'utilisation (Pas encore disponible) ## Liaisons avec d'autres projets - [Citlali](https://github.com/matheo-1712/Citlali) réalisé par [Matheo Pérodeau](https://github.com/matheo-1712)",
+      "type": "API REST",
+      "stack": [
+        "TypeScript"
+      ],
+      "status": "archived",
+      "started": "2025-05-01T20:06:37Z",
+      "ended": "2026-01-19T13:22:45Z",
+      "updated": "2026-01-19T13:22:45Z",
+      "featured": false,
+      "version": "v1.0.0",
+      "prerelease": false,
+      "image": null,
+      "links": {
+        "repo": "https://github.com/matheo-1712/CitlAPI"
+      },
+      "stars": 1,
       "org": null,
       "hidden": false,
       "sources": [
@@ -435,6 +398,5 @@
         "github"
       ]
     }
-  ],
-  "healthChecked": "2026-09-12T16:34:21.079Z"
+  ]
 }
