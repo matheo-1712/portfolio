@@ -142,7 +142,20 @@ export function projectRow(project, { detailHref } = {}) {
     </li>`;
 }
 
-export function layout({ title, description, url, canonical, body, assetsPrefix = "", extraHead = "" }) {
+export function layout({
+  title,
+  description,
+  url,
+  canonical,
+  body,
+  assetsPrefix = "",
+  extraHead = "",
+  // Empreinte du contenu des assets. Sans elle, un navigateur qui a deja
+  // visite le site continue de servir l'ancien CSS apres une republication :
+  // le HTML est neuf, la mise en page est celle de la veille.
+  assetVersion = "",
+}) {
+  const v = assetVersion ? `?v=${assetVersion}` : "";
   return `<!doctype html>
 <html lang="fr">
 <head>
@@ -156,7 +169,7 @@ ${canonical ? `<link rel="canonical" href="${attr(canonical)}">` : ""}
 <meta property="og:description" content="${attr(description)}">
 ${url ? `<meta property="og:url" content="${attr(url)}">` : ""}
 <meta name="twitter:card" content="summary">
-<link rel="stylesheet" href="${assetsPrefix}style.css">
+<link rel="stylesheet" href="${assetsPrefix}style.css${v}">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='25' font-size='26' font-family='monospace'>M</text></svg>">
 <script>
 /* Applique le thème enregistré avant le premier rendu, pour éviter le flash
@@ -168,7 +181,7 @@ ${extraHead}
 <body>
 <a class="skip" href="#main">Aller au contenu</a>
 ${body}
-<script src="${assetsPrefix}app.js" defer></script>
+<script src="${assetsPrefix}app.js${v}" defer></script>
 </body>
 </html>
 `;

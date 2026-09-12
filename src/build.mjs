@@ -1,6 +1,7 @@
 // Assemble dist/ a partir de data/profile.yml et data/projects.json.
 // Aucune requete reseau ici : le build est reproductible et fonctionne hors ligne.
 
+import crypto from "node:crypto";
 import fs from "node:fs/promises";
 import path from "node:path";
 import YAML from "yaml";
@@ -315,7 +316,7 @@ function footer(profile, generated) {
 
 // --- Pages -------------------------------------------------------------------
 
-function indexPage(profile, data, detailSlugs, notes) {
+function indexPage(profile, data, detailSlugs, notes, assetVersion) {
   const seo = profile.seo || {};
   const body = `
 ${masthead(profile, data.projects)}
@@ -334,10 +335,11 @@ ${footer(profile, data.generated)}`;
     url: seo.url,
     canonical: seo.url,
     body,
+    assetVersion,
   });
 }
 
-function detailPage(profile, project) {
+function detailPage(profile, project, assetVersion) {
   const seo = profile.seo || {};
   const base = project.links?.repo ? `${project.links.repo}/raw/HEAD` : null;
 
@@ -427,10 +429,11 @@ ${footer(profile, null)}`;
     canonical: seo.url ? `${seo.url.replace(/\/$/, "")}/p/${project.slug}.html` : "",
     body,
     assetsPrefix: "../",
+    assetVersion,
   });
 }
 
-function notePage(profile, note) {
+function notePage(profile, note, assetVersion) {
   const seo = profile.seo || {};
   const base = seo.url ? `${seo.url.replace(/\/$/, "")}/n/${note.slug}.html` : "";
 
@@ -457,6 +460,7 @@ ${footer(profile, null)}`;
     canonical: base,
     body,
     assetsPrefix: "../",
+    assetVersion,
   });
 }
 
@@ -488,6 +492,15 @@ async function main() {
 
   const notes = await loadNotes(path.join(ROOT, "content", "notes"));
 
+  // Empreinte commune aux deux assets : ils changent presque toujours ensemble,
+  // et une seule valeur suffit a invalider les caches.
+  const assetVersion = crypto
+    .createHash("sha1")
+    .update(await fs.readFile(path.join(ASSETS, "style.css")))
+    .update(await fs.readFile(path.join(ASSETS, "app.js")))
+    .digest("hex")
+    .slice(0, 8);
+
   const withDetail = data.projects.filter((p) => (p.body || "").length >= DETAIL_MIN_CHARS);
   const detailSlugs = new Set(withDetail.map((p) => p.key));
 
@@ -495,14 +508,14 @@ async function main() {
   await fs.mkdir(path.join(DIST, "p"), { recursive: true });
   if (notes.length) await fs.mkdir(path.join(DIST, "n"), { recursive: true });
 
-  await fs.writeFile(path.join(DIST, "index.html"), indexPage(profile, data, detailSlugs, notes), "utf8");
+  await fs.writeFile(path.join(DIST, "index.html"), indexPage(profile, data, detailSlugs, notes, assetVersion), "utf8");
 
   for (const project of withDetail) {
-    await fs.writeFile(path.join(DIST, "p", `${project.slug}.html`), detailPage(profile, project), "utf8");
+    await fs.writeFile(path.join(DIST, "p", `${project.slug}.html`), detailPage(profile, project, assetVersion), "utf8");
   }
 
   for (const note of notes) {
-    await fs.writeFile(path.join(DIST, "n", `${note.slug}.html`), notePage(profile, note), "utf8");
+    await fs.writeFile(path.join(DIST, "n", `${note.slug}.html`), notePage(profile, note, assetVersion), "utf8");
   }
 
   for (const asset of ["style.css", "app.js"]) {
