@@ -50,7 +50,24 @@ function keyFigures(projects) {
   ].filter(Boolean);
 }
 
-function masthead(profile, projects, prefix = "") {
+// Sur telephone les sections se suivent en une seule colonne : le parcours se
+// retrouve derriere quinze projets. Ces ancres remontent en tete de page et
+// n'existent que la — sur grand ecran les deux panneaux sont deja visibles.
+function sectionNav(hasNotes) {
+  const liens = [
+    ["projets", "projets"],
+    hasNotes ? ["notes", "notes"] : null,
+    ["competences", "stack"],
+    ["experience", "parcours"],
+    ["formation", "formation"],
+  ].filter(Boolean);
+
+  return `<nav class="jump" aria-label="Sections">${liens
+    .map(([id, label]) => `<a href="#${id}">${esc(label)}</a>`)
+    .join("")}</nav>`;
+}
+
+function masthead(profile, projects, prefix = "", nav = "") {
   const id = profile.identity || {};
 
   const links = [];
@@ -99,6 +116,7 @@ function masthead(profile, projects, prefix = "") {
   ${facts ? `<dl class="facts about">${facts}</dl>` : ""}
 
   <div class="actions">${links.join("")}</div>
+  ${nav}
 </header>`;
 }
 
@@ -320,10 +338,10 @@ function footer(profile, generated, prefix = "") {
 // Le panneau de gauche est identique partout : c'est ce qui permet de passer
 // d'un projet a l'autre sans que le profil bouge, et de garder chaque fiche
 // autonome quand le script ne s'execute pas.
-function sidePane(profile, projects, generated, prefix = "") {
+function sidePane(profile, projects, generated, prefix = "", nav = "") {
   return `
   <aside class="pane pane-side">
-    ${masthead(profile, projects, prefix)}
+    ${masthead(profile, projects, prefix, nav)}
     ${skillsSection(profile, projects)}
     ${experienceSection(profile)}
     ${educationSection(profile)}
@@ -342,7 +360,7 @@ function indexPage(profile, data, detailSlugs, notes, assetVersion) {
   // immediatement, le parcours ferme la marche.
   const body = `
 <div class="layout">
-  ${sidePane(profile, data.projects, data.generated)}
+  ${sidePane(profile, data.projects, data.generated, "", sectionNav(notes.length > 0))}
 
   <main id="main" class="pane pane-main" data-page="index">
     ${projectsSection(profile, data.projects, detailSlugs)}

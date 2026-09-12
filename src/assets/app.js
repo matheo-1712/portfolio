@@ -68,6 +68,12 @@
     var items = Array.prototype.slice.call(list.querySelectorAll(".project"));
     var active = "all";
 
+    function estFiltre(valeur) {
+      return Array.prototype.some.call(filters, function (b) {
+        return b.getAttribute("data-filter") === valeur;
+      });
+    }
+
     function matches(item) {
       if (active === "all") return true;
       if (item.getAttribute("data-status") === active) return true;
@@ -92,8 +98,14 @@
       }
       if (empty) empty.hidden = shown !== 0;
 
-      var url = active === "all" ? location.pathname : location.pathname + "#" + active;
-      history.replaceState(history.state, "", url);
+      // Le filtre vit dans le fragment, mais il n'est pas seul a y vivre : une
+      // ancre de section (#experience) doit survivre au premier rendu.
+      var hash = location.hash.replace("#", "");
+      if (active !== "all") {
+        history.replaceState(history.state, "", location.pathname + "#" + active);
+      } else if (estFiltre(hash)) {
+        history.replaceState(history.state, "", location.pathname);
+      }
     }
 
     filters.forEach(function (btn) {
@@ -104,13 +116,8 @@
       });
     });
 
-    var hash = location.hash.replace("#", "");
-    if (hash) {
-      var known = Array.prototype.some.call(filters, function (b) {
-        return b.getAttribute("data-filter") === hash;
-      });
-      if (known) active = hash;
-    }
+    var initial = location.hash.replace("#", "");
+    if (initial && estFiltre(initial)) active = initial;
 
     render();
   }
@@ -129,6 +136,12 @@
 
   var cache = Object.create(null);
   var enCours = null;
+
+  // Un simple changement de fragment (#experience, #rust) declenche lui aussi
+  // popstate. Le rechercher serait absurde : on ne renavigue que si le chemin
+  // a reellement change, sinon le navigateur fait son travail d'ancre et le
+  // defilement obtenu n'est pas annule.
+  var derniere = location.pathname + location.search;
 
   function estInterne(a) {
     if (a.target || a.hasAttribute("download")) return false;
@@ -206,14 +219,18 @@
     if (url === location.pathname + location.search) return;
 
     e.preventDefault();
+    derniere = url;
     naviguer(url, true);
   });
 
   window.addEventListener("popstate", function () {
-    naviguer(location.pathname + location.search, false);
+    var url = location.pathname + location.search;
+    if (url === derniere) return;
+    derniere = url;
+    naviguer(url, false);
   });
 
-  history.replaceState({ url: location.pathname + location.search }, "");
+  history.replaceState({ url: derniere }, "");
 
   initTheme();
   initFilters(main);

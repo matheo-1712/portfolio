@@ -23,6 +23,9 @@
   --measure: 46rem;
   /* La page d'accueil tient sur deux colonnes et respire plus large. */
   --measure-large: 74rem;
+  /* Marge laissee entre le contenu et le bord de l'ecran. Une seule valeur
+     pour tout le site : masthead, panneaux et pied de page s'alignent. */
+  --gutter: 1.5rem;
 }
 
 :root[data-theme="dark"] {
@@ -82,7 +85,7 @@ h1, h2, h3 { line-height: 1.25; font-weight: 600; margin: 0; letter-spacing: -0.
 .wrap {
   max-width: var(--measure);
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 var(--gutter);
 }
 
 .skip { position: absolute; left: -9999px; }
@@ -202,6 +205,35 @@ h1, h2, h3 { line-height: 1.25; font-weight: 600; margin: 0; letter-spacing: -0.
   margin: 1.5rem 0 0;
 }
 
+/* Ancres de section : utiles seulement quand tout s'empile sur une colonne.
+   Sur grand ecran les deux panneaux sont visibles d'un coup, elles n'ont plus
+   rien a raccourcir. */
+.jump { display: none; }
+
+@media (max-width: 59.99rem) {
+  .jump {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1.1rem;
+    margin: 1.4rem 0 0;
+    padding-top: 1.1rem;
+    border-top: 1px solid var(--rule);
+    font-family: var(--mono);
+    font-size: 0.76rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .jump a {
+    color: var(--muted);
+    text-decoration: none;
+    padding: 0.3rem 0;
+  }
+  .jump a:hover, .jump a:focus-visible { color: var(--accent); }
+}
+
+/* Les ancres ne doivent pas deposer le titre vise sous le bord de l'ecran. */
+:target { scroll-margin-top: 1.5rem; }
+
 .btn {
   font-family: var(--mono);
   font-size: 0.78rem;
@@ -264,7 +296,16 @@ h1, h2, h3 { line-height: 1.25; font-weight: 600; margin: 0; letter-spacing: -0.
   #experience    { order: 4; }
   #formation     { order: 5; }
   footer.wrap    { order: 6; }
-  .pane { max-width: var(--measure); margin: 0 auto; padding: 0 1.1rem; width: 100%; }
+  /* `display: contents` dissout aussi la boite du panneau : sa gouttiere
+     disparait avec elle. Elle est donc reportee sur chaque section, qui devient
+     un enfant direct de la grille. */
+  .pane,
+  .pane-side > * {
+    max-width: var(--measure);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+    width: 100%;
+  }
 }
 
 @media (min-width: 60rem) {
@@ -389,8 +430,30 @@ section { margin-top: 3.25rem; }
   display: flex;
   align-items: flex-start;
   gap: 0.95rem;
+  position: relative;
 }
 .project:last-child { border-bottom: 0; }
+
+/* Survol : un aplat, pas une animation d'apparition. Il est porte par un
+   pseudo-element pour deborder dans la gouttiere sans emporter le filet de
+   separation, qui doit rester aligne sur les titres de section. */
+.project::before {
+  content: "";
+  position: absolute;
+  inset: 0.25rem -0.8rem;
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: inset 0 0 0 1px var(--rule);
+  opacity: 0;
+  transition: opacity 130ms ease;
+  pointer-events: none;
+}
+.project > * { position: relative; }
+
+@media (hover: hover) {
+  .project:hover::before,
+  .project:focus-within::before { opacity: 1; }
+}
 
 .project-main { flex: 1; min-width: 0; }
 
@@ -958,10 +1021,6 @@ footer .spacer { margin-left: auto; }
 
 @media (max-width: 34rem) {
   body { font-size: 15px; }
-
-  /* Sur un écran étroit, chaque millimètre de gouttière est pris sur la
-     largeur de lecture : on la resserre pour laisser respirer le texte. */
-  .wrap { padding: 0 1.1rem; }
 
   .masthead { padding-top: 2.25rem; }
   .identity { gap: 0.85rem; }
