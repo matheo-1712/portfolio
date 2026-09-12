@@ -621,12 +621,26 @@ a:hover > .ico { opacity: 1; }
    largeur de la fenetre, un seuil en rem se deplacerait donc avec elle et la
    deuxieme colonne disparaitrait au moment ou l'ecran s'agrandit. */
 @container (min-width: 1015px) {
+  /* Colonnes typographiques, pas une grille : dans une grille chaque rangee
+     prend la hauteur de sa fiche la plus haute, et la plus courte laisse un
+     trou sous elle. Ici les fiches s'ecoulent a la suite et remplissent les
+     deux colonnes sans vide intercalaire. */
   .projects, .notes {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    column-count: 2;
     column-gap: 3rem;
-    align-items: start;
   }
+
+  /* Une fiche coupee en deux au bas d'une colonne serait illisible. */
+  .project, .note-row {
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+  }
+
+  /* Le filet du dernier element est retabli : en colonnes, le « dernier » est
+     au bas de la colonne de droite, et son voisin de gauche se retrouverait
+     seul a en porter un. */
+  .projects .project:last-child,
+  .notes .note-row:last-child { border-bottom: 1px solid var(--rule); }
 
   /* Sur deux colonnes, la version en bout de ligne n'a plus la place : elle
      rejoint les métadonnées sous le titre. */
@@ -829,7 +843,7 @@ footer .spacer { margin-left: auto; }
 .detail-head .thumb { width: 3.5rem; height: 3.5rem; border-radius: 8px; }
 .detail-head .thumb-mono { font-size: 1.05rem; }
 .detail-head h1 { font-size: clamp(1.5rem, 4vw, 1.95rem); }
-.detail-head .lede { margin: 0.6rem 0 0; color: var(--muted); max-width: 38rem; }
+.detail-head .lede { margin: 0.6rem 0 0; color: var(--muted); max-width: 46rem; }
 
 .facts {
   display: grid;
@@ -892,7 +906,18 @@ footer .spacer { margin-left: auto; }
   .gallery { grid-template-columns: 1fr; gap: 1.25rem; }
 }
 
-.prose { margin-top: 2rem; max-width: 40rem; }
+/* Une seule largeur pour tout le README gachait la moitie du panneau : le
+   texte etait bride a 40rem et les tableaux, eux, etouffaient dedans. La
+   contrainte descend donc au niveau des blocs. Les paragraphes gardent une
+   longueur de ligne lisible ; titres, tableaux, blocs de code et captures
+   prennent toute la largeur disponible. */
+.prose { margin-top: 2rem; }
+.prose > p,
+.prose > ul,
+.prose > ol,
+.prose > dl,
+.prose > blockquote,
+.prose > .alert { max-width: 46rem; }
 .prose h1 { font-size: 1.35rem; margin: 2rem 0 0.6rem; }
 .prose h2 { font-size: 1.15rem; margin: 2rem 0 0.6rem; padding-bottom: 0.3rem; border-bottom: 1px solid var(--rule); }
 .prose h3 { font-size: 1rem; margin: 1.5rem 0 0.4rem; }
