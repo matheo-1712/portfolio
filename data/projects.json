@@ -1,6 +1,6 @@
 {
-  "generated": "2026-09-15T10:08:57.837Z",
-  "count": 15,
+  "generated": "2026-09-15T13:42:23.309Z",
+  "count": 16,
   "projects": [
     {
       "key": "l-antre-des-loutres/cobblemon-rlm",
@@ -236,7 +236,7 @@
       "modrinth": {
         "slug": "cobblemon-rlm",
         "url": "https://modrinth.com/project/cobblemon-rlm",
-        "downloads": 9434,
+        "downloads": 9439,
         "followers": 17,
         "license": "MIT"
       },
@@ -526,7 +526,7 @@
       "modrinth": {
         "slug": "cobblemon-trainers-rerebleue",
         "url": "https://modrinth.com/project/cobblemon-trainers-rerebleue",
-        "downloads": 335,
+        "downloads": 341,
         "followers": 4,
         "license": "CC0-1.0"
       },
@@ -944,6 +944,52 @@
       "sources": [
         "github"
       ]
+    },
+    {
+      "key": "l-antre-des-loutres/olderisoutre",
+      "slug": "olderisoutre",
+      "title": "Olderisoutre",
+      "summary": "Site de l'Antre des Loutres, lieu ou nos utilisateurs peuvent admirer leurs statistiques et accomplissements.",
+      "body": "*Webisoutre: Combinaison de Web + Loutre*\n\n- [Introduction](#introduction)\n- [Technologies Utilisées](#technologies-utilisées)\n- [Captures d'écran](#captures-décran)\n- [Auteurs](#auteurs)\n\n> [!NOTE]\n> Bientot™\n\n> [!NOTE]\n> Bientot™\n\n> [!NOTE]\n> Bientot™\n\n[**Corentin**](https://github.com/Corentin-cott)\nALIAS: TheAzertor, Cocow\n\n[**Mathéo**](https://github.com/matheo-1712)\nALIAS: Rerebleue",
+      "type": "Site web",
+      "stack": [
+        "PHP",
+        "Blade"
+      ],
+      "status": "archived",
+      "started": "2024-10-07T21:12:52Z",
+      "ended": "2024-11-04T22:06:34Z",
+      "updated": "2024-11-04T22:06:34Z",
+      "featured": false,
+      "version": "",
+      "prerelease": false,
+      "image": null,
+      "links": {
+        "repo": "https://github.com/L-Antre-des-Loutres/Olderisoutre",
+        "demo": "https://antredesloutres.fr"
+      },
+      "stars": 1,
+      "contribution": {
+        "commits": 32,
+        "total": 42,
+        "rank": 1,
+        "contributors": 2
+      },
+      "gallery": [],
+      "modrinth": null,
+      "org": "L-Antre-des-Loutres",
+      "hidden": false,
+      "sources": [
+        "github"
+      ],
+      "service": {
+        "up": true,
+        "uncertain": false,
+        "lastSeenUp": "2026-09-15",
+        "urls": {
+          "https://antredesloutres.fr": true
+        }
+      }
     }
   ]
 }
