@@ -32,6 +32,7 @@ github:
     - "L-Antre-des-Loutres/Olderisoutre"
     - "L-Antre-des-Loutres/Oldisoutre"
     - "albanPouch/GestaBox"
+    - "matheo-1712/memo_rust_initiation"
 
   # Ne retenir que les depots ou l'une des identites ci-dessous a reellement
   # commite. Figurer dans une organisation ne vaut pas contribution.
