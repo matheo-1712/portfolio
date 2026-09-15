@@ -1,6 +1,6 @@
 {
-  "generated": "2026-09-15T13:42:23.309Z",
-  "count": 16,
+  "generated": "2026-09-15T13:57:21.011Z",
+  "count": 17,
   "projects": [
     {
       "key": "l-antre-des-loutres/cobblemon-rlm",
@@ -530,6 +530,42 @@
         "followers": 4,
         "license": "CC0-1.0"
       },
+      "org": null,
+      "hidden": false,
+      "sources": [
+        "github"
+      ]
+    },
+    {
+      "key": "matheo-1712/memo_rust_initiation",
+      "slug": "memo-rust-initiation",
+      "title": "Memo Rust Initiation",
+      "summary": "Bienvenue. Ce dépôt est un cours complet de Rust en français, organisé en 13 chapitres. Chaque chapitre est un dossier avec un README.md qui contient:",
+      "body": "Bienvenue. Ce dépôt est un **cours complet de Rust en français**, organisé en 13 chapitres.\nChaque chapitre est un dossier avec un `README.md` qui contient:\n\n- les **notions** à comprendre (avec des extraits de syntaxe pour illustrer, jamais la solution);\n- les **pièges classiques** et comment lire les messages du compilateur;\n- des **exercices** variés, avec spécification précise, sorties attendues et critères de réussite;\n- à partir du chapitre 3, un **jalon** qui fait avancer l'application finale.\n\n> **Règle du jeu:** je ne te donne jamais le code que tu dois écrire. Je te donne la doc,\n> les signatures, le comportement attendu et les indices. Le code, c'est toi.\n\n---\n\n## L'application finale: **Mémo**\n\nÀ la fin du cours, tu auras écrit **Mémo**, un logiciel de révision en ligne de commande\nbasé sur la **répétition espacée** (le principe d'Anki, en beaucoup plus simple).\n\nCe que Mémo saura faire:\n\n```\n$ memo add --deck rust \"Que fait le mot-clé `move`?\" \"Force la closure à prendre possession...\"\nCarte #42 ajoutée au paquet « rust ».\n\n$ memo review --deck rust\nPaquet « rust » — 7 cartes à réviser aujourd'hui\n\n[1/7] Que fait le mot-clé `move`?\n (Entrée pour révéler)\n > Force la closure à prendre possession des variables capturées.\n Ta réponse: (0) oubliée (1) difficile (2) correcte (3) facile > 2\n Prochaine révision dans 6 jours.\n...\nSession terminée: 7 cartes, 85 % de réussite, 1 min 12 s.\n\n$ memo stats\nPaquets: 3 | Cartes: 128 | À réviser demain: 14\nrust 62 cartes (maturité 71 %)\nanglais 38 cartes (maturité 44 %)\n```\n\nPourquoi ce projet? Parce qu'il t'oblige à croiser **tout** ce qui fait Rust:\nmodélisation avec `struct`/`enum`, `Option`/`Result`, collections, traits, itérateurs,\ngestion d'erreurs propre, lecture/écriture de fichiers, sérialisation JSON, arguments\nde ligne de commande, tests, et même un peu de parallélisme. Et à la fin, tu t'en serviras\npour réviser… Rust.\n\n---\n\n## Le parcours\n\n| # | Chapitre | Notions clés | Jalon Mémo |\n|---|----------|--------------|------------|\n| 00 | [Mise en route](cours/00-mise-en-route/README.md) | toolchain, cargo, rustfmt, clippy | — |\n| 01 | [Les bases du langage](cours/01-bases-du-langage/README.md) | variables, types, fonctions, contrôle de flux | — |\n| 02 | [Ownership et emprunts](cours/02-ownership-et-emprunts/README.md) | move, `&`, `&mut`, slices, `String` vs `&str` | — |\n| 03 | [Structs, enums, pattern matching](cours/03-structs-enums-pattern-matching/README.md) | `struct`, `enum`, `match`, `impl` | Le type `Card` |\n| 04 | [Collections et erreurs](cours/04-collections-et-erreurs/README.md) | `Vec`, `HashMap`, `Option`, `Result`, `?` | Le `Deck` |\n| 05 | [Modules, tests et crates](cours/05-modules-tests-et-crates/README.md) | `mod`, visibilité, `#[test]`, dépendances | Découpage en modules |\n| 06 | [Traits et génériques](cours/06-traits-et-generiques/README.md) | `trait`, `impl Trait`, `dyn`, bornes | `Display`, `Scheduler` |\n| 07 | [Closures et itérateurs](cours/07-closures-et-iterateurs/README.md) | `Fn`, `map`/`filter`/`fold`, chaînes lazy | Filtres et stats |\n| 08 | [Durées de vie et smart pointers](cours/08-lifetimes-et-smart-pointers/README.md) | `'a`, `Box`, `Rc`, `RefCell` | Vues empruntées |\n| 09 | [Fichiers et sérialisation](cours/09-fichiers-et-serialisation/README.md) | `std::fs`, `io`, serde, JSON | Sauvegarde/chargement |\n| 10 | [CLI et ergonomie](cours/10-cli-et-ergonomie/README.md) | clap, sous-commandes, couleurs, codes de sortie | L'interface complète |\n| 11 | [Concurrence](cours/11-concurrence/README.md) | threads, `Send`/`Sync`, `Arc<Mutex>`, canaux | Import parallèle |\n| 12 | [Projet final: Mémo](cours/12-projet-final-memo/README.md) | assemblage, algorithme SM-2, polish | L'application entière |\n\nAnnexes:\n- [Aide-mémoire de syntaxe](cours/annexes/aide-memoire.md)\n- [Décoder les erreurs du compilateur](cours/annexes/erreurs-du-compilateur.md)\n- [Ressources et lectures](cours/annexes/ressources.md)\n\n---\n\n## Comment travailler\n\n1. **Lis le chapitre en entier une première fois**, sans coder. Tu ne retiendras pas tout, c'est normal.\n2. **Fais les exercices dans l'ordre.** Ils sont progressifs: l'exercice 3 suppose l'exercice 1 digéré.\n3. **Compile souvent.** `cargo check` après chaque bloc de 5 lignes, au début. Le compilateur Rust\n est un professeur particulier: ses messages sont longs parce qu'ils contiennent la solution.\n4. **Ne fuis pas devant une erreur d'emprunt.** Lis le message, relis le chapitre 2, essaie.\n Le moment où tu « comprends » l'ownership est le moment où tu deviens autonome en Rust.\n5. **Écris des tests** dès le chapitre 5. Sur ce projet, ils t'éviteront de casser l'algorithme\n de révision sans t'en apercevoir.\n\nRythme conseillé: **un chapitre par session** de 1 h à 2 h. Le chapitre 2 mérite d'y revenir deux fois.\n\n### Quand tu es bloqué\n\nDans l'ordre:\n1. Relis le message d'erreur en entier (`cargo check` puis, s'il y a un code type `E0502`, `rustc --explain E0502`).\n2. Cherche la méthode dans la doc locale: `cargo doc --open`, ou <https://doc.rust-lang.org/std/>.\n3. Regarde la section « Indices » de l'exercice — elle te dit *quoi* chercher, pas *comment* l'écrire.\n4. Demande-moi une explication de la notion. (Pas la solution: tu m'en voudras.)\n\n---\n\n## Organisation du dépôt\n\n```\ntuto-rust/\n README.md ← tu es ici\n Cargo.toml ← workspace: liste tes crates d'exercices\n src/main.rs ← bac à sable du chapitre 1\n cours/ ← les 13 chapitres + annexes\n exercices/ ← un dossier (= une crate) par exercice, créé par toi\n ch01-fizzbuzz/\n ch01-temperature/\n...\n projet/memo/ ← l'application finale, construite jalon après jalon\n```\n\nChaque exercice est une **crate indépendante** que tu crées toi-même\n(`cargo new exercices/ch01-fizzbuzz`). Le chapitre 0 explique la mécanique.\n\nBonne route. Commence par [le chapitre 0](cours/00-mise-en-route/README.md).",
+      "type": "",
+      "stack": [
+        "Rust"
+      ],
+      "status": "wip",
+      "started": "2026-08-17T00:25:39Z",
+      "ended": "",
+      "updated": "2026-09-06T20:23:43Z",
+      "featured": false,
+      "version": "",
+      "prerelease": false,
+      "image": null,
+      "links": {
+        "repo": "https://github.com/matheo-1712/memo_rust_initiation"
+      },
+      "stars": 0,
+      "contribution": {
+        "commits": 12,
+        "total": 12,
+        "rank": 1,
+        "contributors": 1
+      },
+      "gallery": [],
+      "modrinth": null,
       "org": null,
       "hidden": false,
       "sources": [
